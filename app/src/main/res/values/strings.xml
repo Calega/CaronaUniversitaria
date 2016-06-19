@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CaronaUniversitaria</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="prompt_name">Nome</string>
+    <string name="promt_phoneNumber">Telefone</string>
+    <string name="action_register">Registrar</string>
+    <string name="action_sign_in">Logar</string>
+    <string name="action_update">Atualizar</string>
+    <string name="action_delete">Deletar</string>
+    <string name="action_reset">Resetar</string>
+    <string name="action_sign_out">Sair</string>
+    <string name="error_invalid_email">Esse endereço de email é inválido</string>
+    <string name="error_invalid_password">Esse campo é obrigatório</string>
+    <string name="info_label">Informação do usuário</string>
+    <string name="error_url_not_found">URL Inválida : Arquivo PHP não encontrado</string>
+    <string name="error_passoword_length">Senha deve ter pelo menos 5 caracteres</string>
+
+</resources>
