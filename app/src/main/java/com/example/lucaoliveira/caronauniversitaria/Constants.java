@@ -10,11 +10,11 @@ public class Constants {
     public static final int STATUS_UNAUTHORIZED = 401;
 
     //Chave e senha que vem do servidor para acessar API
-    public static final String APP_KEY = "TBA";
-    public static final String APP_SECRET = "TBA";
+    public static final String APP_KEY = "8530cc810e1847d493193298a3589e76";
+    public static final String APP_SECRET = "4eb36860b6d84ea4a1b3eede42dd3135";
 
     //URL para acessar API
-    public static final String ENDPOINT = "YOURDOMAIN/api";
+    public static final String ENDPOINT = "http://www.projetoalcateia.com/api";
     public static final String LOGIN_URL = ENDPOINT + "/login.php";
     public static final String SIGNUP_URL = ENDPOINT + "/signup.php";
     public static final String INFO_URL = ENDPOINT + "/info.php";
@@ -28,7 +28,7 @@ public class Constants {
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String GRANT_TYPE = "grant_type";
-    public static final String CLIENT_CREDENTIAL = "client_credentials";
+    public static final String CLIENT_CREDENTIALS = "client_credentials";
     public static final String ACCESS_TOKEN = "access_token";
     public static final String ACCESS = "access";
     public static final String INFO = "info";
