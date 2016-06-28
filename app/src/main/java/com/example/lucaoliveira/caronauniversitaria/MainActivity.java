@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showProgress(final boolean isShow) {
         findViewById(R.id.progress).setVisibility(isShow ? View.VISIBLE : View.GONE);
-        findViewById(R.id.info_form).setVisibility(isShow ? View.VISIBLE : View.GONE);
+        findViewById(R.id.info_form).setVisibility(isShow ? View.GONE : View.VISIBLE);
     }
 
     private void initViews() {
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                     user.setName(null);
                 }
 
-                user.setName(jsonObject.optString(Constants.PHONE_NUMBER));
+                user.setPhoneNumber(jsonObject.optString(Constants.PHONE_NUMBER));
                 if (user.getPhoneNumber().equalsIgnoreCase("null")) {
                     user.setPhoneNumber(null);
                 }
@@ -254,6 +254,11 @@ public class MainActivity extends AppCompatActivity {
     public class UserDeleteTask extends ActivityWebServiceTask {
         public UserDeleteTask() {
             super(mUserDeleteTask);
+        }
+
+        @Override
+        public void performSuccessfulOperation() {
+            showLoginScreen();
         }
 
         public boolean performRequest() {
