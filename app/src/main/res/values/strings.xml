@@ -3,6 +3,7 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Senha</string>
     <string name="prompt_name">Nome</string>
+    <string name="prompt_note">Anotação</string>
     <string name="prompt_phoneNumber">Telefone</string>
     <string name="action_register">Registrar</string>
     <string name="action_sign_in">Logar</string>
