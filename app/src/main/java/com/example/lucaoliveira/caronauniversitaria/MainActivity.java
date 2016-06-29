@@ -7,17 +7,21 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.lucaoliveira.caronauniversitaria.data.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+    String[] universityList = {"FIAP", "USP", "Uninove", "UNIP"};
+
     private UserInfoTask mUserInfoTask = null;
     private UserEditTask mUserEditTask = null;
     private UserResetTask mUserResetTask = null;
@@ -27,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText mPasswordText;
     private EditText mNameText;
     private EditText mPhoneNumberText;
-    private EditText mNoteText;
 
     private interface ConfirmationListener {
         void onConfirmation(boolean isConfirmed);
@@ -53,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
         mPasswordText = (EditText) findViewById(R.id.password);
         mNameText = (EditText) findViewById(R.id.name);
         mPhoneNumberText = (EditText) findViewById(R.id.phonenumber);
-        mNoteText = (EditText) findViewById(R.id.note);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, universityList);
+        MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner)
+                findViewById(R.id.universitySpinner);
+        materialDesignSpinner.setAdapter(arrayAdapter);
     }
 
     private void populateText() {
@@ -62,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         mPasswordText.setText(user.getPassword());
         mNameText.setText(user.getName() == null ? "" : user.getName());
         mPhoneNumberText.setText(user.getPhoneNumber() == null ? "" : user.getPhoneNumber());
-        mNoteText.setText(user.getNote() == null ? "" : user.getNote());
     }
 
     public void clickUpdateButton(View view) {
@@ -184,11 +191,6 @@ public class MainActivity extends AppCompatActivity {
                     user.setPhoneNumber(null);
                 }
 
-                user.setNote(jsonObject.optString(Constants.NOTE));
-                if (user.getNote().equalsIgnoreCase("null")) {
-                    user.setNote(null);
-                }
-
                 user.setId(jsonObject.optLong(Constants.ID_INFO));
                 return true;
             }
@@ -208,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
             contentValues.put(Constants.NAME, user.getName());
             contentValues.put(Constants.PASSWORD, user.getPassword());
             contentValues.put(Constants.PHONE_NUMBER, mPhoneNumberText.getText().toString());
-            contentValues.put(Constants.NOTE, mNoteText.getText().toString());
 
             ContentValues urlValues = new ContentValues();
             urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
@@ -220,7 +221,6 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject jsonObject = jsonArray.optJSONObject(0);
                 user.setName(jsonObject.optString(Constants.NAME));
                 user.setPhoneNumber(jsonObject.optString(Constants.PHONE_NUMBER));
-                user.setNote(jsonObject.optString(Constants.NOTE));
                 user.setPassword(jsonObject.optString(Constants.PASSWORD));
                 return true;
             }
@@ -244,7 +244,6 @@ public class MainActivity extends AppCompatActivity {
             if (!hasError(obj)) {
                 user.setName("");
                 user.setPhoneNumber("");
-                user.setNote("");
                 return true;
             }
             return false;

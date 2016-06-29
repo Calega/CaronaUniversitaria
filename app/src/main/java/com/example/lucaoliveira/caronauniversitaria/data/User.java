@@ -7,7 +7,6 @@ public class User {
     private String name;
     private String email;
     private String phoneNumber;
-    private String note;
     private String password;
     private long id;
 
@@ -33,14 +32,6 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
     }
 
     public String getPassword() {

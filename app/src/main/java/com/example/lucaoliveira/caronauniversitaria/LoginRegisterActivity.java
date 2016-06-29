@@ -95,7 +95,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
             mIsLogin = isLogin;
         }
 
-
         @Override
         public void showProgress() {
             LoginRegisterActivity.this.showProgress(true);
