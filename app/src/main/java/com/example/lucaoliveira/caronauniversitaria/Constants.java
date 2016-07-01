@@ -14,7 +14,7 @@ public class Constants {
     public static final String APP_SECRET = "4eb36860b6d84ea4a1b3eede42dd3135";
 
     //URL para acessar API
-    public static final String ENDPOINT = "http://www.projetoalcateia.com/api";
+    public static final String ENDPOINT = "http://www.projetoalcateia.com/apiCarona";
     public static final String LOGIN_URL = ENDPOINT + "/login.php";
     public static final String SIGNUP_URL = ENDPOINT + "/signup.php";
     public static final String INFO_URL = ENDPOINT + "/info.php";
@@ -38,6 +38,10 @@ public class Constants {
     public static final String ID_INFO = "id";
     public static final String PHONE_NUMBER = "phoneNumber";
     public static final String NAME = "name";
+    public static final String UNIVERSITY = "university";
+    public static final String ACCESS_TYPE = "accessType";
+    public static final String ADDRESS_ORIGIN = "addressOrigin";
+    public static final String ADDRESS_DESTINY = "addressDestiny";
 
     public static final String CONNECTION_MESSAGE = "No internet Connection";
 

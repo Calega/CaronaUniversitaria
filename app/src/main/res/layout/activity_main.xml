@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.lucaoliveira.caronauniversitaria.LoginRegisterActivity">
+    tools:context="com.example.lucaoliveira.caronauniversitaria.MainActivity">
 
     <ProgressBar
         android:id="@+id/progress"
@@ -38,7 +38,6 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
@@ -87,14 +86,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_phoneNumber"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:maxLines="1"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
             <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:id="@+id/universitySpinner"
+                android:id="@+id/university"
                 app:met_floatingLabel="normal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:onClick="clickContinueButton"
+                android:onClick="attemptLoginRegister"
                 android:text="@string/action_continue"
                 android:textStyle="bold" />
 

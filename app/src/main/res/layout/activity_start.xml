@@ -22,6 +22,24 @@
             android:src="@mipmap/firebase_launcher" />
 
         <Button
+            android:id="@+id/btn_login_google"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@color/btn_logut_bg"
+            android:text="@string/action_sign_in_google"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/btn_login_facebook"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@color/bg_main"
+            android:text="@string/action_sign_in_facebook"
+            android:textColor="@android:color/black" />
+
+        <Button
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -38,9 +56,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@null"
+            android:onClick="clickRegister"
             android:text="@string/action_link_to_register"
             android:textAllCaps="false"
-            android:onClick="clickLogin"
             android:textColor="@color/white"
             android:textSize="15dp" />
 
