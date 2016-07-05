@@ -76,7 +76,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/continue_button"
+                android:id="@+id/finish_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

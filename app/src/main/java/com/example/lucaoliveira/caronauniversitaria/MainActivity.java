@@ -1,24 +1,20 @@
 package com.example.lucaoliveira.caronauniversitaria;
 
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.lucaoliveira.caronauniversitaria.data.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        showProgress(true);
+//        showProgress(true);
     }
 
     private void showProgress(final boolean isShow) {
@@ -95,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            mUserLoginRegisterTask = new UserLoginRegisterTask(email, password, name, university, phoneNumber, view.getId() == R.id.email_sign_in_button);
+            mUserLoginRegisterTask = new UserLoginRegisterTask(email, password, name, university, phoneNumber, view.getId() == R.id.continue_button);
             mUserLoginRegisterTask.execute((Void) null);
         }
     }
@@ -117,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             contentValues.put(Constants.EMAIL, email);
             contentValues.put(Constants.PASSWORD, password);
             contentValues.put(Constants.NAME, name);
+            contentValues.put(Constants.PHONE_NUMBER, phoneNumber);
             contentValues.put(Constants.UNIVERSITY, university);
             contentValues.put(Constants.GRANT_TYPE, Constants.CLIENT_CREDENTIALS);
             mIsLogin = isLogin;
