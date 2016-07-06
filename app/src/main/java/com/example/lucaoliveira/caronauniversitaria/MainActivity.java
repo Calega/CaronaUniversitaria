@@ -106,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
     private class UserLoginRegisterTask extends WebServiceTask {
         private final ContentValues contentValues = new ContentValues();
-        private boolean mIsLogin;
+        private boolean mIsRegister;
 
-        UserLoginRegisterTask(String email, String password, String name, String university, String phoneNumber, boolean isLogin) {
+        UserLoginRegisterTask(String email, String password, String name, String university, String phoneNumber, boolean isRegister) {
             super((MainActivity.this));
             contentValues.put(Constants.EMAIL, email);
             contentValues.put(Constants.PASSWORD, password);
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             contentValues.put(Constants.PHONE_NUMBER, phoneNumber);
             contentValues.put(Constants.UNIVERSITY, university);
             contentValues.put(Constants.GRANT_TYPE, Constants.CLIENT_CREDENTIALS);
-            mIsLogin = isLogin;
+            mIsRegister = isRegister;
         }
 
         @Override
@@ -126,11 +126,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean performRequest() {
-            JSONObject obj = WebServicesUtils.requestJSONObject(mIsLogin ? Constants.SIGNUP_URL : Constants.LOGIN_URL,
+            JSONObject obj = WebServicesUtils.requestJSONObject(mIsRegister ? Constants.SIGNUP_URL : Constants.LOGIN_URL,
                     WebServicesUtils.METHOD.POST, contentValues, true);
             mUserLoginRegisterTask = null;
             if (!hasError(obj)) {
-                if (!mIsLogin) {
+                if (!mIsRegister) {
                     User user = new User();
                     user.setId(obj.optLong(Constants.ID));
                     user.setEmail(contentValues.getAsString(Constants.EMAIL));
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                             obj.optJSONObject(Constants.ACCESS).optString(Constants.ACCESS_TOKEN));
                     return true;
                 } else {
-                    mIsLogin = false;
+                    mIsRegister = false;
                     performRequest();
                     return true;
                 }
