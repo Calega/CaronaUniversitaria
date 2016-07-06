@@ -126,11 +126,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean performRequest() {
-            JSONObject obj = WebServicesUtils.requestJSONObject(mIsLogin ? Constants.LOGIN_URL : Constants.SIGNUP_URL,
+            JSONObject obj = WebServicesUtils.requestJSONObject(mIsLogin ? Constants.SIGNUP_URL : Constants.LOGIN_URL,
                     WebServicesUtils.METHOD.POST, contentValues, true);
             mUserLoginRegisterTask = null;
             if (!hasError(obj)) {
-                if (mIsLogin) {
+                if (!mIsLogin) {
                     User user = new User();
                     user.setId(obj.optLong(Constants.ID));
                     user.setEmail(contentValues.getAsString(Constants.EMAIL));
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                             obj.optJSONObject(Constants.ACCESS).optString(Constants.ACCESS_TOKEN));
                     return true;
                 } else {
-                    mIsLogin = true;
+                    mIsLogin = false;
                     performRequest();
                     return true;
                 }
