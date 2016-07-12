@@ -3,8 +3,8 @@ package com.example.lucaoliveira.caronauniversitaria;
 import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.lucaoliveira.caronauniversitaria.data.User;
@@ -15,31 +15,68 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Created by lucaoliveira on 7/1/2016.
+ * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
  */
 public class FinishRegisterActivity extends AppCompatActivity {
 
     private UserEditTask mUserEditTask = null;
-    private UserInfoTask mUserInfoTask = null;
 
     private EditText mAccessType;
     private EditText mAddressOrigin;
     private EditText mAddressDestiny;
-    private Button mFinishButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_continue);
         initViews();
-        showProgress(true);
-        mUserInfoTask = new UserInfoTask();
-        mUserInfoTask.execute();
+//        showProgress(true);
+    }
+
+    public void finishLogin(View view) {
+        if (mUserEditTask != null) {
+            return;
+        }
+
+        mAccessType.setError(null);
+        mAddressOrigin.setError(null);
+        mAddressDestiny.setError(null);
+
+        String accessType = mAccessType.getText().toString();
+        String addressOrigin = mAddressOrigin.getText().toString();
+        String addressDestiny = mAddressDestiny.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        if (TextUtils.isEmpty(accessType)) {
+            mAccessType.setError(getString(R.string.error_accessType));
+            focusView = mAccessType;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(addressOrigin)) {
+            mAddressOrigin.setError(getString(R.string.error_addressOrigin));
+            focusView = mAddressOrigin;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(addressDestiny)) {
+            mAddressDestiny.setError(getString(R.string.error_addressDestiny));
+            focusView = mAddressDestiny;
+            cancel = true;
+        }
+
+        if (cancel) {
+            focusView.requestFocus();
+        } else {
+            mUserEditTask = new UserEditTask();
+            mUserEditTask.execute();
+        }
     }
 
     private void showProgress(boolean isShow) {
         findViewById(R.id.progress).setVisibility(isShow ? View.VISIBLE : View.GONE);
-        findViewById(R.id.info_form).setVisibility(isShow ? View.GONE : View.VISIBLE);
     }
 
     private void initViews() {
@@ -65,50 +102,6 @@ public class FinishRegisterActivity extends AppCompatActivity {
 
         @Override
         public void performSuccessfulOperation() {
-//            populateText();
-        }
-
-//        private void populateText() {
-//            User user = RESTServiceApplication.getInstance().getUser();
-//            mEmailText.setText(user.getEmail());
-//            mPasswordText.setText(user.getPassword());
-//            mNameText.setText(user.getName() == null ? "" : user.getName());
-//            mPhoneNumberText.setText(user.getPhoneNumber() == null ? "" : user.getPhoneNumber());
-//        }
-
-
-    }
-
-    public class UserInfoTask extends ActivityWebServiceTask {
-        public UserInfoTask() {
-            super(mUserInfoTask);
-        }
-
-        public boolean performRequest() {
-            ContentValues contentValues = new ContentValues();
-            User user = RESTServiceApplication.getInstance().getUser();
-            contentValues.put(Constants.ID, user.getId());
-            contentValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
-
-            JSONObject object = WebServicesUtils.requestJSONObject(Constants.INFO_URL, WebServicesUtils.METHOD.GET, contentValues, null);
-            if (!hasError(object)) {
-                JSONArray jsonArray = object.optJSONArray(Constants.INFO); // informação vem em formato de json
-                JSONObject jsonObject = jsonArray.optJSONObject(0); // pegando o index 0 do array
-
-                user.setName(jsonObject.optString(Constants.NAME));
-                if (user.getName().equalsIgnoreCase("null")) {
-                    user.setName(null);
-                }
-
-                user.setPhoneNumber(jsonObject.optString(Constants.PHONE_NUMBER));
-                if (user.getPhoneNumber().equalsIgnoreCase("null")) {
-                    user.setPhoneNumber(null);
-                }
-
-                user.setId(jsonObject.optLong(Constants.ID_INFO));
-                return true;
-            }
-            return false;
         }
     }
 

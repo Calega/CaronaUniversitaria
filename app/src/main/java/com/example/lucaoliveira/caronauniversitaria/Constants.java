@@ -1,7 +1,7 @@
 package com.example.lucaoliveira.caronauniversitaria;
 
 /**
- * Created by lucaoliveira on 6/19/2016.
+ * Created by Lucas Calegari A. De Oliveira on 6/19/2016.
  */
 public class Constants {
     public static final int CONNECTION_TIMEOUT = 10000;

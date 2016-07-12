@@ -17,6 +17,9 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import org.json.JSONObject;
 
+/**
+ * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
+ */
 public class MainActivity extends AppCompatActivity {
     String[] universityList = {"FIAP", "USP", "Uninove", "UNIP"};
 
@@ -153,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void performSuccessfulOperation() {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            Intent intent = new Intent(MainActivity.this, FinishRegisterActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }

@@ -25,5 +25,8 @@
     <string name="info_label">Informação do usuário</string>
     <string name="error_url_not_found">URL Inválida : Arquivo PHP não encontrado</string>
     <string name="error_passoword_length">Senha deve ter pelo menos 5 caracteres</string>
+    <string name="error_accessType">Cadastre seu tipo de acesso</string>
+    <string name="error_addressOrigin">Cadastre o endereço de origem</string>
+    <string name="error_addressDestiny">Cadastre o endereço de destino</string>
 
 </resources>
