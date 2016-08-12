@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.telephony.IccOpenLogicalChannelResponse;
 import android.util.Base64;
 import android.util.Log;
 
@@ -21,7 +20,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -89,11 +87,11 @@ public class WebServicesUtils {
                 for (String key : bodyValues.keySet()) {
                     jsonObject.put(key, bodyValues.getAsString(key));
                 }
-                String str = jsonObject.toString();
+                String str = jsonObject.toString().trim();
                 urlConnection.setRequestProperty("Content-Type", "application/sjon");
-                ;
                 urlConnection.setRequestProperty("Accept", "application/json");
                 OutputStreamWriter osw = new OutputStreamWriter(urlConnection.getOutputStream());
+                Log.d(TAG, "JSON Content Values : >>> " + str);
                 osw.write(str);
                 osw.flush();
                 osw.close();
@@ -146,6 +144,7 @@ public class WebServicesUtils {
 
         try {
             while ((responseText = bufferedReader.readLine()) != null) {
+                Log.d(TAG, "responseText while convertInputStreamToString >>>> " + responseText);
                 stringBuilder.append(responseText);
             }
         } catch (IOException e) {
@@ -153,6 +152,7 @@ public class WebServicesUtils {
             e.printStackTrace();
         }
 
+        Log.d(TAG, "Response resolved from server : >>> " + stringBuilder.toString());
         return stringBuilder.toString();
     }
 

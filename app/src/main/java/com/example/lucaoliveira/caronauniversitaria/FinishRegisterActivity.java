@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -85,6 +86,12 @@ public class FinishRegisterActivity extends AppCompatActivity {
         mAddressDestiny = (EditText) findViewById(R.id.addressDestiny);
     }
 
+    private void populateText(User user) {
+        user.setAccessType(mAccessType.getText().toString());
+        user.setAddressOrigin(mAddressOrigin.getText().toString());
+        user.setAddressDestiny(mAddressDestiny.getText().toString());
+    }
+
     private abstract class ActivityWebServiceTask extends WebServiceTask {
         public ActivityWebServiceTask(WebServiceTask webServiceTask) {
             super(FinishRegisterActivity.this);
@@ -113,6 +120,8 @@ public class FinishRegisterActivity extends AppCompatActivity {
         public boolean performRequest() {
             ContentValues contentValues = new ContentValues();
             User user = RESTServiceApplication.getInstance().getUser();
+            populateText(user);
+            Log.d("FinishRegisterActivity", "UserEditTask : >>>>>> " + user);
             contentValues.put(Constants.ID, user.getId());
             contentValues.put(Constants.ACCESS_TYPE, user.getAccessType());
             contentValues.put(Constants.ADDRESS_ORIGIN, user.getAddressOrigin());
