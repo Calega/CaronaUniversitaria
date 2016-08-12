@@ -1,10 +1,12 @@
-package com.example.lucaoliveira.caronauniversitaria;
+package com.example.lucaoliveira.caronauniversitaria.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.example.lucaoliveira.caronauniversitaria.R;
 
 /**
  * Created by lucas on 30/06/2016.

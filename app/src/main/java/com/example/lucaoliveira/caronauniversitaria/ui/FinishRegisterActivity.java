@@ -1,6 +1,7 @@
-package com.example.lucaoliveira.caronauniversitaria;
+package com.example.lucaoliveira.caronauniversitaria.ui;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -9,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.lucaoliveira.caronauniversitaria.Constants;
+import com.example.lucaoliveira.caronauniversitaria.R;
+import com.example.lucaoliveira.caronauniversitaria.RESTServiceApplication;
 import com.example.lucaoliveira.caronauniversitaria.data.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
@@ -117,6 +121,9 @@ public class FinishRegisterActivity extends AppCompatActivity {
             Log.d("FinishRegisterActivity", "Successful ?!" + success);
             if (success) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.prompt_welcome), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
+                //TODO : testar
+                startActivity(intent);
             }
         }
     }

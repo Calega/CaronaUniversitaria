@@ -14,6 +14,21 @@ public class User {
     private String addressDestiny;
     private long id;
 
+    //TODO : ADD TO DATABASE
+    private int numberOfStudents;
+
+    //TODO : ADD USER IMAGE
+    private int thumbnail;
+
+    public User() {
+    }
+
+    public User(String name, int numberOfStudents, int thumbnail) {
+        this.name = name;
+        this.numberOfStudents = numberOfStudents;
+        this.thumbnail = thumbnail;
+    }
+
     public String getName() {
         return name;
     }
@@ -84,5 +99,21 @@ public class User {
 
     public void setAddressDestiny(String addressDestiny) {
         this.addressDestiny = addressDestiny;
+    }
+
+    public int getNumberOfStudents() {
+        return numberOfStudents;
+    }
+
+    public void setNumberOfStudents(int numberOfStudents) {
+        this.numberOfStudents = numberOfStudents;
+    }
+
+    public int getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(int thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }

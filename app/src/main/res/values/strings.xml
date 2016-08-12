@@ -29,6 +29,12 @@
     <string name="error_addressOrigin">Cadastre o endereço de origem</string>
     <string name="error_addressDestiny">Cadastre o endereço de destino</string>
 
+    <string name="action_settings">Settings</string>
+    <string name="action_add_favourite">Add to Favourites</string>
+    <string name="action_play_next">Play Next</string>
+    <string name="backdrop_title">LOVE MUSIC</string>
+    <string name="backdrop_subtitle">This season top 20 albums</string>
+
     <!-- Toast Messages-->
     <string name="prompt_welcome">Bem vindo ao Unicaroneiro!</string>
 

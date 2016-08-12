@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".StartActivity"
+            android:name=".ui.StartActivity"
             android:label="@string/app_name"
             android:noHistory="true">
             <intent-filter>
@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/info_label"
             android:noHistory="true" />
         <activity
-            android:name=".FinishRegisterActivity"
+            android:name=".ui.FinishRegisterActivity"
             android:label="@string/info_label"
             android:noHistory="true" />
     </application>
