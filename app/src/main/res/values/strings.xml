@@ -29,4 +29,7 @@
     <string name="error_addressOrigin">Cadastre o endereço de origem</string>
     <string name="error_addressDestiny">Cadastre o endereço de destino</string>
 
+    <!-- Toast Messages-->
+    <string name="prompt_welcome">Bem vindo ao Unicaroneiro!</string>
+
 </resources>

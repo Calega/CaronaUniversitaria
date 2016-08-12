@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.lucaoliveira.caronauniversitaria.data.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
@@ -110,6 +111,14 @@ public class FinishRegisterActivity extends AppCompatActivity {
         @Override
         public void performSuccessfulOperation() {
         }
+
+        @Override
+        protected void onPostExecute(Boolean success) {
+            Log.d("FinishRegisterActivity", "Successful ?!" + success);
+            if (success) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.prompt_welcome), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public class UserEditTask extends ActivityWebServiceTask {
@@ -121,7 +130,6 @@ public class FinishRegisterActivity extends AppCompatActivity {
             ContentValues contentValues = new ContentValues();
             User user = RESTServiceApplication.getInstance().getUser();
             populateText(user);
-            Log.d("FinishRegisterActivity", "UserEditTask : >>>>>> " + user);
             contentValues.put(Constants.ID, user.getId());
             contentValues.put(Constants.ACCESS_TYPE, user.getAccessType());
             contentValues.put(Constants.ADDRESS_ORIGIN, user.getAddressOrigin());
