@@ -2,12 +2,14 @@ package com.example.lucaoliveira.caronauniversitaria.ui;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.lucaoliveira.caronauniversitaria.Constants;
@@ -31,12 +33,44 @@ public class FinishRegisterActivity extends AppCompatActivity {
     private EditText mAddressOrigin;
     private EditText mAddressDestiny;
 
+    private ImageView thumbail;
+    private ImageView imagePreview;
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_continue);
         initViews();
 //        showProgress(true);
+    }
+
+//    public void takePicture(View view) {
+//        if (!isDeviceSupportCamera()) {
+//            Toast.makeText(getApplicationContext(),
+//                    "Desculpe ! Seu celular não suporta tirar fotos!",
+//                    Toast.LENGTH_LONG).show();
+//        }
+//
+//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//        }
+//    }
+
+    /**
+     * Checking device has camera hardware or not
+     */
+    private boolean isDeviceSupportCamera() {
+        if (getApplicationContext().getPackageManager().hasSystemFeature(
+                PackageManager.FEATURE_CAMERA)) {
+            // this device has a camera
+            return true;
+        } else {
+            // no camera on this device
+            return false;
+        }
     }
 
     public void finishLogin(View view) {
@@ -89,6 +123,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
         mAccessType = (EditText) findViewById(R.id.accessType);
         mAddressOrigin = (EditText) findViewById(R.id.addressOrigin);
         mAddressDestiny = (EditText) findViewById(R.id.addressDestiny);
+//        imagePreview = (ImageView) findViewById(R.id.imgPreview);
     }
 
     private void populateText(User user) {
@@ -122,7 +157,6 @@ public class FinishRegisterActivity extends AppCompatActivity {
             if (success) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.prompt_welcome), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
-                //TODO : testar
                 startActivity(intent);
             }
         }
@@ -158,4 +192,15 @@ public class FinishRegisterActivity extends AppCompatActivity {
             return false;
         }
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+//            Bundle extras = data.getExtras();
+//            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            thumbail.setImageBitmap(imageBitmap);
+//            imagePreview.setImageBitmap(imageBitmap);
+//            Toast.makeText(getApplicationContext(), "Imagem salva com sucesso!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 }

@@ -20,6 +20,7 @@
     <string name="action_sign_out">Sair</string>
     <string name="action_continue">Continuar</string>
     <string name="action_finish">Finalizar Cadastro</string>
+    <string name="action_take_picture">Tirar Foto</string>
     <string name="error_invalid_email">Esse endereço de email é inválido</string>
     <string name="error_field_required">Esse campo é obrigatório</string>
     <string name="info_label">Informação do usuário</string>
