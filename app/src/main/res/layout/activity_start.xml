@@ -30,14 +30,14 @@
             android:text="@string/action_sign_in_google"
             android:textColor="@android:color/black" />
 
-        <Button
-            android:id="@+id/btn_login_facebook"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/bg_main"
-            android:text="@string/action_sign_in_facebook"
-            android:textColor="@android:color/black" />
+        <!--<Button-->
+        <!--android:id="@+id/btn_login_facebook"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="20dip"-->
+        <!--android:background="@color/bg_main"-->
+        <!--android:text="@string/action_sign_in_facebook"-->
+        <!--android:textColor="@android:color/black" />-->
 
         <Button
             android:id="@+id/btn_login"

@@ -23,7 +23,6 @@ import java.util.List;
  */
 public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyViewHolder> {
 
-
     private Context mContext;
     private List<User> studentList;
 
@@ -55,18 +54,16 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        User student = studentList.get(position);
+        final User student = studentList.get(position);
         holder.title.setText(student.getName());
-        holder.count.setText(student.getNumberOfStudents() + " number of students");
+        holder.count.setText(student.getNumberOfStudents() + " Estudantes Disponíveis");
 
-        // loading student cover using Glide library
-        //TODO : ADD THUMBNAIL AS USER IMAGE
         Glide.with(mContext).load(student.getThumbnail()).into(holder.thumbnail);
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupMenu(holder.overflow);
+                showPopupMenu(holder.overflow, student);
             }
         });
     }
@@ -74,12 +71,12 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     /**
      * Showing popup menu when tapping on 3 dots
      */
-    private void showPopupMenu(View view) {
+    private void showPopupMenu(View view, User student) {
         // inflate menu
         PopupMenu popup = new PopupMenu(mContext, view);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.menu_student, popup.getMenu());
-        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
+        popup.setOnMenuItemClickListener(new MyMenuItemClickListener(student));
         popup.show();
     }
 
@@ -87,18 +84,18 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
      * Click listener for popup menu items
      */
     class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
+        private User student;
 
-        public MyMenuItemClickListener() {
+        public MyMenuItemClickListener(User student) {
+            this.student = student;
         }
 
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_add_favourite:
-                    Toast.makeText(mContext, "Add to favourite", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.action_play_next:
-                    Toast.makeText(mContext, "Play next", Toast.LENGTH_SHORT).show();
+                    //CALL FRAGMENT
+                    Toast.makeText(mContext, "Ver informações", Toast.LENGTH_SHORT).show();
                     return true;
                 default:
             }

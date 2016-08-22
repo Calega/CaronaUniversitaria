@@ -34,7 +34,7 @@ public class StudentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.student_list_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -51,11 +51,11 @@ public class StudentActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-        prepareAlbums();
+        prepareUsers();
 
         try {
 //            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
-            Glide.with(this).load(R.mipmap.firebase_launcher).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,7 +83,7 @@ public class StudentActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle(getString(R.string.app_name));
+                    collapsingToolbar.setTitle(getString(R.string.FIAP));
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle(" ");
@@ -94,9 +94,9 @@ public class StudentActivity extends AppCompatActivity {
     }
 
     /**
-     * Adding few albums for testing
+     * Adding few users for testing
      */
-    private void prepareAlbums() {
+    private void prepareUsers() {
         int[] covers = new int[]{
                 R.drawable.album1,
                 R.drawable.album2,
@@ -110,34 +110,34 @@ public class StudentActivity extends AppCompatActivity {
                 R.drawable.album10,
                 R.drawable.album11};
 
-        User a = new User("True Romance", 13, covers[0]);
+        User a = new User("Igor Artão", 2, covers[0]);
         studentsList.add(a);
 
-        a = new User("Xscpae", 8, covers[1]);
+        a = new User("Raphael Ballico", 2, covers[1]);
         studentsList.add(a);
 
-        a = new User("Maroon 5", 11, covers[2]);
+        a = new User("Lucas Oliveira", 1, covers[2]);
         studentsList.add(a);
 
-        a = new User("Born to Die", 12, covers[3]);
+        a = new User("Vitor Takao", 2, covers[3]);
         studentsList.add(a);
 
-        a = new User("Honeymoon", 14, covers[4]);
+        a = new User("Dsiaduki", 3, covers[4]);
         studentsList.add(a);
 
-        a = new User("I Need a Doctor", 1, covers[5]);
+        a = new User("Guilherme Coghi", 2, covers[5]);
         studentsList.add(a);
 
-        a = new User("Loud", 11, covers[6]);
+        a = new User("Diego Mendes", 4, covers[6]);
         studentsList.add(a);
 
-        a = new User("Legend", 14, covers[7]);
+        a = new User("Daniel Alves", 4, covers[7]);
         studentsList.add(a);
 
-        a = new User("Hello", 11, covers[8]);
+        a = new User("Ezekiel Oliveira", 2, covers[8]);
         studentsList.add(a);
 
-        a = new User("Greatest Hits", 17, covers[9]);
+        a = new User("Cesar Lino", 2, covers[9]);
         studentsList.add(a);
 
         adapter.notifyDataSetChanged();
