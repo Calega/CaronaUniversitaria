@@ -1,6 +1,7 @@
 # README #
 
 It's necessary to checkout Branches full information with all gradle dependencies:
+
 Main dependencies used : 
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
