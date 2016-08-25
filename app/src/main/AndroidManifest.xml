@@ -20,9 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.StudentActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.StartActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,15 +29,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
-            android:label="@string/info_label"
-            android:noHistory="true" />
+            android:name=".ui.StudentActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.FinishRegisterActivity"
             android:label="@string/info_label"
             android:noHistory="true" />
         <activity
-            android:name=".ui.StartActivity"
+            android:name=".ui.MainActivity"
+            android:label="@string/info_label" />
+        <activity
+            android:name=".ui.StudentInformationActivity"
             android:noHistory="true" />
     </application>
 

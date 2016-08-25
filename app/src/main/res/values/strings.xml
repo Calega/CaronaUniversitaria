@@ -32,7 +32,7 @@
     <string name="error_addressDestiny">Cadastre o endereço de destino</string>
 
     <string name="action_settings">Configurações</string>
-    <string name="action_see_details">Ver informações</string>
+    <string name="action_see_details"> + informações</string>
     <string name="backdrop_title">FIAP</string>
     <string name="backdrop_subtitle">Lista de Caroneiros Disponíveis</string>
 

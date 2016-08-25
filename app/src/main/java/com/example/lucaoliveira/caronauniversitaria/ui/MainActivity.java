@@ -24,7 +24,7 @@ import org.json.JSONObject;
  * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
  */
 public class MainActivity extends AppCompatActivity {
-    String[] universityList = {"FIAP", "USP", "Uninove", "UNIP"};
+    String[] universityList = {"FIAP"};
 
     private UserLoginRegisterTask mUserLoginRegisterTask = null;
 

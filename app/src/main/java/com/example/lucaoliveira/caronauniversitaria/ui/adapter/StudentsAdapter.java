@@ -1,8 +1,10 @@
 package com.example.lucaoliveira.caronauniversitaria.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -10,11 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lucaoliveira.caronauniversitaria.R;
 import com.example.lucaoliveira.caronauniversitaria.data.User;
+import com.example.lucaoliveira.caronauniversitaria.ui.StudentInformationActivity;
 
 import java.util.List;
 
@@ -55,6 +57,11 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final User student = studentList.get(position);
+        Log.d("StudentsAdapter", "onBindViewHolder Student >>>> " + student.getPhoneNumber());
+        Log.d("StudentsAdapter", "onBindViewHolder Student >>>> " + student.getEmail());
+        Log.d("StudentsAdapter", "onBindViewHolder Student >>>> " + student.getAddressOrigin());
+        Log.d("StudentsAdapter", "onBindViewHolder Student >>>> " + student.getAddressDestiny());
+        Log.d("StudentsAdapter", "onBindViewHolder Student >>>> " + student.getName());
         holder.title.setText(student.getName());
         holder.count.setText(student.getNumberOfStudents() + " Estudantes Disponíveis");
 
@@ -94,8 +101,19 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_add_favourite:
-                    //CALL FRAGMENT
-                    Toast.makeText(mContext, "Ver informações", Toast.LENGTH_SHORT).show();
+                    Log.d("StudentsAdapter", "MyMenuItemClickListener Student >>>> " + student.getPhoneNumber());
+                    Log.d("StudentsAdapter", "MyMenuItemClickListener Student >>>> " + student.getEmail());
+                    Log.d("StudentsAdapter", "MyMenuItemClickListener Student >>>> " + student.getAddressOrigin());
+                    Log.d("StudentsAdapter", "MyMenuItemClickListener Student >>>> " + student.getAddressDestiny());
+                    Log.d("StudentsAdapter", "MyMenuItemClickListener Student >>>> " + student.getName());
+                    Intent intent = new Intent(mContext, StudentInformationActivity.class);
+//                    intent.putExtra(StudentInformationActivity.EXTRA_USER_THUMBNAIL, student.getThumbnail());
+                    intent.putExtra(StudentInformationActivity.EXTRA_USER_NAME, student.getName());
+                    intent.putExtra(StudentInformationActivity.EXTRA_USER_PHONE, student.getPhoneNumber());
+                    intent.putExtra(StudentInformationActivity.EXTRA_USER_EMAIL, student.getEmail());
+                    intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_ORIGIN, student.getAddressOrigin());
+                    intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_DESTINY, student.getAddressDestiny());
+                    mContext.startActivity(intent);
                     return true;
                 default:
             }

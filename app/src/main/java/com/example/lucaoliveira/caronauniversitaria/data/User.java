@@ -23,10 +23,13 @@ public class User {
     public User() {
     }
 
-    public User(String name, int numberOfStudents, int thumbnail) {
+    public User(String name, int numberOfStudents, int thumbnail, String phoneNumber, String addressOrigin, String addressDestiny) {
         this.name = name;
         this.numberOfStudents = numberOfStudents;
         this.thumbnail = thumbnail;
+        this.phoneNumber = phoneNumber;
+        this.addressOrigin = addressOrigin;
+        this.addressDestiny = addressDestiny;
     }
 
     public String getName() {
