@@ -21,6 +21,8 @@ import org.json.JSONObject;
 
 public class MainActivityUdemy extends AppCompatActivity {
 
+    // USED FOR EXAMPLE PURPOSE
+
     private UserInfoTask mUserInfoTask = null;
     private UserEditTask mUserEditTask = null;
     private UserResetTask mUserResetTask = null;
@@ -38,7 +40,7 @@ public class MainActivityUdemy extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start_register);
         initViews();
         showProgress(true);
         mUserInfoTask = new UserInfoTask();
@@ -47,7 +49,7 @@ public class MainActivityUdemy extends AppCompatActivity {
 
     private void showProgress(final boolean isShow) {
         findViewById(R.id.progress).setVisibility(isShow ? View.VISIBLE : View.GONE);
-        findViewById(R.id.info_form).setVisibility(isShow ? View.GONE : View.VISIBLE);
+        findViewById(R.id.info_form_start).setVisibility(isShow ? View.GONE : View.VISIBLE);
     }
 
     private void initViews() {
@@ -102,6 +104,7 @@ public class MainActivityUdemy extends AppCompatActivity {
             }
         });
     }
+
 
     private void showConfirmationDialog(final ConfirmationListener confirmationListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -160,11 +163,12 @@ public class MainActivityUdemy extends AppCompatActivity {
             contentValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
 
             JSONObject object = WebServicesUtils.requestJSONObject(Constants.INFO_URL, WebServicesUtils.METHOD.GET, contentValues, null);
+
             if (!hasError(object)) {
                 JSONArray jsonArray = object.optJSONArray(Constants.INFO); // informação vem em formato de json
                 JSONObject jsonObject = jsonArray.optJSONObject(0); // pegando o index 0 do array
 
-                user.setName(jsonObject.optString(Constants.NAME));
+                user.setName(jsonObject.optString(Constants.EMAIL));
                 if (user.getName().equalsIgnoreCase("null")) {
                     user.setName(null);
                 }

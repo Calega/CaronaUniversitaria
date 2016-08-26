@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@color/colorAccent"
+            android:onClick="clickLogin"
             android:text="@string/action_sign_in"
             android:textColor="@android:color/black" />
 

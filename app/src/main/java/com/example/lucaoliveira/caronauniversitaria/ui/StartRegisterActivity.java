@@ -23,8 +23,9 @@ import org.json.JSONObject;
 /**
  * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
  */
-public class MainActivity extends AppCompatActivity {
+public class StartRegisterActivity extends AppCompatActivity {
     String[] universityList = {"FIAP"};
+    public static final String TAG = StartRegisterActivity.class.getName();
 
     private UserLoginRegisterTask mUserLoginRegisterTask = null;
 
@@ -37,14 +38,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        setContentView(R.layout.activity_start_register);
         initViews();
+
 //        showProgress(true);
     }
 
+
     private void showProgress(final boolean isShow) {
         findViewById(R.id.progress).setVisibility(isShow ? View.VISIBLE : View.GONE);
-        findViewById(R.id.info_form).setVisibility(isShow ? View.GONE : View.VISIBLE);
+        findViewById(R.id.info_form_start).setVisibility(isShow ? View.GONE : View.VISIBLE);
     }
 
     private void initViews() {
@@ -115,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         private boolean mIsRegister;
 
         UserLoginRegisterTask(String email, String password, String name, String university, String phoneNumber, boolean isRegister) {
-            super((MainActivity.this));
+            super((StartRegisterActivity.this));
             contentValues.put(Constants.EMAIL, email);
             contentValues.put(Constants.PASSWORD, password);
             contentValues.put(Constants.NAME, name);
@@ -127,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void showProgress() {
-            MainActivity.this.showProgress(true);
+            StartRegisterActivity.this.showProgress(true);
         }
 
         @Override
@@ -159,14 +163,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void performSuccessfulOperation() {
-            Intent intent = new Intent(MainActivity.this, FinishRegisterActivity.class);
+            Intent intent = new Intent(StartRegisterActivity.this, FinishRegisterActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
 
         @Override
         public void hideProgress() {
-            MainActivity.this.showProgress(false);
+            StartRegisterActivity.this.showProgress(false);
         }
     }
 

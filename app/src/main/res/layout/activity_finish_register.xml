@@ -20,7 +20,7 @@
         android:visibility="gone" />
 
     <ScrollView
-        android:id="@+id/info_form"
+        android:id="@+id/info_form_finish"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -39,7 +39,42 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_accessType"
-                    android:inputType="text"
+                    android:enabled="false"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radio_caroneiro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/prompt_accessType_caroneiro" />
+
+                <RadioButton
+                    android:id="@+id/radio_carona"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/prompt_accessType_carona" />
+            </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/number_students_allowed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:hint="@string/prompt_students_allowed"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -76,21 +111,21 @@
             </android.support.design.widget.TextInputLayout>
 
             <!--<Button-->
-                <!--android:id="@+id/btnCapturePicture"-->
-                <!--style="?android:textAppearanceSmall"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:onClick="takePicture"-->
-                <!--android:text="@string/action_take_picture"-->
-                <!--android:textStyle="bold" />-->
+            <!--android:id="@+id/btnCapturePicture"-->
+            <!--style="?android:textAppearanceSmall"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:onClick="takePicture"-->
+            <!--android:text="@string/action_take_picture"-->
+            <!--android:textStyle="bold" />-->
 
             <!--<ImageView-->
-                <!--android:id="@+id/imgPreview"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="180dp"-->
-                <!--android:layout_marginTop="15dp"-->
-                <!--android:visibility="visible" />-->
+            <!--android:id="@+id/imgPreview"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="180dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:visibility="visible" />-->
 
             <Button
                 android:id="@+id/finish_button"

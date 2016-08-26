@@ -73,6 +73,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/activity_student" />
 
 </android.support.design.widget.CoordinatorLayout>

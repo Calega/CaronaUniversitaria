@@ -6,12 +6,16 @@
     <string name="prompt_note">Anotação</string>
     <string name="prompt_phoneNumber">Telefone</string>
     <string name="prompt_university">Universidade</string>
-    <string name="prompt_accessType">Tipo de Acesso (Carona ou Caroneiro)</string>
+    <string name="prompt_accessType">Tipo de Acesso - Carona ou Caroneiro</string>
+    <string name="prompt_accessType_caroneiro">Caroneiro - Fornece carona</string>
+    <string name="prompt_accessType_carona">Carona - Utiliza carona</string>
     <string name="prompt_address_origin">Endereço de Origem</string>
     <string name="prompt_address_destiny">Endereço de Destino</string>
+    <string name="prompt_students_allowed">Quantos alunos podem ir com você?</string>
     <string name="action_register">Registrar</string>
     <string name="action_link_to_register">Não é membro? Registre-se agora!</string>
     <string name="action_sign_in">Logar</string>
+    <string name="action_sign_in_label">Logar no Unicaroneiro</string>
     <string name="action_sign_in_facebook">Logar com Facebook</string>
     <string name="action_sign_in_google">Logar com Google +</string>
     <string name="action_update">Atualizar</string>
@@ -30,6 +34,7 @@
     <string name="error_accessType">Cadastre seu tipo de acesso</string>
     <string name="error_addressOrigin">Cadastre o endereço de origem</string>
     <string name="error_addressDestiny">Cadastre o endereço de destino</string>
+    <string name="error_accessType_caroneiro">Digite a quantidade de Caronas disponíveis</string>
 
     <string name="action_settings">Configurações</string>
     <string name="action_see_details"> + informações</string>
@@ -38,6 +43,8 @@
 
     <!-- Toast Messages-->
     <string name="prompt_welcome">Bem vindo ao Unicaroneiro!</string>
+    <string name="prompt_welcome_back">Bem vindo de volta :)</string>
+    <string name="prompt_invalid_access">O usuário ou senha estão incorretos</string>
 
     <!-- Universities -->
     <string name="FIAP">FIAP</string>

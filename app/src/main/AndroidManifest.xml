@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.StartActivity"
+            android:name=".ui.HomeScreenActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,11 +36,14 @@
             android:label="@string/info_label"
             android:noHistory="true" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.StartRegisterActivity"
             android:label="@string/info_label" />
         <activity
             android:name=".ui.StudentInformationActivity"
             android:noHistory="true" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:label="@string/action_sign_in_label" />
     </application>
 
 </manifest>
