@@ -38,8 +38,8 @@
                     android:id="@+id/accessType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_accessType"
                     android:enabled="false"
+                    android:hint="@string/prompt_accessType"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -73,10 +73,11 @@
                     android:id="@+id/number_students_allowed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:hint="@string/prompt_students_allowed"
+                    android:inputType="number"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:visibility="gone" />
 
             </android.support.design.widget.TextInputLayout>
 

@@ -44,9 +44,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void attemptLoginSignIn(View view) {
-        if (mUserLoginTask != null) {
-            return;
-        }
 
         mEmailText.setError(null);
         mPasswordText.setError(null);
@@ -145,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
             contentValues.put(Constants.EMAIL, user.getEmail());
             contentValues.put(Constants.PASSWORD, user.getPassword());
 
-            JSONObject object = WebServicesUtils.requestJSONObject(Constants.INFO_URL, WebServicesUtils.METHOD.GET, contentValues, null);
+            JSONObject object = WebServicesUtils.requestJSONObject(Constants.INFO_URL, WebServicesUtils.METHOD.POST, contentValues, true);
 
             if (!hasError(object)) {
                 JSONArray jsonArray = object.optJSONArray(Constants.INFO); // informação vem em formato de json
