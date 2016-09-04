@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_name"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="EXEMPLO DE NOME"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_email"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -102,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="email@email.com"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -126,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_phoneNumber"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="(11) 98928-4849"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -166,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_address_origin"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -182,7 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Avenida 9 de julho - São Paulo"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -205,8 +205,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/prompt_address_origin"
-                    android:textSize="20dp"
+                    android:text="@string/prompt_address_destiny"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -222,7 +222,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Avenida 9 de julho - São Paulo"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 

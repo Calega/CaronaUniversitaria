@@ -192,9 +192,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (user.getNumberOfStudents() == '0' || user.getNumberOfStudents() == 0) {
                     user.setNumberOfStudents(0);
                 }
-
-
-//                user.setId(jsonObject.optLong(Constants.ID_INFO));
                 return true;
             }
             return false;

@@ -110,34 +110,34 @@ public class StudentActivity extends AppCompatActivity {
                 R.drawable.album10,
                 R.drawable.album11};
 
-        User a = new User("Igor Artão", 2, covers[0], "111111111", "Avenida 9 de julho", "FIAP");
+        User a = new User("Igor Artão", 2, "igor@artao.com", covers[0], "111111111", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Raphael Ballico", 2, covers[1], "22222222", "Avenida 10 de julho", "FIAP");
+        a = new User("Raphael Ballico", 2, "ballico@raphael.com", covers[1], "22222222", "Avenida 10 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Lucas Oliveira", 1, covers[2], "33333333", "Avenida 9 de julho", "FIAP");
+        a = new User("Lucas Oliveira", 1, "lucas@oliveira.com", covers[2], "33333333", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Vitor Takao", 2, covers[3], "44444444", "Avenida 9 de julho", "FIAP");
+        a = new User("Vitor Takao", 2, "taks@vitor.com", covers[3], "44444444", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Dsiaduki", 3, covers[4], "5555555", "Avenida 9 de julho", "FIAP");
+        a = new User("Dsiaduki", 3, "igor@artao.com", covers[4], "5555555", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Guilherme Coghi", 2, covers[5], "66666666", "Avenida 9 de julho", "FIAP");
+        a = new User("Guilherme Coghi", 2, "coghi@guilherme.com", covers[5], "66666666", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Diego Mendes", 4, covers[6], "77777777", "Avenida 9 de julho", "FIAP");
+        a = new User("Diego Mendes", 4, "diego@mendes.com", covers[6], "77777777", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Daniel Alves", 4, covers[7], "88888888", "Avenida 9 de julho", "FIAP");
+        a = new User("Daniel Alves", 4, "daniel@alves.com", covers[7], "88888888", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Ezekiel Oliveira", 2, covers[8], "99999999", "Avenida 9 de julho", "FIAP");
+        a = new User("Ezekiel Oliveira", 2, "ezekiel@oliveira.com", covers[8], "99999999", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
-        a = new User("Cesar Lino", 2, covers[9], "10101010", "Avenida 9 de julho", "FIAP");
+        a = new User("Cesar Lino", 2, "cesar@lino.com", covers[9], "10101010", "Avenida 9 de julho", "FIAP");
         studentsList.add(a);
 
         adapter.notifyDataSetChanged();
