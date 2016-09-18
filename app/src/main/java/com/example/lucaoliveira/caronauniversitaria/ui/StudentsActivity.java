@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Created by lucaoliveira on 8/12/2016.
  */
-public class StudentActivity extends AppCompatActivity {
+public class StudentsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private StudentsAdapter adapter;

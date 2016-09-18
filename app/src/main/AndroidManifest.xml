@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.StudentActivity"
+            android:name=".ui.StudentsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.FinishRegisterActivity"

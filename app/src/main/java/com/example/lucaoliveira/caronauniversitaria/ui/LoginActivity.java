@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("LoginActivity", "Successful ?!" + success);
             if (success) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.prompt_welcome_back), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StudentsActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.prompt_invalid_access), Toast.LENGTH_SHORT).show();

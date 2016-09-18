@@ -187,7 +187,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
             Log.d("FinishRegisterActivity", "Successful ?!" + success);
             if (success) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.prompt_welcome), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StudentsActivity.class);
                 startActivity(intent);
             }
         }
