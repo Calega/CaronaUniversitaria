@@ -76,10 +76,10 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     }
 
     /**
-     * Showing popup menu when tapping on 3 dots
+     * Showing popup menu_logout when tapping on 3 dots
      */
     private void showPopupMenu(View view, User student) {
-        // inflate menu
+        // inflate menu_logout
         PopupMenu popup = new PopupMenu(mContext, view);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.menu_student, popup.getMenu());
@@ -88,7 +88,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     }
 
     /**
-     * Click listener for popup menu items
+     * Click listener for popup menu_logout items
      */
     class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
         private User student;

@@ -37,6 +37,7 @@
     <string name="error_accessType_caroneiro">Digite a quantidade de Caronas disponíveis</string>
 
     <string name="action_settings">Configurações</string>
+    <string name="action_logout">Logout</string>
     <string name="action_see_details"> + informações</string>
     <string name="backdrop_title">FIAP</string>
     <string name="backdrop_subtitle">Lista de Caroneiros Disponíveis</string>
@@ -48,5 +49,8 @@
 
     <!-- Universities -->
     <string name="FIAP">FIAP</string>
+
+    <!-- Dialog Messages -->
+    <string name="action_confirm_logout">Tem certeza que deseja realiza o Logout?</string>
 
 </resources>
