@@ -53,7 +53,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="37dp"
+                android:layout_marginLeft="39dp"
                 android:orientation="vertical"
                 android:weightSum="1">
 
@@ -93,7 +93,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="42dp"
                 android:orientation="vertical"
                 android:weightSum="1">
 
@@ -133,7 +133,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
+                android:layout_marginLeft="20dp"
                 android:orientation="vertical"
                 android:weightSum="1">
 
@@ -141,7 +141,7 @@
                     android:id="@+id/tv_student_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="(11) 98928-4849"
+                    android:text="989284849"
                     android:textSize="15dp" />
 
             </LinearLayout>
