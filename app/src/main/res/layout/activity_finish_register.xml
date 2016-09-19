@@ -111,23 +111,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <!--<Button-->
-            <!--android:id="@+id/btnCapturePicture"-->
-            <!--style="?android:textAppearanceSmall"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:onClick="takePicture"-->
-            <!--android:text="@string/action_take_picture"-->
-            <!--android:textStyle="bold" />-->
-
-            <!--<ImageView-->
-            <!--android:id="@+id/imgPreview"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="180dp"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:visibility="visible" />-->
-
             <Button
                 android:id="@+id/finish_button"
                 style="?android:textAppearanceSmall"
