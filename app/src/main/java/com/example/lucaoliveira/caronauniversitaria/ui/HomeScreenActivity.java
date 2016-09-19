@@ -52,5 +52,4 @@ public class HomeScreenActivity extends AppCompatActivity {
             return false;
         }
     }
-
 }

@@ -1,12 +1,18 @@
 package com.example.lucaoliveira.caronauniversitaria.ui;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -22,13 +28,13 @@ import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+
 /**
  * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
  */
 public class FinishRegisterActivity extends AppCompatActivity {
-
-    // TODO - RETIRAR FOTO E SALVAR EM USER THUMNAIL
-
+    // TODO : DESCOBRIR O PORQUE, AO TIRAR FOTO, VOLTA PARA ACTIVITY ANTERIOR
     private UserEditTask mUserEditTask = null;
 
     private EditText mAccessType;
@@ -36,8 +42,12 @@ public class FinishRegisterActivity extends AppCompatActivity {
     private EditText mAddressDestiny;
     private EditText mStudentsAllowed;
 
+    private Button btnTakePicture;
     private ImageView thumbail;
     private ImageView imagePreview;
+
+    private String pathFoto;
+    private File foto;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -46,35 +56,80 @@ public class FinishRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish_register);
         initViews();
-//        showProgress(true);
+
+
+        if (ActivityCompat.checkSelfPermission(FinishRegisterActivity.this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(FinishRegisterActivity.this, new String[]{Manifest.permission.CAMERA}, REQUEST_IMAGE_CAPTURE);
+        }
+
+        controlButtonClicks();
     }
 
-//    public void takePicture(View view) {
-//        if (!isDeviceSupportCamera()) {
-//            Toast.makeText(getApplicationContext(),
-//                    "Desculpe ! Seu celular não suporta tirar fotos!",
-//                    Toast.LENGTH_LONG).show();
-//        }
-//
-//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-//        }
-//    }
+    private void controlButtonClicks() {
+        btnTakePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isDeviceSupportCamera()) {
+                    Toast.makeText(getApplicationContext(),
+                            "Desculpe ! Seu celular não suporta tirar fotos!",
+                            Toast.LENGTH_LONG).show();
+                }
+
+                Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                pathFoto = getExternalFilesDir(null) + "/" + System.currentTimeMillis() + ".jpg";//parametro representa sub pasta padrão
+                foto = new File(pathFoto);
+                intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(foto));
+                startActivityForResult(intentCamera, REQUEST_IMAGE_CAPTURE);
+            }
+        });
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 0) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                btnTakePicture.setEnabled(true);
+            } else {
+                btnTakePicture.setEnabled(false);
+                btnTakePicture.setText("Conceda de permissão de tirar foto :)");
+            }
+        }
+    }
+
+    private void initViews() {
+        mStudentsAllowed = (EditText) findViewById(R.id.number_students_allowed);
+        mAccessType = (EditText) findViewById(R.id.accessType);
+        mAddressOrigin = (EditText) findViewById(R.id.addressOrigin);
+        mAddressDestiny = (EditText) findViewById(R.id.addressDestiny);
+        btnTakePicture = (Button) findViewById(R.id.btnCapturePicture);
+        imagePreview = (ImageView) findViewById(R.id.imgPreview);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+//            imagePreview.setImageBitmap(f);
+        }
+    }
 
     /**
      * Checking device has camera hardware or not
      */
-//    private boolean isDeviceSupportCamera() {
-//        if (getApplicationContext().getPackageManager().hasSystemFeature(
-//                PackageManager.FEATURE_CAMERA)) {
-//            // this device has a camera
-//            return true;
-//        } else {
-//            // no camera on this device
-//            return false;
-//        }
-//    }
+    private boolean isDeviceSupportCamera() {
+        if (getApplicationContext().getPackageManager().hasSystemFeature(
+                PackageManager.FEATURE_CAMERA)) {
+            // this device has a camera
+            return true;
+        } else {
+            // no camera on this device
+            return false;
+        }
+    }
+
     public void finishLogin(View view) {
         if (mUserEditTask != null) {
             return;
@@ -127,14 +182,6 @@ public class FinishRegisterActivity extends AppCompatActivity {
 
     private void showProgress(boolean isShow) {
         findViewById(R.id.progress).setVisibility(isShow ? View.VISIBLE : View.GONE);
-    }
-
-    private void initViews() {
-        mStudentsAllowed = (EditText) findViewById(R.id.number_students_allowed);
-        mAccessType = (EditText) findViewById(R.id.accessType);
-        mAddressOrigin = (EditText) findViewById(R.id.addressOrigin);
-        mAddressDestiny = (EditText) findViewById(R.id.addressDestiny);
-//        imagePreview = (ImageView) findViewById(R.id.imgPreview);
     }
 
     private void populateText(User user) {
@@ -225,15 +272,4 @@ public class FinishRegisterActivity extends AppCompatActivity {
             return false;
         }
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            thumbail.setImageBitmap(imageBitmap);
-//            imagePreview.setImageBitmap(imageBitmap);
-//            Toast.makeText(getApplicationContext(), "Imagem salva com sucesso!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 }

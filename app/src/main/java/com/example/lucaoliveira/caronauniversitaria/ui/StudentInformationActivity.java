@@ -55,7 +55,6 @@ public class StudentInformationActivity extends AppCompatActivity {
 
     private void call() {
         startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone.getText().toString())));
-
     }
 
     private void getIntentInformation() {
@@ -83,6 +82,4 @@ public class StudentInformationActivity extends AppCompatActivity {
         addressDestiny = (TextView) findViewById(R.id.tv_student_address_destiny);
         dismissButton = (Button) findViewById(R.id.finish_button);
     }
-
-
 }
