@@ -105,7 +105,11 @@ public class FinishRegisterActivity extends AppCompatActivity {
 
     private void populateText(User user) {
         user.setAccessType(mAccessType.getText().toString());
-        user.setNumberOfStudents(Integer.parseInt(mStudentsAllowed.getText().toString()));
+        if (!mStudentsAllowed.getText().toString().equals("") && mStudentsAllowed.getText().toString() != null) {
+            user.setNumberOfStudents(Integer.valueOf(mStudentsAllowed.getText().toString()));
+        } else {
+            user.setNumberOfStudents(0);
+        }
         user.setAddressOrigin(mAddressOrigin.getText().toString());
         user.setAddressDestiny(mAddressDestiny.getText().toString());
     }
