@@ -25,7 +25,6 @@ import org.json.JSONObject;
  */
 public class StartRegisterActivity extends AppCompatActivity {
     String[] universityList = {"FIAP"};
-    public static final String TAG = StartRegisterActivity.class.getName();
 
     private UserLoginRegisterTask mUserLoginRegisterTask = null;
 
@@ -38,11 +37,8 @@ public class StartRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_start_register);
         initViews();
-
-//        showProgress(true);
     }
 
 
@@ -173,6 +169,5 @@ public class StartRegisterActivity extends AppCompatActivity {
             StartRegisterActivity.this.showProgress(false);
         }
     }
-
 
 }
