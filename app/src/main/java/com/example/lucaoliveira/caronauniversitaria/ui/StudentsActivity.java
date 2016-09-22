@@ -200,7 +200,7 @@ public class StudentsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu_logout; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_logout, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -212,11 +212,34 @@ public class StudentsActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
-            confirmLogout();
+        switch (id) {
+            case R.id.action_logout:
+                confirmLogout();
+                return true;
+            case R.id.change_email:
+                openChangeEmailFragment();
+                return true;
+            case R.id.change_password:
+                openChangePasswordFragment();
+                return true;
+            case R.id.change_register:
+                openChangeRegisterFragment();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    private void openChangeRegisterFragment() {
+        
+    }
+
+    private void openChangePasswordFragment() {
+
+    }
+
+    private void openChangeEmailFragment() {
+
     }
 
     private void confirmLogout() {
