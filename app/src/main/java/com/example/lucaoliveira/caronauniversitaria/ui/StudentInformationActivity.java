@@ -31,7 +31,7 @@ public class StudentInformationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_student_information);
+        setContentView(R.layout.activity_student_information);
 
         initVariables();
         getIntentInformation();

@@ -39,6 +39,9 @@
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/action_sign_in_label" />
+        <activity
+            android:name=".ui.UpdateEmailActivity"
+            android:label="@string/action_sign_in_label" />
     </application>
 
 </manifest>

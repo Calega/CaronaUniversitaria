@@ -42,7 +42,7 @@ public class StudentsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.student_list_main);
+        setContentView(R.layout.activity_student);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -231,15 +231,18 @@ public class StudentsActivity extends AppCompatActivity {
     }
 
     private void openChangeRegisterFragment() {
-        
+        Intent intent = new Intent(getBaseContext(), UpdateRegisterActivity.class);
+        startActivity(intent);
     }
 
     private void openChangePasswordFragment() {
-
+        Intent intent = new Intent(getBaseContext(), UpdatePasswordActivity.class);
+        startActivity(intent);
     }
 
     private void openChangeEmailFragment() {
-
+        Intent intent = new Intent(getBaseContext(), UpdateEmailActivity.class);
+        startActivity(intent);
     }
 
     private void confirmLogout() {
