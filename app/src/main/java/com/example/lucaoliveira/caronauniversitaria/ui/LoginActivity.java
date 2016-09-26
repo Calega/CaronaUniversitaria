@@ -188,9 +188,9 @@ public class LoginActivity extends AppCompatActivity {
                     user.setAddressDestiny(null);
                 }
 
-                user.setNumberOfStudents(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
-                if (user.getNumberOfStudents() == '0' || user.getNumberOfStudents() == 0) {
-                    user.setNumberOfStudents(0);
+                user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
+                if (user.getNumberOfStudentsAllowed() == '0' || user.getNumberOfStudentsAllowed() == 0) {
+                    user.setNumberOfStudentsAllowed(0);
                 }
                 return true;
             }

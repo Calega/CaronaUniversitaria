@@ -63,7 +63,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         Log.d("StudentsAdapter", "onBindViewHolder Student >>>> " + student.getAddressDestiny());
         Log.d("StudentsAdapter", "onBindViewHolder Student >>>> " + student.getName());
         holder.title.setText(student.getName());
-        holder.count.setText(student.getNumberOfStudents() + " Estudantes Disponíveis");
+        holder.count.setText(student.getNumberOfStudentsAllowed() + " Estudantes Disponíveis");
 
         Glide.with(mContext).load(student.getThumbnail()).into(holder.thumbnail);
 

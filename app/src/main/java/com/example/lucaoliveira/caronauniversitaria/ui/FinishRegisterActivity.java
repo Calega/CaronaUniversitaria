@@ -106,9 +106,9 @@ public class FinishRegisterActivity extends AppCompatActivity {
     private void populateText(User user) {
         user.setAccessType(mAccessType.getText().toString());
         if (!mStudentsAllowed.getText().toString().equals("") && mStudentsAllowed.getText().toString() != null) {
-            user.setNumberOfStudents(Integer.valueOf(mStudentsAllowed.getText().toString()));
+            user.setNumberOfStudentsAllowed(Integer.valueOf(mStudentsAllowed.getText().toString()));
         } else {
-            user.setNumberOfStudents(0);
+            user.setNumberOfStudentsAllowed(0);
         }
         user.setAddressOrigin(mAddressOrigin.getText().toString());
         user.setAddressDestiny(mAddressDestiny.getText().toString());
@@ -176,7 +176,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
             contentValues.put(Constants.ACCESS_TYPE, user.getAccessType());
             contentValues.put(Constants.ADDRESS_ORIGIN, user.getAddressOrigin());
             contentValues.put(Constants.ADDRESS_DESTINY, user.getAddressDestiny());
-            contentValues.put(Constants.STUDENTS_ALLOWED, user.getNumberOfStudents());
+            contentValues.put(Constants.STUDENTS_ALLOWED, user.getNumberOfStudentsAllowed());
 
             ContentValues urlValues = new ContentValues();
             urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
@@ -189,7 +189,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
                 user.setAccessType(jsonObject.optString(Constants.ACCESS_TYPE));
                 user.setAddressOrigin(jsonObject.optString(Constants.ADDRESS_ORIGIN));
                 user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
-                user.setNumberOfStudents(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
+                user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
                 return true;
             }
             return false;

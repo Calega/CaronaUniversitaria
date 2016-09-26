@@ -20,7 +20,7 @@ import org.json.JSONObject;
 /**
  * Created by lucaoliveira on 9/22/2016.
  */
-public class UpdatePasswordActivity extends AppCompatActivity {
+public class    UpdatePasswordActivity extends AppCompatActivity {
 
     private UserUpdatePasswordTask mUserUpdatePasswordTask = null;
 

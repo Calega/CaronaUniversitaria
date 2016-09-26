@@ -42,6 +42,12 @@
         <activity
             android:name=".ui.UpdateEmailActivity"
             android:label="@string/action_sign_in_label" />
+        <activity
+            android:name=".ui.UpdatePasswordActivity"
+            android:label="@string/action_sign_in_label" />
+        <activity
+            android:name=".ui.UpdateRegisterActivity"
+            android:label="@string/action_sign_in_label" />
     </application>
 
 </manifest>

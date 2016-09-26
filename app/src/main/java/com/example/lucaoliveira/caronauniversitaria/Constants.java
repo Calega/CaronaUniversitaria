@@ -21,6 +21,7 @@ public class Constants {
     public static final String UPDATE_URL = ENDPOINT + "/update.php";
     public static final String DELETE_URL = ENDPOINT + "/delete.php";
     public static final String RESET_URL = ENDPOINT + "/reset.php";
+    public static final String UPDATE_EMAIL_URL = ENDPOINT + "/updateemail.php";
 
 
     //Constantes usadas no parsing JSON ou valores anexados em uma conexão URL com servidor

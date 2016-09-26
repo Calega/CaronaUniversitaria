@@ -132,7 +132,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
             ContentValues urlValues = new ContentValues();
             urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
 
-            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
+            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_EMAIL_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
 
             if (!hasError(obj)) {
                 JSONArray jsonArray = obj.optJSONArray(Constants.INFO);
