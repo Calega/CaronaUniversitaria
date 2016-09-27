@@ -14,7 +14,8 @@ import android.widget.Toast;
 import com.example.lucaoliveira.caronauniversitaria.Constants;
 import com.example.lucaoliveira.caronauniversitaria.R;
 import com.example.lucaoliveira.caronauniversitaria.RESTServiceApplication;
-import com.example.lucaoliveira.caronauniversitaria.data.User;
+import com.example.lucaoliveira.caronauniversitaria.dao.UserDao;
+import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
 
@@ -30,12 +31,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEmailText;
     private EditText mPasswordText;
 
+    private UserDao userDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        userDao = new UserDao(getBaseContext());
         initViews();
-//        showProgress(true);
     }
 
     private void initViews() {
@@ -145,56 +148,75 @@ public class LoginActivity extends AppCompatActivity {
             JSONObject object = WebServicesUtils.requestJSONObject(Constants.INFO_URL, WebServicesUtils.METHOD.POST, contentValues, true);
 
             if (!hasError(object)) {
-                JSONArray jsonArray = object.optJSONArray(Constants.INFO); // informação vem em formato de json
-                JSONObject jsonObject = jsonArray.optJSONObject(0); // pegando o index 0 do array
-
-                user.setName(jsonObject.optString(Constants.EMAIL));
-                if (user.getEmail().equalsIgnoreCase("null")) {
-                    user.setName(null);
-                }
-
-                user.setPassword(jsonObject.optString(Constants.PASSWORD));
-                if (user.getPassword().equalsIgnoreCase("null")) {
-                    user.setPassword(null);
-                }
-
-                user.setPhoneNumber(jsonObject.optString(Constants.PHONE_NUMBER));
-                if (user.getPhoneNumber().equalsIgnoreCase("null")) {
-                    user.setPhoneNumber(null);
-                }
-
-                user.setName(jsonObject.optString(Constants.NAME));
-                if (user.getName().equalsIgnoreCase("null")) {
-                    user.setName(null);
-                }
-
-                user.setUniversity(jsonObject.optString(Constants.UNIVERSITY));
-                if (user.getUniversity().equalsIgnoreCase("null")) {
-                    user.setUniversity(null);
-                }
-
-                user.setAccessType(jsonObject.optString(Constants.ACCESS_TYPE));
-                if (user.getAccessType().equalsIgnoreCase("null")) {
-                    user.setAccessType(null);
-                }
-
-                user.setAddressOrigin(jsonObject.optString(Constants.ADDRESS_ORIGIN));
-                if (user.getAddressOrigin().equalsIgnoreCase("null")) {
-                    user.setAddressOrigin(null);
-                }
-
-                user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
-                if (user.getAddressDestiny().equalsIgnoreCase("null")) {
-                    user.setAddressDestiny(null);
-                }
-
-                user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
-                if (user.getNumberOfStudentsAllowed() == '0' || user.getNumberOfStudentsAllowed() == 0) {
-                    user.setNumberOfStudentsAllowed(0);
-                }
+                persistUser(object);
                 return true;
             }
+
             return false;
         }
+    }
+
+    private void persistUser(JSONObject object) {
+        User user = new User();
+
+        JSONArray jsonArray = object.optJSONArray(Constants.INFO); // informação vem em formato de json
+        JSONObject jsonObject = jsonArray.optJSONObject(0); // pegando o index 0 do array
+
+        user.setId(jsonObject.optInt(Constants.ID));
+        if (user.getId() == 0) {
+            user.setId(0);
+        }
+
+        user.setName(jsonObject.optString(Constants.NAME));
+        if (user.getName().equalsIgnoreCase("null")) {
+            user.setName(null);
+        }
+
+        user.setEmail(jsonObject.optString(Constants.EMAIL));
+        if (user.getEmail().equalsIgnoreCase("null")) {
+            user.setEmail(null);
+        }
+
+        user.setPassword(jsonObject.optString(Constants.PASSWORD));
+        if (user.getPassword().equalsIgnoreCase("null")) {
+            user.setPassword(null);
+        }
+
+        user.setPhoneNumber(jsonObject.optString(Constants.PHONE_NUMBER));
+        if (user.getPhoneNumber().equalsIgnoreCase("null")) {
+            user.setPhoneNumber(null);
+        }
+
+        user.setName(jsonObject.optString(Constants.NAME));
+        if (user.getName().equalsIgnoreCase("null")) {
+            user.setName(null);
+        }
+
+        user.setUniversity(jsonObject.optString(Constants.UNIVERSITY));
+        if (user.getUniversity().equalsIgnoreCase("null")) {
+            user.setUniversity(null);
+        }
+
+        user.setAccessType(jsonObject.optString(Constants.ACCESS_TYPE));
+        if (user.getAccessType().equalsIgnoreCase("null")) {
+            user.setAccessType(null);
+        }
+
+        user.setAddressOrigin(jsonObject.optString(Constants.ADDRESS_ORIGIN));
+        if (user.getAddressOrigin().equalsIgnoreCase("null")) {
+            user.setAddressOrigin(null);
+        }
+
+        user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
+        if (user.getAddressDestiny().equalsIgnoreCase("null")) {
+            user.setAddressDestiny(null);
+        }
+
+        user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
+        if (user.getNumberOfStudentsAllowed() == '0' || user.getNumberOfStudentsAllowed() == 0) {
+            user.setNumberOfStudentsAllowed(0);
+        }
+
+        userDao.insert(user);
     }
 }

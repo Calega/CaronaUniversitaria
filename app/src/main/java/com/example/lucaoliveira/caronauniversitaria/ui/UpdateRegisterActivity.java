@@ -10,7 +10,7 @@ import android.widget.RadioButton;
 import com.example.lucaoliveira.caronauniversitaria.Constants;
 import com.example.lucaoliveira.caronauniversitaria.R;
 import com.example.lucaoliveira.caronauniversitaria.RESTServiceApplication;
-import com.example.lucaoliveira.caronauniversitaria.data.User;
+import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
 

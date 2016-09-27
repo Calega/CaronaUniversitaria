@@ -2,15 +2,14 @@ package com.example.lucaoliveira.caronauniversitaria.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 
-import com.example.lucaoliveira.caronauniversitaria.data.User;
 import com.example.lucaoliveira.caronauniversitaria.database.Dao;
 import com.example.lucaoliveira.caronauniversitaria.database.DatabaseConnection;
-
-import java.util.ArrayList;
+import com.example.lucaoliveira.caronauniversitaria.model.User;
 
 /**
- * Created by lucas on 27/09/2016.
+ * Created by lucas calegari a. de oliveira on 27/09/2016.
  */
 public class UserDao extends DatabaseConnection implements Dao<User> {
 
@@ -21,7 +20,7 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
     @Override
     public void insert(User user) {
         ContentValues cv = new ContentValues();
-        //
+
         cv.put("id", user.getId());
         cv.put("name", user.getName());
         cv.put("email", user.getEmail());
@@ -53,17 +52,51 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
     }
 
     @Override
-    public void delete(long id) {
-
-    }
-
-    @Override
     public User getUserById(long id) {
-        return null;
+        User user = null;
+
+        String[] parametros = {String.valueOf(id)};
+
+        Cursor cursor = null;
+
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("select * from users where id = ?");
+
+            cursor = getWritableDatabase().rawQuery(sb.toString(), parametros);
+
+            while (cursor.moveToNext()) {
+                user = new User();
+                user.setId(cursor.getLong(cursor.getColumnIndex("id")));
+                user.setName(cursor.getString(cursor.getColumnIndex("name")));
+                user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+                user.setPhoneNumber(cursor.getString(cursor.getColumnIndex("phoneNumber")));
+                user.setUniversity(cursor.getString(cursor.getColumnIndex("university")));
+                user.setAccessType(cursor.getString(cursor.getColumnIndex("accesstype")));
+                user.setUniversity(cursor.getString(cursor.getColumnIndex("university")));
+                user.setAddressOrigin(cursor.getString(cursor.getColumnIndex("addressorigin")));
+                user.setAddressDestiny(cursor.getString(cursor.getColumnIndex("addressdestiny")));
+                user.setNumberOfStudentsAllowed(cursor.getInt(cursor.getColumnIndex("studentsAllowed")));
+            }
+
+        } catch (Exception e) {
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return user;
     }
 
-    @Override
-    public ArrayList<User> getUserList() {
-        return null;
-    }
+//    @Override
+//    public ArrayList<User> getUserList() {
+//        return null;
+//    }
+//
+//    @Override
+//    public void delete(long id) {
+//
+//    }
 }

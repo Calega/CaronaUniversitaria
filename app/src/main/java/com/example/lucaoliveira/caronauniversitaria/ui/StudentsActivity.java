@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lucaoliveira.caronauniversitaria.R;
-import com.example.lucaoliveira.caronauniversitaria.data.User;
+import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.ui.adapter.StudentsAdapter;
 
 import java.util.ArrayList;

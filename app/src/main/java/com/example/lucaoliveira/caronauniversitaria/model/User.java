@@ -1,4 +1,4 @@
-package com.example.lucaoliveira.caronauniversitaria.data;
+package com.example.lucaoliveira.caronauniversitaria.model;
 
 /**
  * Created by lucaoliveira on 6/19/2016.

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lucaoliveira.caronauniversitaria.R;
-import com.example.lucaoliveira.caronauniversitaria.data.User;
+import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.ui.StudentInformationActivity;
 
 import java.util.List;
