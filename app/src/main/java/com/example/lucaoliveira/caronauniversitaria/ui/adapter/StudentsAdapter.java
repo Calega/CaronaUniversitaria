@@ -55,16 +55,23 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final User student = studentList.get(position);
-        holder.title.setText(student.getName());
-        holder.count.setText(student.getNumberOfStudentsAllowed() + " Estudantes Disponíveis");
+        final User user = studentList.get(position);
+        holder.title.setText(user.getName());
+        holder.count.setText(user.getNumberOfStudentsAllowed() + " Estudantes Disponíveis");
 
-        Glide.with(mContext).load(student.getThumbnail()).into(holder.thumbnail);
+        Glide.with(mContext).load(user.getThumbnail()).into(holder.thumbnail);
+
+        holder.thumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showStudentInformation(user);
+            }
+        });
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupMenu(holder.overflow, student);
+                showPopupMenu(holder.overflow, user);
             }
         });
     }
@@ -95,16 +102,10 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_add_favourite:
-                    Intent intent = new Intent(mContext, StudentInformationActivity.class);
-//                    intent.putExtra(StudentInformationActivity.EXTRA_USER_THUMBNAIL, user.getThumbnail());
-                    intent.putExtra(StudentInformationActivity.EXTRA_USER_NAME, user.getName());
-                    intent.putExtra(StudentInformationActivity.EXTRA_USER_PHONE, user.getPhoneNumber());
-                    intent.putExtra(StudentInformationActivity.EXTRA_USER_EMAIL, user.getEmail());
-                    intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_ORIGIN, user.getAddressOrigin());
-                    intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_DESTINY, user.getAddressDestiny());
-                    mContext.startActivity(intent);
+                    showStudentInformation(user);
                     return true;
                 default:
+
             }
             return false;
         }
@@ -113,5 +114,16 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     @Override
     public int getItemCount() {
         return studentList.size();
+    }
+
+    private void showStudentInformation(User user) {
+        Intent intent = new Intent(mContext, StudentInformationActivity.class);
+//                    intent.putExtra(StudentInformationActivity.EXTRA_USER_THUMBNAIL, user.getThumbnail());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_NAME, user.getName());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_PHONE, user.getPhoneNumber());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_EMAIL, user.getEmail());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_ORIGIN, user.getAddressOrigin());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_DESTINY, user.getAddressDestiny());
+        mContext.startActivity(intent);
     }
 }
