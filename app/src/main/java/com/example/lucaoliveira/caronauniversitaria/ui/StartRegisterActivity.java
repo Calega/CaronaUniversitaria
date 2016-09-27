@@ -25,7 +25,6 @@ import org.json.JSONObject;
  */
 public class StartRegisterActivity extends AppCompatActivity {
     String[] universityList = {"FIAP"};
-    public static final String TAG = StartRegisterActivity.class.getName();
 
     private UserLoginRegisterTask mUserLoginRegisterTask = null;
 

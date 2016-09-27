@@ -35,7 +35,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_password);
+        setContentView(R.layout.activity_update_register);
 
         initVariables();
     }
@@ -44,7 +44,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
         findViewById(R.id.progressUpdatePassword).setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
-    private void attemptUpdateEmail(View view) {
+    public void attemptUpdateEmail(View view) {
         if (mUserUpdateRegisterTask != null) {
             return;
         }
@@ -140,7 +140,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
             ContentValues urlValues = new ContentValues();
             urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
 
-            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
+            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_REGISTER_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
 
             if (!hasError(obj)) {
                 JSONArray jsonArray = obj.optJSONArray(Constants.INFO);

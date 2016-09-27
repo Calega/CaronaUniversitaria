@@ -20,7 +20,7 @@ import org.json.JSONObject;
 /**
  * Created by lucaoliveira on 9/22/2016.
  */
-public class    UpdatePasswordActivity extends AppCompatActivity {
+public class UpdatePasswordActivity extends AppCompatActivity {
 
     private UserUpdatePasswordTask mUserUpdatePasswordTask = null;
 
@@ -39,7 +39,7 @@ public class    UpdatePasswordActivity extends AppCompatActivity {
         findViewById(R.id.progressUpdatePassword).setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
-    private void attemptUpdatePassword(View view) {
+    public void attemptUpdatePassword(View view) {
         if (mUserUpdatePasswordTask != null) {
             return;
         }
@@ -123,7 +123,7 @@ public class    UpdatePasswordActivity extends AppCompatActivity {
             ContentValues urlValues = new ContentValues();
             urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
 
-            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
+            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_PASSOWRD_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
 
             if (!hasError(obj)) {
                 JSONArray jsonArray = obj.optJSONArray(Constants.INFO);

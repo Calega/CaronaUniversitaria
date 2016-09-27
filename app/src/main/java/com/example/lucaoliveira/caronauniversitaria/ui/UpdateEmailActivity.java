@@ -19,7 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Created by lucaoliveira on 9/22/2016.
+ * Created by Lucas Calegari A. de Oliveira on 9/22/2016.
  */
 public class UpdateEmailActivity extends AppCompatActivity {
 
@@ -40,7 +40,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
         findViewById(R.id.progressUpdateEmail).setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
-    private void attemptUpdateEmail(View view) {
+    public void attemptUpdateEmail(View view) {
         if (mUserUpdateEmailTask != null) {
             return;
         }
@@ -129,10 +129,10 @@ public class UpdateEmailActivity extends AppCompatActivity {
             contentValues.put(Constants.ID, user.getId());
             contentValues.put(Constants.EMAIL, user.getEmail());
 
-            ContentValues urlValues = new ContentValues();
-            urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
+//            ContentValues urlValues = new ContentValues();
+//            urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
 
-            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_EMAIL_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
+            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_EMAIL_URL, WebServicesUtils.METHOD.POST, contentValues, true);
 
             if (!hasError(obj)) {
                 JSONArray jsonArray = obj.optJSONArray(Constants.INFO);
