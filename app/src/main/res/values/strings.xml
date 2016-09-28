@@ -59,6 +59,7 @@
     <!-- Update Messages -->
     <string name="prompt_change_email">Alterar Email</string>
     <string name="prompt_change_email_update">Novo Email</string>
+    <string name="prompt_change_current_email">Confirmar Email Atual</string>
     <string name="prompt_change_email_update_confirm">Confirmar Novo Email</string>
     <string name="prompt_change_password">Alterar Senha</string>
     <string name="prompt_change_password_update">Nova Senha</string>

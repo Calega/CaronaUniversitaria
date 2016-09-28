@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lucaoliveira.caronauniversitaria.R;
+import com.example.lucaoliveira.caronauniversitaria.dao.UserDao;
 import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.ui.adapter.StudentsAdapter;
 
@@ -39,6 +40,8 @@ public class StudentsActivity extends AppCompatActivity {
 
     private AlertDialog alert;
 
+    private UserDao userDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,7 @@ public class StudentsActivity extends AppCompatActivity {
 
         studentsList = new ArrayList<>();
         adapter = new StudentsAdapter(this, studentsList);
+        userDao = new UserDao(getBaseContext());
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -205,12 +209,8 @@ public class StudentsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_logout:
                 confirmLogout();

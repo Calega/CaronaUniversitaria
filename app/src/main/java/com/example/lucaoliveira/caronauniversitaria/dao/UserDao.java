@@ -3,6 +3,7 @@ package com.example.lucaoliveira.caronauniversitaria.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import com.example.lucaoliveira.caronauniversitaria.database.Dao;
 import com.example.lucaoliveira.caronauniversitaria.database.DatabaseConnection;
@@ -43,10 +44,7 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
         String sWhere = "id = ?";
         String[] parametros = {String.valueOf(user.getId())};
 
-        //cv.put("idcontato", object.getIdcontato());
-//        cv.put("nome", user.getNome());
-//        cv.put("telefone", user.getTelefone());
-//        cv.put("idade", user.getIdade());
+        cv.put("email", user.getEmail());
 
         getWritableDatabase().update("users", cv, sWhere, parametros);
     }
@@ -81,6 +79,7 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
             }
 
         } catch (Exception e) {
+            Log.e("UserDao", "Error retrieving user for id {} " + id);
         } finally {
             if (cursor != null) {
                 cursor.close();
@@ -90,13 +89,34 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
         return user;
     }
 
-//    @Override
-//    public ArrayList<User> getUserList() {
-//        return null;
-//    }
-//
-//    @Override
-//    public void delete(long id) {
-//
-//    }
+    @Override
+    public User getUserByEmail(String email) {
+        User user = null;
+
+        String[] parametros = {email};
+
+        Cursor cursor = null;
+
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("select id, email from users where email = ?");
+
+            cursor = getWritableDatabase().rawQuery(sb.toString(), parametros);
+
+            while (cursor.moveToNext()) {
+                user = new User();
+                user.setId(cursor.getLong(cursor.getColumnIndex("id")));
+                user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+            }
+
+        } catch (Exception e) {
+            Log.e("UserDao", "Error retrieving user for email {} " + email);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return user;
+    }
 }

@@ -187,11 +187,6 @@ public class LoginActivity extends AppCompatActivity {
             user.setPhoneNumber(null);
         }
 
-        user.setName(jsonObject.optString(Constants.NAME));
-        if (user.getName().equalsIgnoreCase("null")) {
-            user.setName(null);
-        }
-
         user.setUniversity(jsonObject.optString(Constants.UNIVERSITY));
         if (user.getUniversity().equalsIgnoreCase("null")) {
             user.setUniversity(null);

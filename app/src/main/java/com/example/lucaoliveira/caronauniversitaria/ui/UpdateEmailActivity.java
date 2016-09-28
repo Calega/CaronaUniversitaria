@@ -7,10 +7,11 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.lucaoliveira.caronauniversitaria.Constants;
 import com.example.lucaoliveira.caronauniversitaria.R;
-import com.example.lucaoliveira.caronauniversitaria.RESTServiceApplication;
+import com.example.lucaoliveira.caronauniversitaria.dao.UserDao;
 import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
@@ -25,15 +26,20 @@ public class UpdateEmailActivity extends AppCompatActivity {
 
     private UserUpdateEmailTask mUserUpdateEmailTask = null;
 
+    private EditText mCurrentEmail;
     private EditText mNewEmail;
     private EditText mConfirmNewEmail;
+
+    private UserDao userDao;
+    private User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_email);
-
         initVariables();
+        userDao = new UserDao(getBaseContext());
     }
 
     private void showProgress(boolean isShow) {
@@ -45,9 +51,11 @@ public class UpdateEmailActivity extends AppCompatActivity {
             return;
         }
 
+        mCurrentEmail.setError(null);
         mNewEmail.setError(null);
         mConfirmNewEmail.setError(null);
 
+        String currentEmail = mCurrentEmail.getText().toString();
         String email = mNewEmail.getText().toString();
         String emailConfirmed = mConfirmNewEmail.getText().toString();
 
@@ -62,6 +70,10 @@ public class UpdateEmailActivity extends AppCompatActivity {
             mConfirmNewEmail.setError(getString(R.string.error_field_required));
             focusView = mConfirmNewEmail;
             cancel = true;
+        } else if (TextUtils.isEmpty(currentEmail)) {
+            mCurrentEmail.setError(getString(R.string.error_field_required));
+            focusView = mCurrentEmail;
+            cancel = true;
         } else if (!isEmailValid(email)) {
             mNewEmail.setError(getString(R.string.error_invalid_email));
             focusView = mNewEmail;
@@ -69,6 +81,10 @@ public class UpdateEmailActivity extends AppCompatActivity {
         } else if (!isEmailValid(emailConfirmed)) {
             mConfirmNewEmail.setError(getString(R.string.error_invalid_email));
             focusView = mConfirmNewEmail;
+            cancel = true;
+        } else if (!isEmailValid(currentEmail)) {
+            mCurrentEmail.setError(getString(R.string.error_invalid_email));
+            focusView = mCurrentEmail;
             cancel = true;
         }
 
@@ -84,11 +100,16 @@ public class UpdateEmailActivity extends AppCompatActivity {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    private void populateText(User user) {
-        user.setEmail(mConfirmNewEmail.getText().toString());
+    private User getUserByEmail() {
+        User user = userDao.getUserByEmail(mCurrentEmail.getText().toString());
+        if (user != null) {
+            return user;
+        }
+        return null;
     }
 
     private void initVariables() {
+        mCurrentEmail = (EditText) findViewById(R.id.confirm_current_email);
         mNewEmail = (EditText) findViewById(R.id.email_update);
         mConfirmNewEmail = (EditText) findViewById(R.id.email_update_confirm);
     }
@@ -114,6 +135,10 @@ public class UpdateEmailActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Boolean success) {
+            if (success) {
+                Toast.makeText(getBaseContext(), "Email atualizado :) ", Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }
     }
 
@@ -124,21 +149,33 @@ public class UpdateEmailActivity extends AppCompatActivity {
 
         public boolean performRequest() {
             ContentValues contentValues = new ContentValues();
-            User user = RESTServiceApplication.getInstance().getUser();
-            populateText(user);
-            contentValues.put(Constants.ID, user.getId());
-            contentValues.put(Constants.EMAIL, user.getEmail());
+            user = getUserByEmail();
+            if (user != null) {
+                ContentValues contentValues1 = new ContentValues();
+                contentValues1.put(Constants.GRANT_TYPE, Constants.CLIENT_CREDENTIALS);
+                JSONObject accessTokenObject = WebServicesUtils.requestJSONObject(Constants.GENERATE_ACESS_TOKEN_URL, WebServicesUtils.METHOD.POST, contentValues1, true);
 
-//            ContentValues urlValues = new ContentValues();
-//            urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
+                if (!hasError(accessTokenObject)) {
+                    contentValues.put(Constants.ID, user.getId());
+                    contentValues.put(Constants.EMAIL, user.getEmail());
 
-            JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_EMAIL_URL, WebServicesUtils.METHOD.POST, contentValues, true);
+                    ContentValues urlValues = new ContentValues();
+                    urlValues.put(Constants.ACCESS_TOKEN, accessTokenObject.optJSONObject(Constants.ACCESS).optString(Constants.ACCESS_TOKEN));
 
-            if (!hasError(obj)) {
-                JSONArray jsonArray = obj.optJSONArray(Constants.INFO);
-                JSONObject jsonObject = jsonArray.optJSONObject(0);
-                user.setEmail(jsonObject.optString(Constants.EMAIL));
-                return true;
+                    JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_EMAIL_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
+
+                    if (!hasError(obj)) {
+                        JSONArray jsonArray = obj.optJSONArray(Constants.INFO);
+                        JSONObject jsonObject = jsonArray.optJSONObject(0);
+                        user.setEmail(jsonObject.optString(Constants.EMAIL));
+                        userDao.update(user);
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            } else {
+                Toast.makeText(getBaseContext(), "Email incorreto", Toast.LENGTH_SHORT).show();
             }
             return false;
         }
