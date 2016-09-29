@@ -47,10 +47,6 @@ public class UpdatePasswordActivity extends AppCompatActivity {
     }
 
     public void attemptUpdatePassword(View view) {
-        if (mUserUpdatePasswordTask != null) {
-            return;
-        }
-
         mCurrentEmail.setError(null);
         mNewPassword.setError(null);
         mConfirmNewPassword.setError(null);
@@ -78,6 +74,12 @@ public class UpdatePasswordActivity extends AppCompatActivity {
             cancel = true;
         } else if (!TextUtils.isEmpty(passwordConfirmed) && !isPasswordValid(passwordConfirmed)) {
             mConfirmNewPassword.setError(getString(R.string.error_passoword_length));
+            focusView = mConfirmNewPassword;
+            cancel = true;
+        }
+
+        if (!password.equalsIgnoreCase(passwordConfirmed)) {
+            mConfirmNewPassword.setError(getString(R.string.error_passoword_match));
             focusView = mConfirmNewPassword;
             cancel = true;
         }
@@ -136,6 +138,9 @@ public class UpdatePasswordActivity extends AppCompatActivity {
             if (success) {
                 Toast.makeText(getBaseContext(), "Senha atualizada :) ", Toast.LENGTH_SHORT).show();
                 finish();
+            } else {
+                Toast.makeText(getBaseContext(), "O email digitado está incorreto", Toast.LENGTH_SHORT).show();
+                UpdatePasswordActivity.this.showProgress(false);
             }
         }
     }
@@ -149,6 +154,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
             ContentValues contentValues = new ContentValues();
             user = getUserByEmail();
             if (user != null) {
+                user.setPassword(mConfirmNewPassword.getText().toString());
                 ContentValues contentValues1 = new ContentValues();
                 contentValues1.put(Constants.GRANT_TYPE, Constants.CLIENT_CREDENTIALS);
                 JSONObject accessTokenObject = WebServicesUtils.requestJSONObject(Constants.GENERATE_ACCESS_TOKEN_URL, WebServicesUtils.METHOD.POST, contentValues1, true);
@@ -166,14 +172,12 @@ public class UpdatePasswordActivity extends AppCompatActivity {
                         JSONArray jsonArray = obj.optJSONArray(Constants.INFO);
                         JSONObject jsonObject = jsonArray.optJSONObject(0);
                         user.setPassword(jsonObject.optString(Constants.PASSWORD));
-                        userDao.update(user);
+                        userDao.updatePassword(user);
                         return true;
                     }
                     return false;
                 }
                 return false;
-            } else {
-                Toast.makeText(getBaseContext(), "Email incorreto", Toast.LENGTH_SHORT).show();
             }
             return false;
         }

@@ -7,9 +7,11 @@ public interface Dao<T> {
 
     public void insert(T object);
 
-    public void update(T object);
+    public void updateEmail(T object);
 
-//    public T getUserById(long id);
+    public void updatePassword(T object);
+
+    public void updateRegister(T object);
 
     public T getUserByEmail(String email);
 

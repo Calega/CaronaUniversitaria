@@ -18,7 +18,7 @@ public class Constants {
     public static final String LOGIN_URL = ENDPOINT + "/login.php";
     public static final String SIGNUP_URL = ENDPOINT + "/signup.php";
     public static final String INFO_URL = ENDPOINT + "/info.php";
-    public static final String UPDATE_URL = ENDPOINT + "/update.php";
+    public static final String UPDATE_URL = ENDPOINT + "/updateEmail.php";
     public static final String DELETE_URL = ENDPOINT + "/delete.php";
     public static final String RESET_URL = ENDPOINT + "/reset.php";
     public static final String UPDATE_EMAIL_URL = ENDPOINT + "/updateemail.php";

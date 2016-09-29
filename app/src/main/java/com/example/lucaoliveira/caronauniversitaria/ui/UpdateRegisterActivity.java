@@ -48,14 +48,10 @@ public class UpdateRegisterActivity extends AppCompatActivity {
     }
 
     private void showProgress(boolean isShow) {
-        findViewById(R.id.progressUpdatePassword).setVisibility(isShow ? View.VISIBLE : View.GONE);
+        findViewById(R.id.progressUpdateRegister).setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
-    public void attemptUpdateEmail(View view) {
-        if (mUserUpdateRegisterTask != null) {
-            return;
-        }
-
+    public void attemptUpdateRegister(View view) {
         mCurrentEmail.setError(null);
 
         String currentEmail = mCurrentEmail.getText().toString();
@@ -123,6 +119,36 @@ public class UpdateRegisterActivity extends AppCompatActivity {
         mConfirmNewStudentsAllowed = (EditText) findViewById(R.id.number_students_allowed_update);
     }
 
+    /**
+     * Method Name : controlRegisterUpdate
+     * Type : Void
+     * Param : user
+     * Description : Is not required to update all data in the form. That's why we need to check whick one is NULL or BLANK to not define it in the database
+     */
+    private void controlRegisterUpdate(User user) {
+        if (!mNewName.getText().toString().equals("") && mNewName.getText().toString() != null) {
+            user.setName(mNewName.getText().toString());
+        }
+        if (!mConfirmNewPhoneNumber.getText().toString().equals("") && mConfirmNewPhoneNumber.getText().toString() != null) {
+            user.setPhoneNumber(mConfirmNewPhoneNumber.getText().toString());
+        }
+        if (!mConfirmNewUniversity.getText().toString().equals("") && mConfirmNewUniversity.getText().toString() != null) {
+            user.setUniversity(mConfirmNewUniversity.getText().toString());
+        }
+        if (!mConfirmNewAddressOrigin.getText().toString().equals("") && mConfirmNewAddressOrigin.getText().toString() != null) {
+            user.setAddressOrigin(mConfirmNewAddressOrigin.getText().toString());
+        }
+        if (!mConfirmNewAddressDestiny.getText().toString().equals("") && mConfirmNewAddressDestiny.getText().toString() != null) {
+            user.setAddressDestiny(mConfirmNewAddressDestiny.getText().toString());
+        }
+        if (!mConfirmNewAccessType.getText().toString().equals("") && mConfirmNewAccessType.getText().toString() != null) {
+            user.setAccessType(mConfirmNewAccessType.getText().toString());
+        }
+        if (!mConfirmNewStudentsAllowed.getText().toString().equals("") && mConfirmNewStudentsAllowed.getText().toString() != null) {
+            user.setNumberOfStudentsAllowed(Integer.valueOf(mConfirmNewStudentsAllowed.getText().toString()));
+        }
+    }
+
     private abstract class ActivityWebServiceTask extends WebServiceTask {
         public ActivityWebServiceTask(WebServiceTask webServiceTask) {
             super(UpdateRegisterActivity.this);
@@ -147,6 +173,9 @@ public class UpdateRegisterActivity extends AppCompatActivity {
             if (success) {
                 Toast.makeText(getBaseContext(), "Registro atualizado :) ", Toast.LENGTH_SHORT).show();
                 finish();
+            } else {
+                Toast.makeText(getBaseContext(), "O email digitado está incorreto", Toast.LENGTH_SHORT).show();
+                UpdateRegisterActivity.this.showProgress(false);
             }
         }
     }
@@ -160,6 +189,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
             ContentValues contentValues = new ContentValues();
             user = getUserByEmail();
             if (user != null) {
+                controlRegisterUpdate(user);
                 ContentValues contentValues1 = new ContentValues();
                 contentValues1.put(Constants.GRANT_TYPE, Constants.CLIENT_CREDENTIALS);
                 JSONObject accessTokenObject = WebServicesUtils.requestJSONObject(Constants.GENERATE_ACCESS_TOKEN_URL, WebServicesUtils.METHOD.POST, contentValues1, true);
@@ -178,7 +208,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
                     ContentValues urlValues = new ContentValues();
                     urlValues.put(Constants.ACCESS_TOKEN, accessTokenObject.optJSONObject(Constants.ACCESS).optString(Constants.ACCESS_TOKEN));
 
-                    JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_PASSOWRD_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
+                    JSONObject obj = WebServicesUtils.requestJSONObject(Constants.UPDATE_REGISTER_URL, WebServicesUtils.METHOD.POST, urlValues, contentValues);
 
                     if (!hasError(obj)) {
                         JSONArray jsonArray = obj.optJSONArray(Constants.INFO);
@@ -190,17 +220,14 @@ public class UpdateRegisterActivity extends AppCompatActivity {
                         user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
                         user.setAccessType(jsonObject.optString(Constants.ACCESS_TYPE));
                         user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
-                        userDao.update(user);
+                        userDao.updateEmail(user);
                         return true;
                     }
                     return false;
                 }
                 return false;
-            } else {
-                Toast.makeText(getBaseContext(), "Email incorreto", Toast.LENGTH_SHORT).show();
             }
             return false;
         }
     }
-
 }

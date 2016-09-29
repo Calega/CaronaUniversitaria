@@ -47,10 +47,6 @@ public class UpdateEmailActivity extends AppCompatActivity {
     }
 
     public void attemptUpdateEmail(View view) {
-        if (mUserUpdateEmailTask != null) {
-            return;
-        }
-
         mCurrentEmail.setError(null);
         mNewEmail.setError(null);
         mConfirmNewEmail.setError(null);
@@ -85,6 +81,12 @@ public class UpdateEmailActivity extends AppCompatActivity {
         } else if (!isEmailValid(currentEmail)) {
             mCurrentEmail.setError(getString(R.string.error_invalid_email));
             focusView = mCurrentEmail;
+            cancel = true;
+        }
+
+        if (!email.equalsIgnoreCase(emailConfirmed)) {
+            mConfirmNewEmail.setError(getString(R.string.error_email_match));
+            focusView = mConfirmNewEmail;
             cancel = true;
         }
 
@@ -138,6 +140,9 @@ public class UpdateEmailActivity extends AppCompatActivity {
             if (success) {
                 Toast.makeText(getBaseContext(), "Email atualizado :) ", Toast.LENGTH_SHORT).show();
                 finish();
+            } else {
+                Toast.makeText(getBaseContext(), "O email digitado está incorreto", Toast.LENGTH_SHORT).show();
+                UpdateEmailActivity.this.showProgress(false);
             }
         }
     }
@@ -151,6 +156,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
             ContentValues contentValues = new ContentValues();
             user = getUserByEmail();
             if (user != null) {
+                user.setEmail(mConfirmNewEmail.getText().toString());
                 ContentValues contentValues1 = new ContentValues();
                 contentValues1.put(Constants.GRANT_TYPE, Constants.CLIENT_CREDENTIALS);
                 JSONObject accessTokenObject = WebServicesUtils.requestJSONObject(Constants.GENERATE_ACCESS_TOKEN_URL, WebServicesUtils.METHOD.POST, contentValues1, true);
@@ -168,14 +174,12 @@ public class UpdateEmailActivity extends AppCompatActivity {
                         JSONArray jsonArray = obj.optJSONArray(Constants.INFO);
                         JSONObject jsonObject = jsonArray.optJSONObject(0);
                         user.setEmail(jsonObject.optString(Constants.EMAIL));
-                        userDao.update(user);
+                        userDao.updateEmail(user);
                         return true;
                     }
                     return false;
                 }
                 return false;
-            } else {
-                Toast.makeText(getBaseContext(), "Email incorreto", Toast.LENGTH_SHORT).show();
             }
             return false;
         }
