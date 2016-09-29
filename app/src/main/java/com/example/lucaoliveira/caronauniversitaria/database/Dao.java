@@ -9,7 +9,7 @@ public interface Dao<T> {
 
     public void update(T object);
 
-    public T getUserById(long id);
+//    public T getUserById(long id);
 
     public T getUserByEmail(String email);
 

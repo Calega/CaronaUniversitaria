@@ -153,7 +153,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
             if (user != null) {
                 ContentValues contentValues1 = new ContentValues();
                 contentValues1.put(Constants.GRANT_TYPE, Constants.CLIENT_CREDENTIALS);
-                JSONObject accessTokenObject = WebServicesUtils.requestJSONObject(Constants.GENERATE_ACESS_TOKEN_URL, WebServicesUtils.METHOD.POST, contentValues1, true);
+                JSONObject accessTokenObject = WebServicesUtils.requestJSONObject(Constants.GENERATE_ACCESS_TOKEN_URL, WebServicesUtils.METHOD.POST, contentValues1, true);
 
                 if (!hasError(accessTokenObject)) {
                     contentValues.put(Constants.ID, user.getId());
