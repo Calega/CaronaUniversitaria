@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import com.example.lucaoliveira.caronauniversitaria.dao.UserDao;
 import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,7 +26,7 @@ import org.json.JSONObject;
  * Created by lucaoliveira on 9/22/2016.
  */
 public class UpdateRegisterActivity extends AppCompatActivity {
-
+    String[] universityList = {"FIAP"};
     private UserUpdateRegisterTask mUserUpdateRegisterTask = null;
 
     private EditText mCurrentEmail;
@@ -117,6 +119,12 @@ public class UpdateRegisterActivity extends AppCompatActivity {
         mConfirmNewAddressDestiny = (EditText) findViewById(R.id.addressDestiny_update);
         mConfirmNewAccessType = (EditText) findViewById(R.id.accessType_update);
         mConfirmNewStudentsAllowed = (EditText) findViewById(R.id.number_students_allowed_update);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, universityList);
+        MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner)
+                findViewById(R.id.university);
+        materialDesignSpinner.setAdapter(arrayAdapter);
     }
 
     /**
@@ -203,7 +211,6 @@ public class UpdateRegisterActivity extends AppCompatActivity {
                     contentValues.put(Constants.ADDRESS_DESTINY, user.getAddressDestiny());
                     contentValues.put(Constants.ACCESS_TYPE, user.getAccessType());
                     contentValues.put(Constants.STUDENTS_ALLOWED, user.getNumberOfStudentsAllowed());
-
 
                     ContentValues urlValues = new ContentValues();
                     urlValues.put(Constants.ACCESS_TOKEN, accessTokenObject.optJSONObject(Constants.ACCESS).optString(Constants.ACCESS_TOKEN));
