@@ -14,6 +14,7 @@ public class User {
     private String addressDestiny;
     private long id;
     private int numberOfStudentsAllowed;
+    private String studentRegister;
 
     //TODO : ADD USER IMAGE
     private int thumbnail;
@@ -21,7 +22,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, int numberOfStudentsAllowed, String email, int thumbnail, String phoneNumber, String addressOrigin, String addressDestiny) {
+    public User(String name, int numberOfStudentsAllowed, String email, int thumbnail, String phoneNumber, String addressOrigin, String addressDestiny, String studentRegister) {
         this.name = name;
         this.numberOfStudentsAllowed = numberOfStudentsAllowed;
         this.email = email;
@@ -29,6 +30,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.addressOrigin = addressOrigin;
         this.addressDestiny = addressDestiny;
+        this.studentRegister = studentRegister;
     }
 
     public String getName() {
@@ -117,5 +119,13 @@ public class User {
 
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public String getStudentRegister() {
+        return studentRegister;
+    }
+
+    public void setStudentRegister(String studentRegister) {
+        this.studentRegister = studentRegister;
     }
 }

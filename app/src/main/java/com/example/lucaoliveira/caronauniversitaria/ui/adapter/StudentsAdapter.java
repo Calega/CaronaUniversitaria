@@ -123,7 +123,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         intent.putExtra(StudentInformationActivity.EXTRA_USER_PHONE, user.getPhoneNumber());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_EMAIL, user.getEmail());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_ORIGIN, user.getAddressOrigin());
-        intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_DESTINY, user.getAddressDestiny());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_REGISTER, user.getStudentRegister());
         mContext.startActivity(intent);
     }
 }

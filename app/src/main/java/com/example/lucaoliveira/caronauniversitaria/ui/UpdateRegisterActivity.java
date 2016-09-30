@@ -37,6 +37,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
     private EditText mConfirmNewAddressDestiny;
     private EditText mConfirmNewAccessType;
     private EditText mConfirmNewStudentsAllowed;
+    private EditText mConfirmNewRegisterStudentRegister;
 
     private UserDao userDao;
     private User user;
@@ -124,6 +125,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
         mConfirmNewAddressDestiny = (EditText) findViewById(R.id.addressDestiny_update);
         mConfirmNewAccessType = (EditText) findViewById(R.id.accessType_update);
         mConfirmNewStudentsAllowed = (EditText) findViewById(R.id.number_students_allowed_update);
+        mConfirmNewRegisterStudentRegister = (EditText) findViewById(R.id.student_register_update);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, universityList);
@@ -159,6 +161,9 @@ public class UpdateRegisterActivity extends AppCompatActivity {
         }
         if (!mConfirmNewStudentsAllowed.getText().toString().equals("") && mConfirmNewStudentsAllowed.getText().toString() != null) {
             user.setNumberOfStudentsAllowed(Integer.valueOf(mConfirmNewStudentsAllowed.getText().toString()));
+        }
+        if (!mConfirmNewRegisterStudentRegister.getText().toString().equals("") && mConfirmNewRegisterStudentRegister.getText().toString() != null) {
+            user.setStudentRegister(mConfirmNewRegisterStudentRegister.getText().toString());
         }
     }
 
@@ -216,6 +221,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
                     contentValues.put(Constants.ADDRESS_DESTINY, user.getAddressDestiny());
                     contentValues.put(Constants.ACCESS_TYPE, user.getAccessType());
                     contentValues.put(Constants.STUDENTS_ALLOWED, user.getNumberOfStudentsAllowed());
+                    contentValues.put(Constants.STUDENT_REGISTER, user.getStudentRegister());
 
                     ContentValues urlValues = new ContentValues();
                     urlValues.put(Constants.ACCESS_TOKEN, accessTokenObject.optJSONObject(Constants.ACCESS).optString(Constants.ACCESS_TOKEN));
@@ -232,6 +238,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
                         user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
                         user.setAccessType(jsonObject.optString(Constants.ACCESS_TYPE));
                         user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
+                        user.setStudentRegister(jsonObject.optString(Constants.STUDENT_REGISTER));
                         userDao.updateEmail(user);
                         return true;
                     }

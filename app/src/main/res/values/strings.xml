@@ -5,6 +5,7 @@
     <string name="prompt_name">Nome</string>
     <string name="prompt_note">Anotação</string>
     <string name="prompt_phoneNumber">Telefone</string>
+    <string name="prompt_studentRegister">Registro do Aluno na Universidade</string>
     <string name="prompt_university">Universidade</string>
     <string name="prompt_accessType">Tipo de Acesso</string>
     <string name="prompt_accessType_caroneiro">Caroneiro - Fornece carona</string>
@@ -74,5 +75,6 @@
     <string name="prompt_change_accessType">Atualizar Tipo de Acesso</string>
     <string name="prompt_change_address_origin">Novo Endereço de Origem</string>
     <string name="prompt_change_address_destiny">Novo Endereço de Destino</string>
+    <string name="prompt_change_student_register">Novo Registro do Aluno na Universidade</string>
 </resources>
 

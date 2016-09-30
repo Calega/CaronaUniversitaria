@@ -25,9 +25,6 @@ import org.json.JSONObject;
  * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
  */
 public class FinishRegisterActivity extends AppCompatActivity {
-
-    // TODO - RETIRAR FOTO E SALVAR EM USER THUMNAIL
-
     private UserEditTask mUserEditTask = null;
 
     private EditText mAccessType;

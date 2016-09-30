@@ -33,6 +33,10 @@ public class HomeScreenActivity extends AppCompatActivity {
         }
     }
 
+    public void loginWithGoogle(View view) {
+        Toast.makeText(getApplicationContext(), "Funcionalidade ainda não desenvolvida", Toast.LENGTH_SHORT).show();
+    }
+
     public void clickLogin(View view) {
         if (hasActiveInternetConnection()) {
             Intent intent = new Intent(HomeScreenActivity.this, LoginActivity.class);

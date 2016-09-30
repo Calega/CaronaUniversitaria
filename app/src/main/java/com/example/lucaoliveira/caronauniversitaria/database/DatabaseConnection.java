@@ -21,9 +21,9 @@ public class DatabaseConnection extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         StringBuilder sb = new StringBuilder();
         sb.append("CREATE TABLE IF NOT EXISTS [users] ([id] BIGINT NOT NULL, [name] NVARCHAR(200) NOT NULL, " +
-                "[email] NVARCHAR(200) NOT NULL, [password] NVARCHAR(200) NOT NULL, [phoneNumber] NVARCHAR(200) NOT NULL, " +
+                "[email] NVARCHAR(200) NOT NULL, [password] NVARCHAR(200) NOT NULL, [phoneNumber] NVARCHAR(200), " +
                 "[university] NVARCHAR(200) NOT NULL, [accesstype] NVARCHAR(20) NOT NULL, [addressorigin] NVARCHAR(200) NOT NULL, " +
-                "[addressdestiny] NVARCHAR(200) NOT NULL, [studentsAllowed] INT(11), " +
+                "[addressdestiny] NVARCHAR(200) NOT NULL, [studentsAllowed] INT(11), [studentRegister] NVARCHAR(200)," +
                 "CONSTRAINT [] PRIMARY KEY ([id]));");
 
         Log.d(TAG, "Database Query To Create " + sb.toString().toLowerCase());
