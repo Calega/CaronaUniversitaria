@@ -57,6 +57,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
         mCurrentEmail.setError(null);
 
         String currentEmail = mCurrentEmail.getText().toString();
+        String phoneNumber = mConfirmNewPhoneNumber.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -68,6 +69,10 @@ public class UpdateRegisterActivity extends AppCompatActivity {
         } else if (!isEmailValid(currentEmail)) {
             mCurrentEmail.setError(getString(R.string.error_invalid_email));
             focusView = mCurrentEmail;
+            cancel = true;
+        } else if (TextUtils.isEmpty(phoneNumber)) {
+            mConfirmNewPhoneNumber.setError(getString(R.string.error_phone_required));
+            focusView = mConfirmNewPhoneNumber;
             cancel = true;
         }
 
@@ -123,7 +128,7 @@ public class UpdateRegisterActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, universityList);
         MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner)
-                findViewById(R.id.university);
+                findViewById(R.id.university_update);
         materialDesignSpinner.setAdapter(arrayAdapter);
     }
 

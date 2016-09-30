@@ -43,11 +43,6 @@ public class FinishRegisterActivity extends AppCompatActivity {
     }
 
     public void finishLogin(View view) {
-        if (mUserEditTask != null) {
-            return;
-        }
-
-        mAccessType.setError(null);
         mAddressOrigin.setError(null);
         mAddressDestiny.setError(null);
         mStudentsAllowed.setError(null);
@@ -159,6 +154,9 @@ public class FinishRegisterActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.prompt_welcome), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), StudentsActivity.class);
                 startActivity(intent);
+            } else {
+                Toast.makeText(getBaseContext(), "Alguma coisa deu errado :( Tente novamente ! ", Toast.LENGTH_SHORT).show();
+                FinishRegisterActivity.this.showProgress(false);
             }
         }
     }

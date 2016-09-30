@@ -3,6 +3,8 @@ package com.example.lucaoliveira.caronauniversitaria.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.lucaoliveira.caronauniversitaria.database.Dao;
@@ -13,6 +15,7 @@ import com.example.lucaoliveira.caronauniversitaria.model.User;
  * Created by lucas calegari a. de oliveira on 27/09/2016.
  */
 public class UserDao extends DatabaseConnection implements Dao<User> {
+    public static final String TAG = "UserDao";
 
     public UserDao(Context context) {
         super(context);
@@ -32,9 +35,12 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
         cv.put("addressorigin", user.getAddressOrigin());
         cv.put("addressdestiny", user.getAddressDestiny());
         cv.put("studentsAllowed", user.getNumberOfStudentsAllowed());
-//        cv.put("image", user.getThumbnail());
 
-        getWritableDatabase().insert("users", null, cv);
+        try {
+            getWritableDatabase().insertWithOnConflict("users", "users.id", cv, SQLiteDatabase.CONFLICT_IGNORE);
+        } catch (SQLiteConstraintException e) {
+            Log.d(TAG, "User already exists in this database : " + SQLiteDatabase.CONFLICT_FAIL);
+        }
     }
 
     @Override
@@ -92,13 +98,17 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
             sb.append("select * from users where email = ?");
 
             cursor = getWritableDatabase().rawQuery(sb.toString(), parametros);
+            Log.d(TAG, "Database Query To Select User by Email  " + sb.toString() + "parameters" + parametros);
 
             while (cursor.moveToNext()) {
                 user = new User();
                 user.setId(cursor.getLong(cursor.getColumnIndex("id")));
+                user.setName(cursor.getString(cursor.getColumnIndex("name")));
                 user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
                 user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-                user.setPhoneNumber(cursor.getString(cursor.getColumnIndex("phoneNumber")));
+                if (!cursor.isNull(cursor.getColumnIndex("phoneNumber"))) {
+                    user.setPhoneNumber(cursor.getString(cursor.getColumnIndex("phoneNumber")));
+                }
                 user.setUniversity(cursor.getString(cursor.getColumnIndex("university")));
                 user.setAccessType(cursor.getString(cursor.getColumnIndex("accesstype")));
                 user.setAddressOrigin(cursor.getString(cursor.getColumnIndex("addressorigin")));
@@ -108,6 +118,7 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
 
         } catch (Exception e) {
             Log.e("UserDao", "Error retrieving user for email {} " + email);
+            Log.e("UserDao", "Error retrieving user " + e.getMessage());
         } finally {
             if (cursor != null) {
                 cursor.close();

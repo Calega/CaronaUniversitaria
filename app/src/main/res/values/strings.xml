@@ -40,6 +40,7 @@
     <string name="error_addressOrigin">Cadastre o endereço de origem</string>
     <string name="error_addressDestiny">Cadastre o endereço de destino</string>
     <string name="error_accessType_caroneiro">Digite a quantidade de Caronas disponíveis</string>
+    <string name="error_phone_required">É obrigatório atualizar o número de telefone</string>
 
     <string name="action_settings">Configurações</string>
     <string name="action_logout">Logout</string>
