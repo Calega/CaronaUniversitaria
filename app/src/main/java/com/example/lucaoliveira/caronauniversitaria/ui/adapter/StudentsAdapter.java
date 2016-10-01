@@ -59,7 +59,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         holder.title.setText(user.getName());
         holder.count.setText(user.getNumberOfStudentsAllowed() + " Estudantes Disponíveis");
 
-        Glide.with(mContext).load(user.getThumbnail()).into(holder.thumbnail);
+        Glide.with(mContext).load(user.getImage()).into(holder.thumbnail);
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +118,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
 
     private void showStudentInformation(User user) {
         Intent intent = new Intent(mContext, StudentInformationActivity.class);
-//                    intent.putExtra(StudentInformationActivity.EXTRA_USER_THUMBNAIL, user.getThumbnail());
+//                    intent.putExtra(StudentInformationActivity.EXTRA_USER_THUMBNAIL, user.getImage());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_NAME, user.getName());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_PHONE, user.getPhoneNumber());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_EMAIL, user.getEmail());

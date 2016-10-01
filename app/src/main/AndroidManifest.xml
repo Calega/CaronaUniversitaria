@@ -28,14 +28,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.FinishRegisterActivity"
-            android:label="@string/info_label"
-            android:noHistory="true" />
+            android:label="@string/info_label" />
         <activity
             android:name=".ui.StartRegisterActivity"
             android:label="@string/info_label" />
-        <activity
-            android:name=".ui.StudentInformationActivity"
-            android:noHistory="true" />
+        <activity android:name=".ui.StudentInformationActivity" />
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/action_sign_in_label" />

@@ -15,18 +15,16 @@ public class User {
     private long id;
     private int numberOfStudentsAllowed;
     private String studentRegister;
-
-    //TODO : ADD USER IMAGE
-    private int thumbnail;
+    private int image;
 
     public User() {
     }
 
-    public User(String name, int numberOfStudentsAllowed, String email, int thumbnail, String phoneNumber, String addressOrigin, String addressDestiny, String studentRegister) {
+    public User(String name, int numberOfStudentsAllowed, String email, int image, String phoneNumber, String addressOrigin, String addressDestiny, String studentRegister) {
         this.name = name;
         this.numberOfStudentsAllowed = numberOfStudentsAllowed;
         this.email = email;
-        this.thumbnail = thumbnail;
+        this.image = image;
         this.phoneNumber = phoneNumber;
         this.addressOrigin = addressOrigin;
         this.addressDestiny = addressDestiny;
@@ -113,12 +111,12 @@ public class User {
         this.numberOfStudentsAllowed = numberOfStudentsAllowed;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public int getImage() {
+        return image;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public String getStudentRegister() {

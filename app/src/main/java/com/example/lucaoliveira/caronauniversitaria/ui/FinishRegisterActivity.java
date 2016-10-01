@@ -2,12 +2,17 @@ package com.example.lucaoliveira.caronauniversitaria.ui;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -21,6 +26,8 @@ import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+
 /**
  * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
  */
@@ -32,11 +39,44 @@ public class FinishRegisterActivity extends AppCompatActivity {
     private EditText mAddressDestiny;
     private EditText mStudentsAllowed;
 
+    private Button btnTakePicture;
+    private Bitmap photoTaken;
+
+    private ImageView imageView;
+
+    public static final int REQUEST_IMAGE_CAPTURE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish_register);
         initViews();
+
+        if (!hasCamera()) {
+            btnTakePicture.setEnabled(false);
+        }
+    }
+
+    // Check if user has camera
+    private boolean hasCamera() {
+        return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
+    }
+
+    public void takePicture(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE
+                && resultCode == RESULT_OK) {
+            //get the photo
+            Bundle extras = data.getExtras();
+            photoTaken = (Bitmap) extras.get("data");
+            imageView.setImageBitmap(photoTaken);
+        }
     }
 
     public void finishLogin(View view) {
@@ -93,6 +133,8 @@ public class FinishRegisterActivity extends AppCompatActivity {
         mAccessType = (EditText) findViewById(R.id.accessType);
         mAddressOrigin = (EditText) findViewById(R.id.addressOrigin);
         mAddressDestiny = (EditText) findViewById(R.id.addressDestiny);
+        btnTakePicture = (Button) findViewById(R.id.take_picture_button);
+        imageView = (ImageView) findViewById(R.id.imgPreview);
     }
 
     private void populateText(User user) {
@@ -104,6 +146,17 @@ public class FinishRegisterActivity extends AppCompatActivity {
         }
         user.setAddressOrigin(mAddressOrigin.getText().toString());
         user.setAddressDestiny(mAddressDestiny.getText().toString());
+
+        if (photoTaken != null) {
+            byte[] data = getBitmapAsByteArray(photoTaken);
+            user.setImage(data[0]);
+        }
+    }
+
+    private byte[] getBitmapAsByteArray(Bitmap photoTaken) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        photoTaken.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
     }
 
     public void onRadioButtonClicked(View view) {
@@ -164,6 +217,8 @@ public class FinishRegisterActivity extends AppCompatActivity {
         }
 
         public boolean performRequest() {
+
+            //TODO : CHECAR SE A IMAGEM FOI PARA O DATABASE HOST
             ContentValues contentValues = new ContentValues();
             User user = RESTServiceApplication.getInstance().getUser();
             populateText(user);
@@ -172,6 +227,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
             contentValues.put(Constants.ADDRESS_ORIGIN, user.getAddressOrigin());
             contentValues.put(Constants.ADDRESS_DESTINY, user.getAddressDestiny());
             contentValues.put(Constants.STUDENTS_ALLOWED, user.getNumberOfStudentsAllowed());
+            contentValues.put(Constants.IMAGE, user.getImage());
 
             ContentValues urlValues = new ContentValues();
             urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
@@ -185,6 +241,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
                 user.setAddressOrigin(jsonObject.optString(Constants.ADDRESS_ORIGIN));
                 user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
                 user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
+                user.setImage(jsonObject.optInt(Constants.IMAGE));
                 return true;
             }
             return false;

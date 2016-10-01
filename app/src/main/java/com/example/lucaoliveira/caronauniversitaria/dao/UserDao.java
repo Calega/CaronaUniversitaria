@@ -36,6 +36,7 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
         cv.put("addressdestiny", user.getAddressDestiny());
         cv.put("studentsAllowed", user.getNumberOfStudentsAllowed());
         cv.put("studentRegister", user.getStudentRegister());
+        cv.put("image", user.getImage());
 
         try {
             getWritableDatabase().insertWithOnConflict("users", "users.id", cv, SQLiteDatabase.CONFLICT_IGNORE);
@@ -119,6 +120,7 @@ public class UserDao extends DatabaseConnection implements Dao<User> {
                 if (!cursor.isNull(cursor.getColumnIndex("studentRegister"))) {
                     user.setStudentRegister(cursor.getString(cursor.getColumnIndex("studentRegister")));
                 }
+                user.setImage(cursor.getInt(cursor.getColumnIndex("image")));
             }
 
         } catch (Exception e) {

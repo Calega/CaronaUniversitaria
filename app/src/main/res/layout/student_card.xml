@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/thumbnail"
+                android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/student_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -29,7 +29,7 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/thumbnail"
+                android:layout_below="@id/image"
                 android:paddingLeft="@dimen/student_title_padding"
                 android:paddingRight="@dimen/student_title_padding"
                 android:paddingTop="@dimen/student_title_padding"
@@ -51,7 +51,7 @@
                 android:layout_width="@dimen/ic_student_overflow_width"
                 android:layout_height="@dimen/ic_student_overflow_height"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/thumbnail"
+                android:layout_below="@id/image"
                 android:layout_marginTop="@dimen/ic_student_overflow_margin_top"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/ic_dots" />

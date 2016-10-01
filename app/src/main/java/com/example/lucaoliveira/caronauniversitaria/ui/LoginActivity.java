@@ -212,6 +212,11 @@ public class LoginActivity extends AppCompatActivity {
             user.setNumberOfStudentsAllowed(0);
         }
 
+        user.setImage(jsonObject.optInt(Constants.IMAGE));
+        if (user.getImage() == '0' || user.getImage() == 0) {
+            user.setImage(0);
+        }
+
         userDao.insert(user);
     }
 }
