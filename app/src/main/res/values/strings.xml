@@ -5,8 +5,9 @@
     <string name="prompt_name">Nome</string>
     <string name="prompt_note">Anotação</string>
     <string name="prompt_phoneNumber">Telefone</string>
+    <string name="prompt_studentRegister">Registro do Aluno na Universidade</string>
     <string name="prompt_university">Universidade</string>
-    <string name="prompt_accessType">Tipo de Acesso - Carona ou Caroneiro</string>
+    <string name="prompt_accessType">Tipo de Acesso</string>
     <string name="prompt_accessType_caroneiro">Caroneiro - Fornece carona</string>
     <string name="prompt_accessType_carona">Carona - Utiliza carona</string>
     <string name="prompt_address_origin">Endereço de Origem</string>
@@ -23,6 +24,9 @@
     <string name="action_reset">Resetar</string>
     <string name="action_sign_out">Sair</string>
     <string name="action_continue">Continuar</string>
+    <string name="action_update_email">Confirmar Alteração de Email</string>
+    <string name="action_update_password">Confirmar Alteração de Senha</string>
+    <string name="action_update_register">Confirmar Alteração de Cadastro</string>
     <string name="action_ok">Ok :)</string>
     <string name="action_take_picture">Tirar Foto</string>
     <string name="action_finish_register">Finalizar Cadastro</string>
@@ -31,10 +35,13 @@
     <string name="info_label">Informação do usuário</string>
     <string name="error_url_not_found">URL Inválida : Arquivo PHP não encontrado</string>
     <string name="error_passoword_length">Senha deve ter pelo menos 5 caracteres</string>
+    <string name="error_passoword_match">As senhas digitadas devem ser iguais</string>
+    <string name="error_email_match">Os emails digitados devem ser iguais</string>
     <string name="error_accessType">Cadastre seu tipo de acesso</string>
     <string name="error_addressOrigin">Cadastre o endereço de origem</string>
     <string name="error_addressDestiny">Cadastre o endereço de destino</string>
     <string name="error_accessType_caroneiro">Digite a quantidade de Caronas disponíveis</string>
+    <string name="error_phone_required">É obrigatório atualizar o número de telefone</string>
 
     <string name="action_settings">Configurações</string>
     <string name="action_logout">Logout</string>
@@ -53,4 +60,21 @@
     <!-- Dialog Messages -->
     <string name="action_confirm_logout">Tem certeza que deseja realiza o Logout?</string>
 
+    <!-- Update Messages -->
+    <string name="prompt_change_email">Alterar Email</string>
+    <string name="prompt_change_email_update">Novo Email</string>
+    <string name="prompt_change_current_email">Confirmar Email Atual</string>
+    <string name="prompt_change_email_update_confirm">Confirmar Novo Email</string>
+    <string name="prompt_change_password">Alterar Senha</string>
+    <string name="prompt_change_password_update">Nova Senha</string>
+    <string name="prompt_change_password_update_confirm">Confirmar Nova Senha</string>
+    <string name="prompt_change_register">Alterar Dados Cadastrais</string>
+    <string name="prompt_change_name">Novo Nome</string>
+    <string name="prompt_change_phoneNumber">Novo Telefone</string>
+    <string name="prompt_change_university">Nova Universidade</string>
+    <string name="prompt_change_accessType">Atualizar Tipo de Acesso</string>
+    <string name="prompt_change_address_origin">Novo Endereço de Origem</string>
+    <string name="prompt_change_address_destiny">Novo Endereço de Destino</string>
+    <string name="prompt_change_student_register">Novo Registro do Aluno na Universidade</string>
 </resources>
+

@@ -21,7 +21,11 @@ public class Constants {
     public static final String UPDATE_URL = ENDPOINT + "/update.php";
     public static final String DELETE_URL = ENDPOINT + "/delete.php";
     public static final String RESET_URL = ENDPOINT + "/reset.php";
-
+    public static final String UPDATE_EMAIL_URL = ENDPOINT + "/updateemail.php";
+    public static final String UPDATE_PASSOWRD_URL = ENDPOINT + "/updatepassword.php";
+    public static final String UPDATE_REGISTER_URL = ENDPOINT + "/updateregister.php";
+    public static final String GENERATE_ACCESS_TOKEN_URL = ENDPOINT + "/generateAccessToken.php";
+    public static final String STUDENTS_LIST = ENDPOINT + "/studentslist.php";
 
     //Constantes usadas no parsing JSON ou valores anexados em uma conexão URL com servidor
     public static final String AUTHORIZATION = "Authorization";
@@ -39,6 +43,7 @@ public class Constants {
     public static final String PHONE_NUMBER = "phoneNumber";
     public static final String NAME = "name";
     public static final String UNIVERSITY = "university";
+    public static final String STUDENT_REGISTER = "studentRegister";
     public static final String ACCESS_TYPE = "accessType";
     public static final String ADDRESS_ORIGIN = "addressOrigin";
     public static final String ADDRESS_DESTINY = "addressDestiny";

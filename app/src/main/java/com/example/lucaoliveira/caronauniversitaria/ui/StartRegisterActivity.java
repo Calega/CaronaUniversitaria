@@ -13,7 +13,7 @@ import android.widget.EditText;
 import com.example.lucaoliveira.caronauniversitaria.Constants;
 import com.example.lucaoliveira.caronauniversitaria.R;
 import com.example.lucaoliveira.caronauniversitaria.RESTServiceApplication;
-import com.example.lucaoliveira.caronauniversitaria.data.User;
+import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
@@ -33,6 +33,7 @@ public class StartRegisterActivity extends AppCompatActivity {
     private EditText mNameText;
     private EditText mPhoneNumberText;
     private EditText mUniversityText;
+    private EditText mStudentRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class StartRegisterActivity extends AppCompatActivity {
         mNameText = (EditText) findViewById(R.id.name);
         mPhoneNumberText = (EditText) findViewById(R.id.phonenumber);
         mUniversityText = (EditText) findViewById(R.id.university);
+        mStudentRegister = (EditText) findViewById(R.id.student_register_university);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, universityList);
@@ -74,6 +76,7 @@ public class StartRegisterActivity extends AppCompatActivity {
         String name = mNameText.getText().toString();
         String phoneNumber = mPhoneNumberText.getText().toString();
         String university = mUniversityText.getText().toString();
+        String registerStudent = mStudentRegister.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -97,7 +100,7 @@ public class StartRegisterActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            mUserLoginRegisterTask = new UserLoginRegisterTask(email, password, name, university, phoneNumber, view.getId() == R.id.continue_button);
+            mUserLoginRegisterTask = new UserLoginRegisterTask(email, password, name, university, phoneNumber, registerStudent, view.getId() == R.id.continue_button);
             mUserLoginRegisterTask.execute((Void) null);
         }
     }
@@ -114,13 +117,14 @@ public class StartRegisterActivity extends AppCompatActivity {
         private final ContentValues contentValues = new ContentValues();
         private boolean mIsRegister;
 
-        UserLoginRegisterTask(String email, String password, String name, String university, String phoneNumber, boolean isRegister) {
+        UserLoginRegisterTask(String email, String password, String name, String university, String phoneNumber, String studentRegister, boolean isRegister) {
             super((StartRegisterActivity.this));
             contentValues.put(Constants.EMAIL, email);
             contentValues.put(Constants.PASSWORD, password);
             contentValues.put(Constants.NAME, name);
             contentValues.put(Constants.PHONE_NUMBER, phoneNumber);
             contentValues.put(Constants.UNIVERSITY, university);
+            contentValues.put(Constants.STUDENT_REGISTER, studentRegister);
             contentValues.put(Constants.GRANT_TYPE, Constants.CLIENT_CREDENTIALS);
             mIsRegister = isRegister;
         }
@@ -144,6 +148,7 @@ public class StartRegisterActivity extends AppCompatActivity {
                     user.setName(contentValues.getAsString(Constants.NAME));
                     user.setUniversity(contentValues.getAsString(Constants.UNIVERSITY));
                     user.setPhoneNumber(contentValues.getAsString(Constants.PHONE_NUMBER));
+                    user.setStudentRegister(contentValues.getAsString(Constants.STUDENT_REGISTER));
                     RESTServiceApplication.getInstance().setUser(user);
                     RESTServiceApplication.getInstance().setAccessToken(
                             obj.optJSONObject(Constants.ACCESS).optString(Constants.ACCESS_TOKEN));

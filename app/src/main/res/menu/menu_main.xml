@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.StudentsActivity">
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@mipmap/ic_logout"
+        android:orderInCategory="100"
+        android:title="@string/action_logout"
+        app:showAsAction="always" />
+
+    <!--<div>Icons made by <a href="http://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
+
+    <item
+        android:id="@+id/action_user_register"
+        android:icon="@mipmap/ic_user"
+        android:orderInCategory="101"
+        android:title="@string/action_logout"
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/change_email"
+                android:title="@string/prompt_change_email" />
+            <item
+                android:id="@+id/change_password"
+                android:title="@string/prompt_change_password" />
+            <item
+                android:id="@+id/change_register"
+                android:title="@string/prompt_change_register" />
+        </menu>
+
+    </item>
+
+    <!--<div>Icons made by <a href="http://www.flaticon.com/authors/chanut-is-industries" title="Chanut is Industries">Chanut is Industries</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
+</menu>

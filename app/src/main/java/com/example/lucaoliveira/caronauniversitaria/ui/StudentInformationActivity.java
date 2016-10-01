@@ -21,17 +21,18 @@ public class StudentInformationActivity extends AppCompatActivity {
     public static final String EXTRA_USER_EMAIL = "user_email";
     public static final String EXTRA_USER_ADDRESS_ORIGIN = "user_origin";
     public static final String EXTRA_USER_ADDRESS_DESTINY = "user_destiny";
+    public static final String EXTRA_USER_REGISTER = "user_register";
 
     private ImageView thumbail;
-    private TextView name, phone, email, addressOrigin, addressDestiny;
+    private TextView name, phone, email, addressOrigin, addressDestiny, studentRegister;
     private Button dismissButton;
 
-    private String userThumbnail, userName, userPhone, userEmail, userOrigin, userDestiny;
+    private String userThumbnail, userName, userPhone, userEmail, userOrigin, userDestiny, userRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_student_information);
+        setContentView(R.layout.activity_student_information);
 
         initVariables();
         getIntentInformation();
@@ -65,12 +66,14 @@ public class StudentInformationActivity extends AppCompatActivity {
         String userEmail = intent.getStringExtra(StudentInformationActivity.EXTRA_USER_EMAIL);
         String userOrigin = intent.getStringExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_ORIGIN);
         String userDestiny = intent.getStringExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_DESTINY);
+        String userRegister = intent.getStringExtra(StudentInformationActivity.EXTRA_USER_REGISTER);
 
         name.setText(userName);
         phone.setText(userPhone);
         email.setText(userEmail);
         addressOrigin.setText(userOrigin);
         addressDestiny.setText(userDestiny);
+        studentRegister.setText(userRegister);
     }
 
     private void initVariables() {
@@ -80,6 +83,7 @@ public class StudentInformationActivity extends AppCompatActivity {
         email = (TextView) findViewById(R.id.tv_student_email);
         addressOrigin = (TextView) findViewById(R.id.tv_student_address_origin);
         addressDestiny = (TextView) findViewById(R.id.tv_student_address_destiny);
+        studentRegister = (TextView) findViewById(R.id.tv_student_register);
         dismissButton = (Button) findViewById(R.id.finish_button);
     }
 }

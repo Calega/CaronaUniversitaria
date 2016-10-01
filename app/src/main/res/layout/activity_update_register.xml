@@ -10,17 +10,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.lucaoliveira.caronauniversitaria.ui.FinishRegisterActivity">
+    tools:context=".ui.StartRegisterActivity">
 
     <ProgressBar
-        android:id="@+id/progress"
+        android:id="@+id/progressUpdateRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
     <ScrollView
-        android:id="@+id/info_form_finish"
+        android:id="@+id/info_form_start"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -30,16 +30,75 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/prompt_change_register"
+                android:textSize="20dp" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/accessType"
+                    android:id="@+id/confirm_current_email_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_change_current_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/name_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_change_name"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/phonenumber_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_change_phoneNumber"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                android:id="@+id/university_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_change_university"
+                android:textColorHint="#05ab9a"
+                app:met_floatingLabel="normal" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/accessType_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:hint="@string/prompt_accessType"
+                    android:hint="@string/prompt_change_accessType"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -51,17 +110,17 @@
                 android:orientation="vertical">
 
                 <RadioButton
-                    android:id="@+id/radio_caroneiro"
+                    android:id="@+id/radio_caroneiro_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
+                    android:onClick="onRadioButtonClickedUpdate"
                     android:text="@string/prompt_accessType_caroneiro" />
 
                 <RadioButton
-                    android:id="@+id/radio_carona"
+                    android:id="@+id/radio_carona_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
+                    android:onClick="onRadioButtonClickedUpdate"
                     android:text="@string/prompt_accessType_carona" />
             </RadioGroup>
 
@@ -70,7 +129,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/number_students_allowed"
+                    android:id="@+id/number_students_allowed_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_students_allowed"
@@ -86,10 +145,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/addressOrigin"
+                    android:id="@+id/addressOrigin_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_address_origin"
+                    android:hint="@string/prompt_change_address_origin"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -101,10 +160,25 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/addressDestiny"
+                    android:id="@+id/addressDestiny_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_address_destiny"
+                    android:hint="@string/prompt_change_address_destiny"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/student_register_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_change_student_register"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -112,15 +186,14 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/finish_button"
+                android:id="@+id/continue_button_update_register"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:onClick="finishLogin"
-                android:text="@string/action_finish"
+                android:onClick="attemptUpdateRegister"
+                android:text="@string/action_update_register"
                 android:textStyle="bold" />
-
 
         </LinearLayout>
 

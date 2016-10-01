@@ -1,4 +1,4 @@
-package com.example.lucaoliveira.caronauniversitaria.data;
+package com.example.lucaoliveira.caronauniversitaria.model;
 
 /**
  * Created by lucaoliveira on 6/19/2016.
@@ -13,9 +13,8 @@ public class User {
     private String addressOrigin;
     private String addressDestiny;
     private long id;
-
-    //TODO : ADD TO DATABASE
-    private int numberOfStudents;
+    private int numberOfStudentsAllowed;
+    private String studentRegister;
 
     //TODO : ADD USER IMAGE
     private int thumbnail;
@@ -23,14 +22,15 @@ public class User {
     public User() {
     }
 
-    public User(String name, int numberOfStudents, String email, int thumbnail, String phoneNumber, String addressOrigin, String addressDestiny) {
+    public User(String name, int numberOfStudentsAllowed, String email, int thumbnail, String phoneNumber, String addressOrigin, String addressDestiny, String studentRegister) {
         this.name = name;
-        this.numberOfStudents = numberOfStudents;
+        this.numberOfStudentsAllowed = numberOfStudentsAllowed;
         this.email = email;
         this.thumbnail = thumbnail;
         this.phoneNumber = phoneNumber;
         this.addressOrigin = addressOrigin;
         this.addressDestiny = addressDestiny;
+        this.studentRegister = studentRegister;
     }
 
     public String getName() {
@@ -105,12 +105,12 @@ public class User {
         this.addressDestiny = addressDestiny;
     }
 
-    public int getNumberOfStudents() {
-        return numberOfStudents;
+    public int getNumberOfStudentsAllowed() {
+        return numberOfStudentsAllowed;
     }
 
-    public void setNumberOfStudents(int numberOfStudents) {
-        this.numberOfStudents = numberOfStudents;
+    public void setNumberOfStudentsAllowed(int numberOfStudentsAllowed) {
+        this.numberOfStudentsAllowed = numberOfStudentsAllowed;
     }
 
     public int getThumbnail() {
@@ -119,5 +119,13 @@ public class User {
 
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public String getStudentRegister() {
+        return studentRegister;
+    }
+
+    public void setStudentRegister(String studentRegister) {
+        this.studentRegister = studentRegister;
     }
 }

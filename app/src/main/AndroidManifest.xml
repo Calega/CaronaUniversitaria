@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".RESTServiceApplication"
@@ -29,7 +28,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.FinishRegisterActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/info_label"
             android:noHistory="true" />
         <activity
@@ -42,8 +40,14 @@
             android:name=".ui.LoginActivity"
             android:label="@string/action_sign_in_label" />
         <activity
-            android:name=".ui.TakePictureActivity"
-            android:label="@string/info_label" />
+            android:name=".ui.UpdateEmailActivity"
+            android:label="@string/action_sign_in_label" />
+        <activity
+            android:name=".ui.UpdatePasswordActivity"
+            android:label="@string/action_sign_in_label" />
+        <activity
+            android:name=".ui.UpdateRegisterActivity"
+            android:label="@string/action_sign_in_label" />
     </application>
 
 </manifest>

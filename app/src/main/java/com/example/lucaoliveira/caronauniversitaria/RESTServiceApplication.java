@@ -2,7 +2,7 @@ package com.example.lucaoliveira.caronauniversitaria;
 
 import android.app.Application;
 
-import com.example.lucaoliveira.caronauniversitaria.data.User;
+import com.example.lucaoliveira.caronauniversitaria.model.User;
 
 /**
  * Created by lucaoliveira on 6/19/2016.
