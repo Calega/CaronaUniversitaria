@@ -222,10 +222,6 @@ public class StudentsActivity extends AppCompatActivity {
         alert.show();
     }
 
-    private void showProgress(boolean isShow) {
-        findViewById(R.id.progress_retrieving_students).setVisibility(isShow ? View.VISIBLE : View.GONE);
-    }
-
     private class StudentsListTask extends AsyncTask<Void, JSONObject, Void> {
         private String mMessage;
         private Context mContext;

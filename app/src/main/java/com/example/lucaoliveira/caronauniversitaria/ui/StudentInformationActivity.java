@@ -84,6 +84,7 @@ public class StudentInformationActivity extends AppCompatActivity {
         email = (TextView) findViewById(R.id.tv_student_email);
         addressOrigin = (TextView) findViewById(R.id.tv_student_address_origin);
         addressDestiny = (TextView) findViewById(R.id.tv_student_address_destiny);
+        studentRegister = (TextView) findViewById(R.id.tv_student_register);
         dismissButton = (Button) findViewById(R.id.finish_button);
     }
 
