@@ -1,10 +1,12 @@
 package com.example.lucaoliveira.caronauniversitaria.ui;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -14,6 +16,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,20 +29,20 @@ import com.example.lucaoliveira.caronauniversitaria.Constants;
 import com.example.lucaoliveira.caronauniversitaria.R;
 import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.ui.adapter.StudentsAdapter;
-import com.example.lucaoliveira.caronauniversitaria.webservices.WebServiceTask;
 import com.example.lucaoliveira.caronauniversitaria.webservices.WebServicesUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by lucaoliveira on 8/12/2016.
  */
 public class StudentsActivity extends AppCompatActivity {
+    public static final String TAG = StudentsActivity.class.getName();
+
     private StudentsListTask mStudentsListTask = null;
 
     private RecyclerView recyclerView;
@@ -108,53 +111,6 @@ public class StudentsActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void prepareUsers() {
-        int[] covers = new int[]{
-                R.drawable.album1,
-                R.drawable.album2,
-                R.drawable.album3,
-                R.drawable.album4,
-                R.drawable.album5,
-                R.drawable.album6,
-                R.drawable.album7,
-                R.drawable.album8,
-                R.drawable.album9,
-                R.drawable.album10,
-                R.drawable.album11};
-
-        User a = new User("Igor Artão", 2, "igor@artao.com", covers[0], "111111111", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Raphael Ballico", 2, "ballico@raphael.com", covers[1], "22222222", "Avenida 10 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Lucas Oliveira", 1, "lucas@oliveira.com", covers[2], "33333333", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Vitor Takao", 2, "taks@vitor.com", covers[3], "44444444", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Dsiaduki", 3, "igor@artao.com", covers[4], "5555555", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Guilherme Coghi", 2, "coghi@guilherme.com", covers[5], "66666666", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Diego Mendes", 4, "diego@mendes.com", covers[6], "77777777", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Daniel Alves", 4, "daniel@alves.com", covers[7], "88888888", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Ezekiel Oliveira", 2, "ezekiel@oliveira.com", covers[8], "99999999", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        a = new User("Cesar Lino", 2, "cesar@lino.com", covers[9], "10101010", "Avenida 9 de julho", "FIAP", "RM : 66631");
-        studentsList.add(a);
-
-        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -270,69 +226,62 @@ public class StudentsActivity extends AppCompatActivity {
         findViewById(R.id.progress_retrieving_students).setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
-    private abstract class ActivityWebServiceTask extends WebServiceTask {
-        public ActivityWebServiceTask(WebServiceTask webServiceTask) {
-            super(StudentsActivity.this);
-        }
+    private class StudentsListTask extends AsyncTask<Void, JSONObject, Void> {
+        private String mMessage;
+        private Context mContext;
 
         @Override
-        public void showProgress() {
-            StudentsActivity.this.showProgress(true);
-        }
-
-        @Override
-        public void hideProgress() {
-            StudentsActivity.this.showProgress(false);
-        }
-
-        @Override
-        public void performSuccessfulOperation() {
-        }
-
-        @Override
-        protected void onPostExecute(Boolean success) {
-        }
-    }
-
-    public class StudentsListTask extends ActivityWebServiceTask {
-        public StudentsListTask() {
-            super(mStudentsListTask);
-        }
-
-        public boolean performRequest() {
+        protected Void doInBackground(Void... params) {
             ContentValues contentValues = new ContentValues();
             contentValues.put(Constants.UNIVERSITY, "FIAP");
-            contentValues.put(Constants.ACCESS_TYPE, "Carona");
 
             JSONObject object = WebServicesUtils.requestJSONObject(Constants.STUDENTS_LIST, WebServicesUtils.METHOD.POST, contentValues, true);
-            Iterator<?> keys = object.keys();
 
             if (!hasError(object)) {
-                while (keys.hasNext()) {
-                    JSONArray jsonArray = object.optJSONArray(Constants.INFO);
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.optJSONObject(i);
-                        User user = new User();
-                        user.setEmail(jsonObject.optString(Constants.EMAIL));
-                        user.setName(jsonObject.optString(Constants.NAME));
-                        user.setPhoneNumber(jsonObject.optString(Constants.PHONE_NUMBER));
-                        user.setUniversity(jsonObject.optString(Constants.UNIVERSITY));
-                        user.setAddressOrigin(jsonObject.optString(Constants.ADDRESS_ORIGIN));
-                        user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
-                        user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
-                        user.setStudentRegister(jsonObject.optString(Constants.STUDENT_REGISTER));
-                        prepareUsers(user);
-                    }
+                JSONArray jsonArray = object.optJSONArray(Constants.INFO);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.optJSONObject(i);
+                    publishProgress(jsonObject);
                 }
-                return true;
+                return null;
             }
-
-            return false;
+            return null;
         }
-    }
 
-    private void prepareUsers(User user) {
-        studentsList.add(user);
-        adapter.notifyDataSetChanged();
+        @Override
+        protected void onProgressUpdate(JSONObject... values) {
+            User user = new User();
+            user.setEmail(values[0].optString(Constants.EMAIL));
+            user.setName(values[0].optString(Constants.NAME));
+            user.setPhoneNumber(values[0].optString(Constants.PHONE_NUMBER));
+            user.setUniversity(values[0].optString(Constants.UNIVERSITY));
+            user.setAddressOrigin(values[0].optString(Constants.ADDRESS_ORIGIN));
+            user.setAddressDestiny(values[0].optString(Constants.ADDRESS_DESTINY));
+            user.setNumberOfStudentsAllowed(values[0].optInt(Constants.STUDENTS_ALLOWED));
+            user.setStudentRegister(values[0].optString(Constants.STUDENT_REGISTER));
+            studentsList.add(user);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            adapter.notifyDataSetChanged();
+        }
+
+        public boolean hasError(JSONObject obj) {
+            if (obj != null) {
+                int status = obj.optInt(Constants.STATUS);
+                Log.d(TAG, "Response " + obj.toString());
+                mMessage = obj.optString(Constants.MESSAGE);
+
+                if (status == Constants.STATUS_ERROR || status == Constants.STATUS_UNAUTHORIZED) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            mMessage = mContext.getString(R.string.error_url_not_found);
+            return true;
+        }
+
     }
 }
