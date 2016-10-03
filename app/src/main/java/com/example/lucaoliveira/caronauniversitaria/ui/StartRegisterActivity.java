@@ -28,12 +28,13 @@ public class StartRegisterActivity extends AppCompatActivity {
 
     private UserLoginRegisterTask mUserLoginRegisterTask = null;
 
-    private EditText mEmailText;
-    private EditText mPasswordText;
-    private EditText mNameText;
-    private EditText mPhoneNumberText;
-    private EditText mUniversityText;
+    private EditText mEmail;
+    private EditText mPassword;
+    private EditText mName;
+    private EditText mPhoneNumber;
+    private EditText mUniversity;
     private EditText mStudentRegister;
+    private EditText mConfirmPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,13 @@ public class StartRegisterActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        mEmailText = (EditText) findViewById(R.id.email);
-        mPasswordText = (EditText) findViewById(R.id.password);
-        mNameText = (EditText) findViewById(R.id.name);
-        mPhoneNumberText = (EditText) findViewById(R.id.phonenumber);
-        mUniversityText = (EditText) findViewById(R.id.university);
+        mEmail = (EditText) findViewById(R.id.email);
+        mPassword = (EditText) findViewById(R.id.password);
+        mName = (EditText) findViewById(R.id.name);
+        mPhoneNumber = (EditText) findViewById(R.id.phonenumber);
+        mUniversity = (EditText) findViewById(R.id.university);
         mStudentRegister = (EditText) findViewById(R.id.student_register_university);
+        mConfirmPassword = (EditText) findViewById(R.id.confirm_password);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, universityList);
@@ -68,32 +70,43 @@ public class StartRegisterActivity extends AppCompatActivity {
             return;
         }
 
-        mEmailText.setError(null);
-        mPasswordText.setError(null);
+        mEmail.setError(null);
+        mPassword.setError(null);
 
-        String email = mEmailText.getText().toString();
-        String password = mPasswordText.getText().toString();
-        String name = mNameText.getText().toString();
-        String phoneNumber = mPhoneNumberText.getText().toString();
-        String university = mUniversityText.getText().toString();
+        String email = mEmail.getText().toString();
+        String password = mPassword.getText().toString();
+        String confirmPassword = mConfirmPassword.getText().toString();
+        String name = mName.getText().toString();
+        String phoneNumber = mPhoneNumber.getText().toString();
+        String university = mUniversity.getText().toString();
         String registerStudent = mStudentRegister.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordText.setError(getString(R.string.error_passoword_length));
-            focusView = mPasswordText;
+            mPassword.setError(getString(R.string.error_passoword_length));
+            focusView = mPassword;
+            cancel = true;
+        } else if (!TextUtils.isEmpty(confirmPassword) && !isPasswordValid(confirmPassword)) {
+            mConfirmPassword.setError(getString(R.string.error_passoword_length));
+            focusView = mConfirmPassword;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(email)) {
-            mEmailText.setError(getString(R.string.error_field_required));
-            focusView = mEmailText;
+            mEmail.setError(getString(R.string.error_field_required));
+            focusView = mEmail;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailText.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailText;
+            mEmail.setError(getString(R.string.error_invalid_email));
+            focusView = mEmail;
+            cancel = true;
+        }
+
+        if (!password.equalsIgnoreCase(confirmPassword)) {
+            mConfirmPassword.setError(getString(R.string.error_passoword_match));
+            focusView = mConfirmPassword;
             cancel = true;
         }
 

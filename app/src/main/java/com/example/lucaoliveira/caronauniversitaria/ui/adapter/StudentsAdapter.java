@@ -29,13 +29,13 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, count;
-        public ImageView thumbnail, overflow;
+        public ImageView image, overflow;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             count = (TextView) view.findViewById(R.id.count);
-            thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+            image = (ImageView) view.findViewById(R.id.image);
             overflow = (ImageView) view.findViewById(R.id.overflow);
         }
     }
@@ -59,9 +59,9 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         holder.title.setText(user.getName());
         holder.count.setText(user.getNumberOfStudentsAllowed() + " Estudantes Disponíveis");
 
-        Glide.with(mContext).load(user.getImage()).into(holder.thumbnail);
+        Glide.with(mContext).load(user.getImage()).into(holder.image);
 
-        holder.thumbnail.setOnClickListener(new View.OnClickListener() {
+        holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showStudentInformation(user);
@@ -124,6 +124,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         intent.putExtra(StudentInformationActivity.EXTRA_USER_EMAIL, user.getEmail());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_ORIGIN, user.getAddressOrigin());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_REGISTER, user.getStudentRegister());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_VALUE_FOR_RENT, user.getValueForRent());
         mContext.startActivity(intent);
     }
 }

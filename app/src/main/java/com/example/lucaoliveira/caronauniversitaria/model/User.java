@@ -16,11 +16,13 @@ public class User {
     private int numberOfStudentsAllowed;
     private String studentRegister;
     private int image;
+    private double valueForRent;
 
     public User() {
     }
 
-    public User(String name, int numberOfStudentsAllowed, String email, int image, String phoneNumber, String addressOrigin, String addressDestiny, String studentRegister) {
+    public User(String name, int numberOfStudentsAllowed, String email, int image, String phoneNumber, String addressOrigin,
+                String addressDestiny, String studentRegister, double valueForRent) {
         this.name = name;
         this.numberOfStudentsAllowed = numberOfStudentsAllowed;
         this.email = email;
@@ -29,6 +31,7 @@ public class User {
         this.addressOrigin = addressOrigin;
         this.addressDestiny = addressDestiny;
         this.studentRegister = studentRegister;
+        this.valueForRent = valueForRent;
     }
 
     public String getName() {
@@ -125,5 +128,13 @@ public class User {
 
     public void setStudentRegister(String studentRegister) {
         this.studentRegister = studentRegister;
+    }
+
+    public double getValueForRent() {
+        return valueForRent;
+    }
+
+    public void setValueForRent(double valueForRent) {
+        this.valueForRent = valueForRent;
     }
 }

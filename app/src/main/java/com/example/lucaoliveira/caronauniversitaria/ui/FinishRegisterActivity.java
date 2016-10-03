@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,11 +39,13 @@ public class FinishRegisterActivity extends AppCompatActivity {
     private EditText mAddressOrigin;
     private EditText mAddressDestiny;
     private EditText mStudentsAllowed;
+    private EditText mValueForRent;
 
     private Button btnTakePicture;
     private Bitmap photoTaken;
 
     private ImageView imageView;
+    private String uploadImage;
 
     public static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -75,7 +78,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
             //get the photo
             Bundle extras = data.getExtras();
             photoTaken = (Bitmap) extras.get("data");
-            imageView.setImageBitmap(photoTaken);
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(photoTaken, 300, 300, false));
         }
     }
 
@@ -88,6 +91,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
         String addressOrigin = mAddressOrigin.getText().toString();
         String addressDestiny = mAddressDestiny.getText().toString();
         String studentsAllowed = mStudentsAllowed.getText().toString();
+        String valueForRent = mValueForRent.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -101,6 +105,12 @@ public class FinishRegisterActivity extends AppCompatActivity {
         if (accessType.equals("Caroneiro") && TextUtils.isEmpty(studentsAllowed)) {
             mStudentsAllowed.setError(getString(R.string.error_accessType_caroneiro));
             focusView = mStudentsAllowed;
+            cancel = true;
+        }
+
+        if (accessType.equals("Caroneiro") && TextUtils.isEmpty(valueForRent)) {
+            mValueForRent.setError(getString(R.string.error_accessType_caroneiro_value));
+            focusView = mValueForRent;
             cancel = true;
         }
 
@@ -135,6 +145,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
         mAddressDestiny = (EditText) findViewById(R.id.addressDestiny);
         btnTakePicture = (Button) findViewById(R.id.take_picture_button);
         imageView = (ImageView) findViewById(R.id.imgPreview);
+        mValueForRent = (EditText) findViewById(R.id.value_for_rent);
     }
 
     private void populateText(User user) {
@@ -144,20 +155,27 @@ public class FinishRegisterActivity extends AppCompatActivity {
         } else {
             user.setNumberOfStudentsAllowed(0);
         }
+        if (!mValueForRent.getText().toString().equals("") && mValueForRent.getText().toString() != null) {
+            user.setValueForRent(Integer.valueOf(mValueForRent.getText().toString()));
+        } else {
+            user.setValueForRent(0);
+        }
         user.setAddressOrigin(mAddressOrigin.getText().toString());
         user.setAddressDestiny(mAddressDestiny.getText().toString());
 
         if (photoTaken != null) {
-            byte[] data = getBitmapAsByteArray(photoTaken);
-            user.setImage(data[0]);
+            uploadImage = getStringImage(photoTaken);
         }
     }
 
-    private byte[] getBitmapAsByteArray(Bitmap photoTaken) {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        photoTaken.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
-        return outputStream.toByteArray();
+    public String getStringImage(Bitmap bmp){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
     }
+
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
@@ -169,11 +187,13 @@ public class FinishRegisterActivity extends AppCompatActivity {
                 if (checked)
                     mAccessType.setText("Caroneiro");
                 mStudentsAllowed.setVisibility(View.VISIBLE);
+                mValueForRent.setVisibility(View.VISIBLE);
                 break;
             case R.id.radio_carona:
                 if (checked)
                     mAccessType.setText("Carona");
                 mStudentsAllowed.setVisibility(View.GONE);
+                mValueForRent.setVisibility(View.GONE);
                 break;
         }
     }
@@ -227,7 +247,8 @@ public class FinishRegisterActivity extends AppCompatActivity {
             contentValues.put(Constants.ADDRESS_ORIGIN, user.getAddressOrigin());
             contentValues.put(Constants.ADDRESS_DESTINY, user.getAddressDestiny());
             contentValues.put(Constants.STUDENTS_ALLOWED, user.getNumberOfStudentsAllowed());
-            contentValues.put(Constants.IMAGE, user.getImage());
+            contentValues.put(Constants.STUDENT_IMAGE, uploadImage);
+            contentValues.put(Constants.VALUE_FOR_RENT, user.getValueForRent());
 
             ContentValues urlValues = new ContentValues();
             urlValues.put(Constants.ACCESS_TOKEN, RESTServiceApplication.getInstance().getAccessToken());
@@ -241,7 +262,8 @@ public class FinishRegisterActivity extends AppCompatActivity {
                 user.setAddressOrigin(jsonObject.optString(Constants.ADDRESS_ORIGIN));
                 user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
                 user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
-                user.setImage(jsonObject.optInt(Constants.IMAGE));
+                user.setImage(jsonObject.optInt(Constants.STUDENT_IMAGE));
+                user.setValueForRent(jsonObject.optDouble(Constants.VALUE_FOR_RENT));
                 return true;
             }
             return false;

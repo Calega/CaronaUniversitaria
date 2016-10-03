@@ -2,6 +2,7 @@
     <string name="app_name">CaronaUniversitaria</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Senha</string>
+    <string name="prompt_confirm_password">Confirmar Senha</string>
     <string name="prompt_name">Nome</string>
     <string name="prompt_note">Anotação</string>
     <string name="prompt_phoneNumber">Telefone</string>
@@ -13,6 +14,8 @@
     <string name="prompt_address_origin">Endereço de Origem</string>
     <string name="prompt_address_destiny">Endereço de Destino</string>
     <string name="prompt_students_allowed">Quantos alunos podem ir com você?</string>
+    <string name="prompt_value_rent">Qual valor da carona mensal ?</string>
+    <string name="promt_value_required">Valor cobrado</string>
     <string name="action_register">Registrar</string>
     <string name="action_link_to_register">Não é membro? Registre-se agora!</string>
     <string name="action_sign_in">Logar</string>
@@ -41,6 +44,7 @@
     <string name="error_addressOrigin">Cadastre o endereço de origem</string>
     <string name="error_addressDestiny">Cadastre o endereço de destino</string>
     <string name="error_accessType_caroneiro">Digite a quantidade de Caronas disponíveis</string>
+    <string name="error_accessType_caroneiro_value">Digite o valor das caronas.</string>
     <string name="error_phone_required">É obrigatório atualizar o número de telefone</string>
 
     <string name="action_settings">Configurações</string>

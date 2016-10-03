@@ -212,9 +212,15 @@ public class LoginActivity extends AppCompatActivity {
             user.setNumberOfStudentsAllowed(0);
         }
 
-        user.setImage(jsonObject.optInt(Constants.IMAGE));
+        user.setImage(jsonObject.optInt(Constants.STUDENT_IMAGE));
         if (user.getImage() == '0' || user.getImage() == 0) {
             user.setImage(0);
+        }
+
+        //TODO : CHECAR SE É 0 OU 0.0
+        user.setValueForRent(jsonObject.optDouble(Constants.VALUE_FOR_RENT));
+        if (user.getValueForRent() == '0' || user.getValueForRent() == 0) {
+            user.setValueForRent(0);
         }
 
         userDao.insert(user);

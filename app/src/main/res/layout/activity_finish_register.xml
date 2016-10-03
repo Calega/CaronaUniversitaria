@@ -86,6 +86,22 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/value_for_rent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_value_rent"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
                     android:id="@+id/addressOrigin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,7 +141,8 @@
                 android:id="@+id/imgPreview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/album1"
                 android:layout_marginTop="15dp"
                 android:visibility="visible" />
 

@@ -22,12 +22,13 @@ public class StudentInformationActivity extends AppCompatActivity {
     public static final String EXTRA_USER_ADDRESS_ORIGIN = "user_origin";
     public static final String EXTRA_USER_ADDRESS_DESTINY = "user_destiny";
     public static final String EXTRA_USER_REGISTER = "user_register";
+    public static final String EXTRA_USER_VALUE_FOR_RENT = "user_value_for_rent";
 
     private ImageView thumbail;
-    private TextView name, phone, email, addressOrigin, addressDestiny, studentRegister;
+    private TextView name, phone, email, addressOrigin, addressDestiny, studentRegister, valueForRent;
     private Button dismissButton;
 
-    private String userThumbnail, userName, userPhone, userEmail, userOrigin, userDestiny, userRegister;
+    private String userThumbnail, userName, userPhone, userEmail, userOrigin, userDestiny, userRegister, userValueForRent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class StudentInformationActivity extends AppCompatActivity {
         String userOrigin = intent.getStringExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_ORIGIN);
         String userDestiny = intent.getStringExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_DESTINY);
         String userRegister = intent.getStringExtra(StudentInformationActivity.EXTRA_USER_REGISTER);
+        String userValueForRent = intent.getStringExtra(StudentInformationActivity.EXTRA_USER_VALUE_FOR_RENT);
 
         name.setText(userName);
         phone.setText(userPhone);
@@ -74,6 +76,7 @@ public class StudentInformationActivity extends AppCompatActivity {
         addressOrigin.setText(userOrigin);
         addressDestiny.setText(userDestiny);
         studentRegister.setText(userRegister);
+        valueForRent.setText(userValueForRent);
     }
 
     private void initVariables() {
@@ -85,5 +88,6 @@ public class StudentInformationActivity extends AppCompatActivity {
         addressDestiny = (TextView) findViewById(R.id.tv_student_address_destiny);
         studentRegister = (TextView) findViewById(R.id.tv_student_register);
         dismissButton = (Button) findViewById(R.id.finish_button);
+        valueForRent = (TextView) findViewById(R.id.tv_student_value_for_rent);
     }
 }

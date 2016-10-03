@@ -255,6 +255,7 @@ public class StudentsActivity extends AppCompatActivity {
             user.setAddressDestiny(values[0].optString(Constants.ADDRESS_DESTINY));
             user.setNumberOfStudentsAllowed(values[0].optInt(Constants.STUDENTS_ALLOWED));
             user.setStudentRegister(values[0].optString(Constants.STUDENT_REGISTER));
+            user.setValueForRent(values[0].optDouble(Constants.VALUE_FOR_RENT));
             studentsList.add(user);
         }
 

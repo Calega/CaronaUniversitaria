@@ -47,8 +47,9 @@ public class Constants {
     public static final String ACCESS_TYPE = "accessType";
     public static final String ADDRESS_ORIGIN = "addressOrigin";
     public static final String ADDRESS_DESTINY = "addressDestiny";
-    public static final String IMAGE = "image";
+    public static final String STUDENT_IMAGE = "studentImage";
     public static final String STUDENTS_ALLOWED = "studentsAllowed";
+    public static final String VALUE_FOR_RENT = "valueForRent";
 
     public static final String CONNECTION_MESSAGE = "No internet Connection";
 
