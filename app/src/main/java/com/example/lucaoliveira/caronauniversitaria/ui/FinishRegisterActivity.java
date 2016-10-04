@@ -79,7 +79,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             photoTaken = (Bitmap) extras.get("data");
             imageView.setVisibility(View.VISIBLE);
-            imageView.setImageBitmap(Bitmap.createScaledBitmap(photoTaken, 300, 300, false));
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(photoTaken, 600, 600, false));
         }
     }
 
@@ -171,7 +171,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
 
     public String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;

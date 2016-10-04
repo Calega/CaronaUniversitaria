@@ -2,8 +2,11 @@ package com.example.lucaoliveira.caronauniversitaria.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.lucaoliveira.caronauniversitaria.R;
 import com.example.lucaoliveira.caronauniversitaria.model.User;
 import com.example.lucaoliveira.caronauniversitaria.ui.StudentInformationActivity;
@@ -59,7 +61,8 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         holder.title.setText(user.getName());
         holder.count.setText(user.getNumberOfStudentsAllowed() + " Estudantes Disponíveis");
 
-        Glide.with(mContext).load(user.getImage()).into(holder.image);
+        Bitmap bitmap = decodeFromBase64(user.getImage());
+        holder.image.setImageBitmap(bitmap);
 
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +77,11 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
                 showPopupMenu(holder.overflow, user);
             }
         });
+    }
+
+    public static Bitmap decodeFromBase64(String image) {
+        byte[] imageAsBytes = Base64.decode(image.getBytes(), Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
     }
 
     /**
