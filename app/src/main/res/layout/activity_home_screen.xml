@@ -19,7 +19,9 @@
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
-            android:src="@mipmap/firebase_launcher" />
+            android:src="@mipmap/icmortarboard" />
+
+        <!--<div>Icons made by <a href="http://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
 
         <Button
             android:id="@+id/btn_login_google"
@@ -55,15 +57,14 @@
             android:textColor="@color/white"
             android:textSize="15dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:textStyle="italic"
+            android:background="@null"
+            android:text="Desenvolvido por alunos da FIAP\n @Copyright UniCaroneiro 2016"
+            android:textColor="@color/white" />
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
-
 
 </android.support.design.widget.CoordinatorLayout>

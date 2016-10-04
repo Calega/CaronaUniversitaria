@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CaronaUniversitaria</string>
+    <string name="app_name">UniCaroneiro</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Senha</string>
     <string name="prompt_confirm_password">Confirmar Senha</string>
@@ -17,7 +17,7 @@
     <string name="prompt_value_rent">Qual valor da carona mensal ?</string>
     <string name="promt_value_required">Valor cobrado</string>
     <string name="action_register">Registrar</string>
-    <string name="action_link_to_register">Não é membro? Registre-se agora!</string>
+    <string name="action_link_to_register">Ainda não é membro? Registre-se agora!</string>
     <string name="action_sign_in">Logar</string>
     <string name="action_sign_in_label">Logar no Unicaroneiro</string>
     <string name="action_sign_in_facebook">Logar com Facebook</string>
