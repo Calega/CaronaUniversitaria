@@ -79,6 +79,7 @@
     <string name="prompt_change_accessType">Atualizar Tipo de Acesso</string>
     <string name="prompt_change_address_origin">Novo Endereço de Origem</string>
     <string name="prompt_change_address_destiny">Novo Endereço de Destino</string>
+    <string name="prompt_change_value_for_rent">Novo Valor de Cobrança</string>
     <string name="prompt_change_student_register">Novo Registro do Aluno na Universidade</string>
 </resources>
 
