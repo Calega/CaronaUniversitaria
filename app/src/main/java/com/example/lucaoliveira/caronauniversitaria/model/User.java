@@ -15,13 +15,13 @@ public class User {
     private long id;
     private int numberOfStudentsAllowed;
     private String studentRegister;
-    private int image;
+    private String image;
     private double valueForRent;
 
     public User() {
     }
 
-    public User(String name, int numberOfStudentsAllowed, String email, int image, String phoneNumber, String addressOrigin,
+    public User(String name, int numberOfStudentsAllowed, String email, String image, String phoneNumber, String addressOrigin,
                 String addressDestiny, String studentRegister, double valueForRent) {
         this.name = name;
         this.numberOfStudentsAllowed = numberOfStudentsAllowed;
@@ -114,11 +114,11 @@ public class User {
         this.numberOfStudentsAllowed = numberOfStudentsAllowed;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

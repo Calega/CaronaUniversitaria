@@ -32,19 +32,21 @@
         <activity
             android:name=".ui.StartRegisterActivity"
             android:label="@string/info_label" />
-        <activity android:name=".ui.StudentInformationActivity" />
+        <activity
+            android:name=".ui.StudentInformationActivity"
+            android:label="@string/info_label" />
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/action_sign_in_label" />
         <activity
             android:name=".ui.UpdateEmailActivity"
-            android:label="@string/action_sign_in_label" />
+            android:label="@string/info_label" />
         <activity
             android:name=".ui.UpdatePasswordActivity"
-            android:label="@string/action_sign_in_label" />
+            android:label="@string/info_label" />
         <activity
             android:name=".ui.UpdateRegisterActivity"
-            android:label="@string/action_sign_in_label" />
+            android:label="@string/info_label" />
     </application>
 
 </manifest>

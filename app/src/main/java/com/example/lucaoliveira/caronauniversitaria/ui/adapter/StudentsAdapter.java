@@ -118,11 +118,12 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
 
     private void showStudentInformation(User user) {
         Intent intent = new Intent(mContext, StudentInformationActivity.class);
-//                    intent.putExtra(StudentInformationActivity.EXTRA_USER_THUMBNAIL, user.getImage());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_THUMBNAIL, user.getImage());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_NAME, user.getName());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_PHONE, user.getPhoneNumber());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_EMAIL, user.getEmail());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_ORIGIN, user.getAddressOrigin());
+        intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_DESTINY, user.getAddressDestiny());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_REGISTER, user.getStudentRegister());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_VALUE_FOR_RENT, user.getValueForRent());
         mContext.startActivity(intent);

@@ -212,9 +212,9 @@ public class LoginActivity extends AppCompatActivity {
             user.setNumberOfStudentsAllowed(0);
         }
 
-        user.setImage(jsonObject.optInt(Constants.STUDENT_IMAGE));
-        if (user.getImage() == '0' || user.getImage() == 0) {
-            user.setImage(0);
+        user.setImage(jsonObject.optString(Constants.STUDENT_IMAGE));
+        if (user.getAddressDestiny().equalsIgnoreCase("null")) {
+            user.setImage(null);
         }
 
         //TODO : CHECAR SE É 0 OU 0.0

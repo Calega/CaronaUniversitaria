@@ -78,6 +78,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
             //get the photo
             Bundle extras = data.getExtras();
             photoTaken = (Bitmap) extras.get("data");
+            imageView.setVisibility(View.VISIBLE);
             imageView.setImageBitmap(Bitmap.createScaledBitmap(photoTaken, 300, 300, false));
         }
     }
@@ -168,9 +169,9 @@ public class FinishRegisterActivity extends AppCompatActivity {
         }
     }
 
-    public String getStringImage(Bitmap bmp){
+    public String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
@@ -262,7 +263,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
                 user.setAddressOrigin(jsonObject.optString(Constants.ADDRESS_ORIGIN));
                 user.setAddressDestiny(jsonObject.optString(Constants.ADDRESS_DESTINY));
                 user.setNumberOfStudentsAllowed(jsonObject.optInt(Constants.STUDENTS_ALLOWED));
-                user.setImage(jsonObject.optInt(Constants.STUDENT_IMAGE));
+                user.setImage(jsonObject.optString(Constants.STUDENT_IMAGE));
                 user.setValueForRent(jsonObject.optDouble(Constants.VALUE_FOR_RENT));
                 return true;
             }

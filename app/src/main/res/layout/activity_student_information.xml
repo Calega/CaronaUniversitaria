@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_name"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_email"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -126,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_phoneNumber"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -166,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/promt_value_required"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -206,7 +206,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_address_origin"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -246,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_address_destiny"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -286,7 +286,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prompt_studentRegister"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -312,7 +312,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="20dp">
 
             <Button
                 android:id="@+id/finish_button"
@@ -320,7 +320,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginTop="16dp"
                 android:text="@string/action_ok"
                 android:textStyle="bold" />
 
