@@ -12,319 +12,332 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.lucaoliveira.caronauniversitaria.ui.FinishRegisterActivity">
 
-
-    <LinearLayout
-        android:id="@+id/student_form"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/thumbail_student_information"
+        <LinearLayout
+            android:id="@+id/student_form"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:scaleType="fitXY" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/thumbail_student_information"
+                android:layout_width="258dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="35dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:scaleType="fitXY" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-                <TextView
-                    android:id="@+id/student_name"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/prompt_name"
-                    android:textSize="17dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/student_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/prompt_name"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="39dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/tv_student_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="EXEMPLO DE NOME"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/student_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/prompt_email"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="42dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/tv_student_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="email@email.com"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/student_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/prompt_phoneNumber"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/tv_student_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="989284849"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/user_student_value_for_rent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/promt_value_required"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/tv_student_value_for_rent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="R$ 59,00"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/student_address_origin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/prompt_address_origin"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/tv_student_address_origin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Avenida 9 de julho - São Paulo"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/student_address_destiny"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/prompt_address_destiny"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/tv_student_address_destiny"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Avenida 9 de julho - São Paulo"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/user_student_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/prompt_studentRegister"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/tv_student_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RM : 66631"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:rating="3" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/finish_button"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="@string/action_ok"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="39dp"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/tv_student_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="EXEMPLO DE NOME"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/student_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/prompt_email"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="42dp"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/tv_student_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="email@email.com"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/student_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/prompt_phoneNumber"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/tv_student_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="989284849"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/user_student_value_for_rent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/promt_value_required"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/tv_student_value_for_rent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="R$ 59,00"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/student_address_origin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/prompt_address_origin"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/tv_student_address_origin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Avenida 9 de julho - São Paulo"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/student_address_destiny"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/prompt_address_destiny"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/tv_student_address_destiny"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Avenida 9 de julho - São Paulo"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/user_student_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/prompt_studentRegister"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/tv_student_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="RM : 66631"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp">
-
-            <Button
-                android:id="@+id/finish_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:text="@string/action_ok"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
