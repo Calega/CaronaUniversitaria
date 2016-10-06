@@ -24,9 +24,9 @@
 
             <ImageView
                 android:id="@+id/thumbail_student_information"
-                android:layout_width="258dp"
+                android:layout_width="169dp"
                 android:layout_height="200dp"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="85dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="fitXY" />
@@ -34,7 +34,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
@@ -277,7 +277,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="3">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -311,6 +311,22 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="03dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:id="@+id/check_student"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/success" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <RatingBar
@@ -322,8 +338,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp">
+                android:layout_gravity="center">
 
                 <Button
                     android:id="@+id/finish_button"

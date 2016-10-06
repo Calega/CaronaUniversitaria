@@ -40,8 +40,8 @@ import java.util.List;
 /**
  * Created by lucaoliveira on 8/12/2016.
  */
-public class StudentsActivity extends AppCompatActivity {
-    public static final String TAG = StudentsActivity.class.getName();
+public class StudentsListActivity extends AppCompatActivity {
+    public static final String TAG = StudentsListActivity.class.getName();
 
     private StudentsListTask mStudentsListTask = null;
 
@@ -75,7 +75,7 @@ public class StudentsActivity extends AppCompatActivity {
         mStudentsListTask.execute();
 
         try {
-            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.fiapcover).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -215,7 +215,7 @@ public class StudentsActivity extends AppCompatActivity {
         });
         builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Toast.makeText(StudentsActivity.this, ":)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StudentsListActivity.this, ":)", Toast.LENGTH_SHORT).show();
             }
         });
         alert = builder.create();
@@ -280,6 +280,11 @@ public class StudentsActivity extends AppCompatActivity {
             mMessage = mContext.getString(R.string.error_url_not_found);
             return true;
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

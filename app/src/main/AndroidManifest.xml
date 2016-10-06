@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.StudentsActivity"
+            android:name=".ui.StudentsListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.FinishRegisterActivity"

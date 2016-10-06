@@ -6,7 +6,7 @@
     <string name="prompt_name">Nome</string>
     <string name="prompt_note">Anotação</string>
     <string name="prompt_phoneNumber">Telefone</string>
-    <string name="prompt_studentRegister">Registro do Aluno na Universidade</string>
+    <string name="prompt_studentRegister">Registro do Aluno</string>
     <string name="prompt_university">Universidade</string>
     <string name="prompt_accessType">Tipo de Acesso</string>
     <string name="prompt_accessType_caroneiro">Caroneiro - Fornece carona</string>
