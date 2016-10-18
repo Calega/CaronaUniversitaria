@@ -223,7 +223,7 @@ public class FinishRegisterActivity extends AppCompatActivity {
             Log.d("FinishRegisterActivity", "Successful ?!" + success);
             if (success) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.prompt_welcome), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), StudentsListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(getBaseContext(), "Alguma coisa deu errado :( Tente novamente ! ", Toast.LENGTH_SHORT).show();
@@ -238,8 +238,6 @@ public class FinishRegisterActivity extends AppCompatActivity {
         }
 
         public boolean performRequest() {
-
-            //TODO : CHECAR SE A IMAGEM FOI PARA O DATABASE HOST
             ContentValues contentValues = new ContentValues();
             User user = RESTServiceApplication.getInstance().getUser();
             populateText(user);
