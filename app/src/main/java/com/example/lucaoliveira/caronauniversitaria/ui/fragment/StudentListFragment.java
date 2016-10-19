@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -68,10 +67,6 @@ public class StudentListFragment extends Fragment {
         return view;
     }
 
-    private void showProgress(boolean isShow) {
-        getView().findViewById(R.id.progress_retrieving_students).setVisibility(isShow ? View.VISIBLE : View.GONE);
-    }
-
     private class StudentsListTask extends AsyncTask<Void, JSONObject, Void> {
         private String mMessage;
         private Context mContext;
@@ -96,7 +91,6 @@ public class StudentListFragment extends Fragment {
 
         @Override
         protected void onProgressUpdate(JSONObject... values) {
-            showProgress(true);
             User user = new User();
             user.setEmail(values[0].optString(Constants.EMAIL));
             user.setName(values[0].optString(Constants.NAME));
@@ -113,7 +107,6 @@ public class StudentListFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            showProgress(false);
             adapter.notifyDataSetChanged();
         }
 

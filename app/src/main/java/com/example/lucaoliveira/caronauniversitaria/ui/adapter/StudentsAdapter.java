@@ -42,9 +42,9 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         }
     }
 
-    public StudentsAdapter(Context mContext, List<User> albumList) {
+    public StudentsAdapter(Context mContext, List<User> studentList) {
         this.mContext = mContext;
-        this.studentList = albumList;
+        this.studentList = studentList;
     }
 
     @Override
