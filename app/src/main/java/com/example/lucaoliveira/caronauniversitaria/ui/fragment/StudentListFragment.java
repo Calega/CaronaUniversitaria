@@ -39,8 +39,6 @@ public class StudentListFragment extends Fragment {
     private StudentsAdapter adapter;
     private List<User> studentsList;
 
-    private AlertDialog alert;
-
     public StudentListFragment() {
         // Required empty public constructor
     }
