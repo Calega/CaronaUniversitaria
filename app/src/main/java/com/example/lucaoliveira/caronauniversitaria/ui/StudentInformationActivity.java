@@ -83,7 +83,7 @@ public class StudentInformationActivity extends AppCompatActivity {
         addressOrigin.setText(userOrigin);
         addressDestiny.setText(userDestiny);
         studentRegister.setText(userRegister);
-        valueForRent.setText("R$ : " + String.valueOf(userValueForRent) + " mensais");
+        valueForRent.setText("R$ : " + String.format("%.2f", userValueForRent) + " mensais");
     }
 
     private void initVariables() {

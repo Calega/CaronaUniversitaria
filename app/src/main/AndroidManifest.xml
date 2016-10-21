@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.HomeScreenActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        // TODO : ADICIONAR HOME PAGE DE VOLTA A PRINCIPAL E MAIN ACTIVITY COMO UM DAS ACTIVITIES ABAIXO
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_name" />
         <activity
             android:name=".ui.FinishRegisterActivity"
             android:label="@string/info_label" />
@@ -45,6 +47,9 @@
         <activity
             android:name=".ui.UpdateRegisterActivity"
             android:label="@string/info_label" />
+        <activity
+            android:name=".ui.GoogleLoginActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

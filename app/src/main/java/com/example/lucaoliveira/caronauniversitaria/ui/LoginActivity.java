@@ -217,7 +217,6 @@ public class LoginActivity extends AppCompatActivity {
             user.setImage(null);
         }
 
-        //TODO : CHECAR SE É 0 OU 0.0
         user.setValueForRent(jsonObject.optDouble(Constants.VALUE_FOR_RENT));
         if (user.getValueForRent() == '0' || user.getValueForRent() == 0) {
             user.setValueForRent(0);

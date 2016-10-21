@@ -122,7 +122,7 @@ public class StudentListFragment extends Fragment {
                     return false;
                 }
             }
-            mMessage = mContext.getString(R.string.error_url_not_found);
+            mMessage = getResources().getString(R.string.error_url_not_found);
             return true;
         }
 

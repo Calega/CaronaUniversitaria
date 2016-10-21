@@ -4,12 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -31,14 +28,13 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, count;
-        public ImageView image, overflow;
+        public ImageView image;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             count = (TextView) view.findViewById(R.id.count);
             image = (ImageView) view.findViewById(R.id.image);
-            overflow = (ImageView) view.findViewById(R.id.overflow);
         }
     }
 
@@ -70,53 +66,11 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
                 showStudentInformation(user);
             }
         });
-
-        holder.overflow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showPopupMenu(holder.overflow, user);
-            }
-        });
     }
 
     public static Bitmap decodeFromBase64(String image) {
         byte[] imageAsBytes = Base64.decode(image.getBytes(), Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
-    }
-
-    /**
-     * Showing popup menu_logout when tapping on 3 dots
-     */
-    private void showPopupMenu(View view, User student) {
-        // inflate menu_logout
-        PopupMenu popup = new PopupMenu(mContext, view);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_student, popup.getMenu());
-        popup.setOnMenuItemClickListener(new MyMenuItemClickListener(student));
-        popup.show();
-    }
-
-    /**
-     * Click listener for popup menu_logout items
-     */
-    class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
-        private User user;
-
-        public MyMenuItemClickListener(User user) {
-            this.user = user;
-        }
-
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.action_add_favourite:
-                    showStudentInformation(user);
-                    return true;
-                default:
-
-            }
-            return false;
-        }
     }
 
     @Override
@@ -134,6 +88,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         intent.putExtra(StudentInformationActivity.EXTRA_USER_ADDRESS_DESTINY, user.getAddressDestiny());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_REGISTER, user.getStudentRegister());
         intent.putExtra(StudentInformationActivity.EXTRA_USER_VALUE_FOR_RENT, user.getValueForRent());
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
 }

@@ -40,6 +40,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_email);
         initVariables();
         userDao = new UserDao(getBaseContext());
+
     }
 
     private void showProgress(boolean isShow) {

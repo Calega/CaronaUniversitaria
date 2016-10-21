@@ -61,10 +61,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:textStyle="italic"
             android:background="@null"
             android:text="Desenvolvido por alunos da FIAP\n @Copyright UniCaroneiro 2016"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textStyle="italic" />
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

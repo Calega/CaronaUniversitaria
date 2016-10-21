@@ -22,7 +22,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
     }
 
-
     public void clickRegister(View view) {
         if (hasActiveInternetConnection()) {
             Intent intent = new Intent(HomeScreenActivity.this, StartRegisterActivity.class);
@@ -33,7 +32,12 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
 
     public void loginWithGoogle(View view) {
-        Toast.makeText(getApplicationContext(), "Funcionalidade ainda não desenvolvida", Toast.LENGTH_SHORT).show();
+        if (hasActiveInternetConnection()) {
+            Intent intent = new Intent(HomeScreenActivity.this, GoogleLoginActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getApplicationContext(), "É necessário ter conexão com a internet!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void clickLogin(View view) {

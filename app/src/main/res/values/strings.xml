@@ -21,7 +21,7 @@
     <string name="action_sign_in">Logar</string>
     <string name="action_sign_in_label">Logar no Unicaroneiro</string>
     <string name="action_sign_in_facebook">Logar com Facebook</string>
-    <string name="action_sign_in_google">Logar com Google +</string>
+    <string name="action_sign_in_google">Logar com Google</string>
     <string name="action_update">Atualizar</string>
     <string name="action_delete">Deletar</string>
     <string name="action_reset">Resetar</string>
