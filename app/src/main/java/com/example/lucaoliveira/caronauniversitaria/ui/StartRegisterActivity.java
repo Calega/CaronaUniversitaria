@@ -21,9 +21,12 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 import org.json.JSONObject;
 
 /**
- * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
+ * Created by Lucas Calegari A. De Oliveira on 01/07/2016.
  */
 public class StartRegisterActivity extends AppCompatActivity {
+    public static final String EXTRA_USER_EMAIL = "user_email";
+    public static final String EXTRA_USER_NAME = "user_name";
+
     String[] universityList = {"FIAP"};
 
     private UserLoginRegisterTask mUserLoginRegisterTask = null;
@@ -36,10 +39,18 @@ public class StartRegisterActivity extends AppCompatActivity {
     private EditText mStudentRegister;
     private EditText mConfirmPassword;
 
+    private String googleEmail, googleName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_register);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            googleEmail = extras.getString(StartRegisterActivity.EXTRA_USER_EMAIL);
+            googleName = extras.getString(StartRegisterActivity.EXTRA_USER_NAME);
+        }
         initViews();
     }
 
@@ -63,6 +74,14 @@ public class StartRegisterActivity extends AppCompatActivity {
         MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner)
                 findViewById(R.id.university);
         materialDesignSpinner.setAdapter(arrayAdapter);
+
+        if (googleEmail != null && googleEmail != "") {
+            mEmail.setText(googleEmail);
+        }
+
+        if (googleName != null && googleName != "") {
+            mName.setText(googleName);
+        }
     }
 
     public void attemptLoginRegister(View view) {

@@ -12,7 +12,7 @@ import com.example.lucaoliveira.caronauniversitaria.database.DatabaseConnection;
 import com.example.lucaoliveira.caronauniversitaria.model.User;
 
 /**
- * Created by lucas calegari a. de oliveira on 27/09/2016.
+ * Created by Lucas Calegari Alves de Oliveira on 27/09/2016.
  */
 public class UserDao extends DatabaseConnection implements Dao<User> {
     public static final String TAG = "UserDao";

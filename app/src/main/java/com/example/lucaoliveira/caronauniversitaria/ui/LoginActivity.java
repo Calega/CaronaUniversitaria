@@ -23,7 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Created by Lucas Calegari A. De Oliveira on 7/1/2016.
+ * Created by Lucas Calegari A. De Oliveira on 01/07/2016.
  */
 public class LoginActivity extends AppCompatActivity {
     private UserLoginTask mUserLoginTask = null;

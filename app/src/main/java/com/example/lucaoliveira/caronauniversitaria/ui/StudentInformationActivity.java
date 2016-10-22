@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.lucaoliveira.caronauniversitaria.R;
 
 /**
- * Created by lucas on 21/08/2016.
+ * Created by Lucas Calegari Alves de Oliveira on 21/08/2016.
  */
 public class StudentInformationActivity extends AppCompatActivity {
     public static final String EXTRA_USER_THUMBNAIL = "user_thumbnail";

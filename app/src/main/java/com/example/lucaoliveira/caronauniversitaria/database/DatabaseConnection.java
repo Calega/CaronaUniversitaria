@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * Created by lucas on 27/09/2016.
+ * Created by Lucas Calegari A. de Oliveira on 27/09/2016.
  */
 public class DatabaseConnection extends SQLiteOpenHelper {
     public static final String TAG = "DatabaseConnection";

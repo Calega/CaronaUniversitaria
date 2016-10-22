@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.lucaoliveira.caronauniversitaria.R;
 
 /**
- * Created by lucas on 30/06/2016.
+ * Created by Lucas Calegari Alves de Oliveira on 30/06/2016.
  */
 public class HomeScreenActivity extends AppCompatActivity {
 

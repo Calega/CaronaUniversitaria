@@ -1,7 +1,7 @@
 package com.example.lucaoliveira.caronauniversitaria.database;
 
 /**
- * Created by lucas on 27/09/2016.
+ * Created by Lucas Calegari Alves de Oliveira on 27/09/2016.
  */
 public interface Dao<T> {
 
