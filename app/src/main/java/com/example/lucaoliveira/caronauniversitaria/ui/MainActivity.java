@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lucaoliveira on 18/10/16.
+ * Created by Lucas Calegari Alves de Oliveira on 18/10/16.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -155,5 +155,17 @@ public class MainActivity extends AppCompatActivity {
         });
         alert = builder.create();
         alert.show();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        int count = getFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+//            super.onBackPressed();
+        } else {
+            getFragmentManager().popBackStack();
+        }
     }
 }

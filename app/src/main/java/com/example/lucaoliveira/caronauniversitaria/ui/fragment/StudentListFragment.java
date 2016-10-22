@@ -125,6 +125,5 @@ public class StudentListFragment extends Fragment {
             mMessage = getResources().getString(R.string.error_url_not_found);
             return true;
         }
-
     }
 }
