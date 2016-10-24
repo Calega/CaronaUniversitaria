@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.lucaoliveira.caronauniversitaria.Constants;
 import com.example.lucaoliveira.caronauniversitaria.R;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lucaoliveira on 18/10/16.
+ * Created by Lucas Calegari Alves de Oliveira on 18/10/16.
  */
 
 public class StudentListFragment extends Fragment {
@@ -60,6 +61,8 @@ public class StudentListFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+
+        Toast.makeText(getActivity().getApplicationContext(), "Aguarde um momento...", Toast.LENGTH_SHORT).show();
 
         mStudentsListTask = new StudentsListTask();
         mStudentsListTask.execute();

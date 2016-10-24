@@ -31,6 +31,8 @@
     <string name="action_update_password">Confirmar Alteração de Senha</string>
     <string name="action_update_register">Confirmar Alteração de Cadastro</string>
     <string name="action_ok">Ok :)</string>
+    <string name="action_make_contact">Entrar em contato</string>
+    <string name="action_qualify">Efetuar qualificação</string>
     <string name="action_take_picture">Tirar Foto</string>
     <string name="action_finish_register">Finalizar Cadastro</string>
     <string name="error_invalid_email">Esse endereço de email é inválido</string>

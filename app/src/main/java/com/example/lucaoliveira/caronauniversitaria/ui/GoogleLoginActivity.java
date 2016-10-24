@@ -3,11 +3,9 @@ package com.example.lucaoliveira.caronauniversitaria.ui;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.lucaoliveira.caronauniversitaria.Constants;
@@ -23,8 +21,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,7 +32,6 @@ public class GoogleLoginActivity extends AppCompatActivity implements GoogleApiC
     private EmailLoginTask mEmailTask = null;
     private GoogleApiClient mGoogleApiClient;
     private SignInButton mSignInButton;
-    private Button mSignOutButton;
 
     private static final int RC_SIGN_IN = 9001;
 
@@ -64,9 +59,6 @@ public class GoogleLoginActivity extends AppCompatActivity implements GoogleApiC
         mSignInButton = (SignInButton) findViewById(R.id.login_with_google);
         mSignInButton.setSize(SignInButton.SIZE_WIDE);
         mSignInButton.setOnClickListener(this);
-
-//        mSignOutButton = (Button) findViewById(R.id.sign_out_from_google);
-//        mSignOutButton.setOnClickListener(this);
     }
 
     @Override
@@ -75,19 +67,7 @@ public class GoogleLoginActivity extends AppCompatActivity implements GoogleApiC
             case R.id.login_with_google:
                 signIn();
                 break;
-            case R.id.sign_out_from_google:
-                signOut();
-                break;
         }
-    }
-
-    private void signOut() {
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
-            @Override
-            public void onResult(@NonNull Status status) {
-                Toast.makeText(getBaseContext(), "Deslogado :)", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void signIn() {
@@ -109,7 +89,6 @@ public class GoogleLoginActivity extends AppCompatActivity implements GoogleApiC
         Log.d("GoogleLoginActivity", "handleSignInResult:" + result.isSuccess());
 
         if (result.isSuccess()) {
-            // Signed in successfully
             GoogleSignInAccount acct = result.getSignInAccount();
             googleEmail = acct.getEmail();
             googleName = acct.getDisplayName();

@@ -6,6 +6,7 @@
     android:padding="8dp">
 
     <RelativeLayout
+        android:id="@+id/first_notification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -51,9 +52,10 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/second_notification"
         android:layout_width="match_parent"
-        android:layout_marginTop="100dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
 
         <ImageView
             android:id="@+id/thumbnail2"
@@ -80,7 +82,7 @@
             android:layout_below="@id/customerName2"
             android:layout_marginTop="1dip"
             android:layout_toRightOf="@+id/thumbnail2"
-            android:text="Avenida Lins de Vasconcelos 1450"
+            android:text="Av. Lins de Vasconcelos 1450"
             android:textSize="15dip" />
 
         <TextView
@@ -97,6 +99,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/third_notification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp">
@@ -126,7 +129,7 @@
             android:layout_below="@id/customerName3"
             android:layout_marginTop="1dip"
             android:layout_toRightOf="@+id/thumbnail3"
-            android:text="Avenida Lins de Vasconcelos 1075"
+            android:text="Av. Lins de Vasconcelos 1075"
             android:textSize="15dip" />
 
         <TextView
@@ -141,4 +144,11 @@
             android:textSize="13dip" />
 
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:text="É possível clicar na notificação e identificar o comércio que oferece a promoção :)"
+        android:textStyle="italic" />
 </RelativeLayout>

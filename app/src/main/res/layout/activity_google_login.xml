@@ -10,10 +10,5 @@
         android:layout_height="wrap_content"
         android:text="@string/action_sign_in_google" />
 
-    <Button
-        android:id="@+id/sign_out_from_google"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fazer Login com outra conta google" />
 
 </LinearLayout>

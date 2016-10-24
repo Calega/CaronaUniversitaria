@@ -1,5 +1,6 @@
 package com.example.lucaoliveira.caronauniversitaria.ui;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lucaoliveira.caronauniversitaria.R;
 
@@ -29,7 +31,7 @@ public class StudentInformationActivity extends AppCompatActivity {
 
     private ImageView thumbail;
     private TextView name, phone, email, addressOrigin, addressDestiny, studentRegister, valueForRent;
-    private Button dismissButton;
+    private Button backButton, qualifyButton;
 
     private String userThumbnail, userName, userPhone, userEmail, userOrigin, userDestiny, userRegister, userValueForRent;
 
@@ -44,7 +46,7 @@ public class StudentInformationActivity extends AppCompatActivity {
     }
 
     private void buttonControl() {
-        dismissButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -56,6 +58,43 @@ public class StudentInformationActivity extends AppCompatActivity {
                 call();
             }
         });
+
+        qualifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customQualificationDialog();
+            }
+        });
+    }
+
+    private void customQualificationDialog() {
+        final Dialog dialog = new Dialog(StudentInformationActivity.this);
+        dialog.setContentView(R.layout.dialog_student_qualification);
+        dialog.setTitle("Qualificar carona");
+
+        Button positiveButton = (Button) dialog.findViewById(R.id.send_qualification);
+        Button negativeButton = (Button) dialog.findViewById(R.id.back_to_list_student_information_button);
+        TextView riderName = (TextView) dialog.findViewById(R.id.rider_name);
+        // if button is clicked, close the custom dialog
+        positiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Qualificação enviada!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Iremos verificar o comentário recebido :)", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        negativeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        riderName.setText(name.getText().toString());
+
+        dialog.show();
     }
 
     private void call() {
@@ -94,7 +133,8 @@ public class StudentInformationActivity extends AppCompatActivity {
         addressOrigin = (TextView) findViewById(R.id.tv_student_address_origin);
         addressDestiny = (TextView) findViewById(R.id.tv_student_address_destiny);
         studentRegister = (TextView) findViewById(R.id.tv_student_register);
-        dismissButton = (Button) findViewById(R.id.finish_button);
+        backButton = (Button) findViewById(R.id.back_to_list_button);
+        qualifyButton = (Button) findViewById(R.id.qualify_user_button);
         valueForRent = (TextView) findViewById(R.id.tv_student_value_for_rent);
     }
 }
