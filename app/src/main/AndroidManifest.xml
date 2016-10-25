@@ -53,6 +53,12 @@
         <activity
             android:name=".ui.GoogleLoginActivity"
             android:label="@string/app_name" />
+        <activity
+            android:name=".ui.ChatRoomActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ui.ChatterActivity"
+            android:label="@string/app_name" />
 
         <service android:name=".FirebaseInstanceIdService">
             <intent-filter>

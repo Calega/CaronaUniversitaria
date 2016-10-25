@@ -31,7 +31,7 @@ public class StudentInformationActivity extends AppCompatActivity {
 
     private ImageView thumbail;
     private TextView name, phone, email, addressOrigin, addressDestiny, studentRegister, valueForRent;
-    private Button backButton, qualifyButton;
+    private Button backButton, qualifyButton, chatRoom;
 
     private String userThumbnail, userName, userPhone, userEmail, userOrigin, userDestiny, userRegister, userValueForRent;
 
@@ -63,6 +63,13 @@ public class StudentInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 customQualificationDialog();
+            }
+        });
+        chatRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ChatRoomActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -135,6 +142,7 @@ public class StudentInformationActivity extends AppCompatActivity {
         studentRegister = (TextView) findViewById(R.id.tv_student_register);
         backButton = (Button) findViewById(R.id.back_to_list_button);
         qualifyButton = (Button) findViewById(R.id.qualify_user_button);
+        chatRoom = (Button) findViewById(R.id.chatRoom);
         valueForRent = (TextView) findViewById(R.id.tv_student_value_for_rent);
     }
 }
