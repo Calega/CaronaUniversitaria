@@ -49,6 +49,50 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445302833277:android:2c6a0d4466972b45",
+        "android_client_info": {
+          "package_name": "com.lucaoliveira.unicaroneiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445302833277-hqpsl0k7hrdj5b4hbohq887ee117abkm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lucaoliveira.unicaroneiro",
+            "certificate_hash": "2B17629FB703FEB868F95F7D0E8AB45BED1691CB"
+          }
+        },
+        {
+          "client_id": "445302833277-99inr5ddfqohh62mps0q777c2bpp8lgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBoEDossCWf898dh1gUedgY137ztCoNCw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445302833277-99inr5ddfqohh62mps0q777c2bpp8lgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

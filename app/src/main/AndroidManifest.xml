@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lucaoliveira.caronauniversitaria">
+    package="com.lucaoliveira.unicaroneiro"
+    android:versionCode="1"
+    android:versionName="UniCaroneiro Beta">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,7 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:name=".RESTServiceApplication"
+        android:name="com.lucaoliveira.unicaroneiro.RESTServiceApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icmortarboard"
         android:label="@string/app_name"
@@ -18,7 +20,7 @@
         android:theme="@style/MyMaterialTheme">
 
         <activity
-            android:name=".ui.HomeScreenActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.HomeScreenActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,46 +29,46 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.MainActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".ui.FinishRegisterActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.FinishRegisterActivity"
             android:label="@string/info_label" />
         <activity
-            android:name=".ui.StartRegisterActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.StartRegisterActivity"
             android:label="@string/info_label" />
         <activity
-            android:name=".ui.StudentInformationActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.StudentInformationActivity"
             android:label="@string/info_label" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.LoginActivity"
             android:label="@string/action_sign_in_label" />
         <activity
-            android:name=".ui.UpdateEmailActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.UpdateEmailActivity"
             android:label="@string/info_label" />
         <activity
-            android:name=".ui.UpdatePasswordActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.UpdatePasswordActivity"
             android:label="@string/info_label" />
         <activity
-            android:name=".ui.UpdateRegisterActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.UpdateRegisterActivity"
             android:label="@string/info_label" />
         <activity
-            android:name=".ui.GoogleLoginActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.GoogleLoginActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".ui.ChatRoomActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.ChatRoomActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".ui.ChatterActivity"
+            android:name="com.lucaoliveira.unicaroneiro.ui.ChatterActivity"
             android:label="@string/app_name" />
 
-        <service android:name=".FirebaseInstanceIdService">
+        <service android:name="com.lucaoliveira.unicaroneiro.FirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".FirebaseMessagingService">
+        <service android:name="com.lucaoliveira.unicaroneiro.FirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

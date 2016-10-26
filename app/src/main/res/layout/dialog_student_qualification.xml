@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="80dp"
-    tools:context="com.example.lucaoliveira.caronauniversitaria.ui.FinishRegisterActivity">
+    tools:context=".com.lucaoliveira.lucaoliveira.caronauniversitaria.ui.FinishRegisterActivity">
 
     <TextView
         android:id="@+id/rider_name"
