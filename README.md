@@ -32,27 +32,11 @@ Main dependencies used :
 
 * Carona Universitária is a Project developed for FIAP student Lucas Calegari
 Developed for solve student problems of going from universities to their homes.
-* Version 0.0 - Not yet release
+* Version 1.0 - https://play.google.com/store/apps/details?id=com.lucaoliveira.unicaroneiro&hl=pt_BR
 
 ### Branch being used ###
 
 * Dev
-
-### Features being developed ###
-
- Logar com Google+
-Pendente : Logar com o usuario e permanecer logado com seu cadastro salvo.
-
-Chat
-Logar com facebook
-Notificações com firebase GCM
-Refac na activity de estudante (imagem redonda e novas fontes - tipografia da google)
-Ser possível definir sexo no cadastro
-alterar endereço de origem para “cidade de origem” e “faculdade de destino”
-Criar filtro para lista de caroneiros
-Inserir um item de “Ajuda” explicando detalhadamente o que cada item faz
-Inserir informativo no detalhe do aluno, dizendo se o mesmo foi validado ou não pela universidade
-Ao clicar no endereço da notificação, abrir google maps
 
 ### Who do I talk to? ###
 
